@@ -97,12 +97,12 @@ Password recovery is a multi-step process. Step one requests a reset email be se
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/aaa/forgot_password`
+
 `POST https://login.eagleeyenetworks.com/g/aaa/forgot_password`
 
 Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-email   	| string      | Email Address 	| GET, POST
+email   	| string      | Email Address 	| POST
 
 ### Error Status Codes
 
@@ -130,12 +130,12 @@ This is step two of the password recover/reset process. It verifies that the sup
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token`
+
 `POST https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token`
 
 Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-token   	| string      | Password reset token provided in email | GET, POST
+token   	| string      | Password reset token provided in email | POST
 
 ### Error Status Codes
 
