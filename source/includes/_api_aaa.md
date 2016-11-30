@@ -1,6 +1,9 @@
-# AAA
+# Authentication, Authorization, Accounts
 
 <!--===================================================================-->
+## Overview
+This section is for creating new accounts and the steps to recover account. If you are creating sub-accounts tied to your current account refer to [Account](#account)
+
 ## Create Account 
 
 > Request
@@ -15,12 +18,16 @@ This is used to create a new account and the super user for the account. As a pa
 
 `POST https://login.eagleeyenetworks.com/g/aaa/create_account`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**email**   	| string      | Email Address 	| true
-**password**   	| string      | Password 		| true
+email       	| string      | Email Address 	| POST
+password    	| string      | Password 		| POST
 name   			| string      | Account name
+realm  			| string      | realm (defaults to current user's realm)
+first_name 		| string      | User first name
+last_name  		| string      | User last name
 timezone   		| string      | Timezone name
+is_api_acces_needed | boolean | Grant api access to this new account
 
 ### Error Status Codes
 
@@ -54,10 +61,10 @@ This is used to verify the email address supplied when the account is created. W
 
 `POST https://login.eagleeyenetworks.com/g/aaa/validate_account`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**id**   		| string      | Account Id 		| true
-**token**   	| string      | Account validation token | true
+id   		| string      | Account Id 		| POST
+token   	| string      | Account validation token | POST
 
 ### HTTP Json Attributes
 
@@ -90,11 +97,12 @@ Password recovery is a multi-step process. Step one requests a reset email be se
 
 ### HTTP Request
 
+`GET https://login.eagleeyenetworks.com/g/aaa/forgot_password`
 `POST https://login.eagleeyenetworks.com/g/aaa/forgot_password`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**email**   	| string      | Email Address 	| true
+email   	| string      | Email Address 	| GET, POST
 
 ### Error Status Codes
 
@@ -122,11 +130,12 @@ This is step two of the password recover/reset process. It verifies that the sup
 
 ### HTTP Request
 
+`GET https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token`
 `POST https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**token**   	| string      | Password reset token provided in email | true
+token   	| string      | Password reset token provided in email | GET, POST
 
 ### Error Status Codes
 
@@ -163,10 +172,11 @@ This is step three of the password recover/reset process. It both verifies that 
 
 `POST https://login.eagleeyenetworks.com/g/aaa/reset_password`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**token**   	| string      | Password reset token provided in email | true
-password   		| string      | New password | true
+token   	| string      | Password reset token provided in email | POST
+password   		| string      | New password | POST
+accepted_terms_of_service_urls   		| string      | New terms of service acceptance url
 
 ### HTTP Json Attributes
 
@@ -201,9 +211,10 @@ This is used by users who have registered for an account, but never confirmed th
 
 `POST https://login.eagleeyenetworks.com/g/aaa/resend_registration_email`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**email**   	| string      | Email address of the account contact for a pending account | true
+email   	| string      | Email address of the account contact for a pending account | POST
+realm  			| string      | realm (defaults to current user's realm)
 
 ### Error Status Codes
 
@@ -232,9 +243,10 @@ This is used by users who have had a user account created for them, but they nev
 
 `POST https://login.eagleeyenetworks.com/g/aaa/resend_user_verification_email`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-**email**   	| string      | Email address of the new user | true
+email   	| string      | Email address of the new user | POST
+realm  			| string      | realm (defaults to current user's realm)
 
 ### Error Status Codes
 
@@ -273,10 +285,10 @@ This allows a user to change their password directly while authenticated, and al
 
 `POST https://login.eagleeyenetworks.com/g/aaa/change_password`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
 id   			| string      | ID of the user having their password changed. Optional. Defaults to the ID of the authenticated user. If empty or equal to authenticated user, then "current_password" becomes required. | 
-**password**   	| string      | New password | true
+password   	| string      | New password | POST
 current_password| string      | Current password of the user. Optional. If "id" argument is empty, or is equal to the authenticated user's id, then this is required. | 
 
 ### Error Status Codes
@@ -304,9 +316,9 @@ This allows a user to "log in" to another account that the user has access to (s
 
 `POST https://login.eagleeyenetworks.com/g/aaa/switch_account`
 
-Parameter  		| Data Type   | Description   	| Is Required
+Parameter  		| Data Type   | Description   	| Required For
 ---------  		| ----------- | -----------   	| -----------
-account_id   	| string      | ID of the account to login to. Optional. Defaults to the account ID that the user belongs to. | false
+account_id   	| string      | ID of the account to login to. Optional. Defaults to the account ID that the user belongs to. | POST
 
 ### Error Status Codes
 
