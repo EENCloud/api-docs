@@ -10,15 +10,15 @@ toc_footers:
 includes:
   - introduction
   - api_authentication
+  - api_aaa
+  - api_account
   - api_user
   - api_camera
   - api_bridge
   - api_asset
   - api_poll
   - api_layout
-  - api_aaa
   - api_notice
-  - api_account
   - api_action
   - api_feedback
   - api_metric
