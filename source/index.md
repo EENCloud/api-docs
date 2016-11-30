@@ -20,7 +20,6 @@ includes:
   - api_notice
   - api_account
   - api_action
-  - api_annotation
   - api_feedback
   - api_metric
   - api_pngspan
