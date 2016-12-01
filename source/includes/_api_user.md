@@ -79,15 +79,49 @@ If a user isn't requesting their own user record, these apis requires SuperUser 
 ```
 
 ### User Attributes
+<table class="model user">
+    <thead>
+        <tr>
+            <th class="key">Parameter</th>
+            <th class="type">Data Type</th>
+            <th class="desc">Description</th>
+            <th class="edit">Editable</th>
+            <th class="required">Required</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="">
+            <td class="key">id</td>
+            <td class="type">string</td>
+            <td class="desc">Unique identifier for the user</td>
+            <td class="edit"></td>
+            <td class="required"></td>
+        </tr>
+        <tr class="editable">
+            <td class="key">alternate_email</td>
+            <td class="type">string</td>
+            <td class="desc">Alternate email address</td>
+            <td class="edit"></td>
+            <td class="required"></td>
+        </tr>
+        <tr class="editable">
+            <td class="key">first_name</td>
+            <td class="type">string</td>
+            <td class="desc">First name of the user</td>
+            <td class="edit"></td>
+            <td class="required"></td>
+        </tr>
+    </tbody>
+</table>
 
-Parameter               | Data Type     | Description
----------               | -----------   | -----------
-id                      | string        | Unique identifier for Authorized User
+
+Parameter               | Data Type     | Description | Editable | Required By
+---------               | -----------   | ----------- | -------- | -----------
+id                      | string        | Unique identifier for Authorized User | * | 
 first_name              | string        | First name of Authorized User
 last_name               | string        | Last name of Authorized User
 email                   | string        | Email of Authorized User (* this email must only contain ASCII characters)
 owner_account_id        | string        | Unique identifier of user's Account
-active_account_id       | string        | Unique identifier of user's active Account
 uid                     | string        | UID
 is_superuser            | int           | Is the user a Super User
 is_account_superuser    | int           | Is the user an Account Super User
@@ -111,7 +145,7 @@ mobile_phone            | string        | Mobile phone number
 utc_offset              | int           | Timezone offset from UTC in seconds (signed integer)
 timezone                | string        | Timezone
 last_login              | string        | Last time the user logged in, in EEN timestamp format: YYYYMMDDHHMMSS.NNN
-alternate_email         | string        | Alternate email address
+
 sms_phone               | string        | SMS phone number
 is_sms_include_picture  | int           | Include picture in sms notifications
 json                    | [UserJson](#userjson-attributes) | Misc settings for the user as a JSON string
@@ -121,10 +155,12 @@ is_notify_enable        | int           | Is notifications enabled for the User
 notify_period           | array[string] | List of notification time periods, in the form: D-HHMM-HHMM
 notify_rule             | array[string] | List of notification rules, in the form: id-type-delay (e.g. one-email-0)
 is_branded              | int           | Is the user associated with an account that currently has branding enabled
-active_brand_subdomain  | string        | If the user is associated with an account that has brandinge enabled, this will have that brand's subdomain if one exists
+is_terms_noncompliant   | int           | True if user has not accepted terms of service
+alternate_email         | string        | Alternate email address
 account_map_lines       | ???           | 
 access_period           | ???           | 
-is_terms_noncompliant   | int           | True if user has not accepted terms of service
+active_brand_subdomain  | string        | If the user is associated with an account that has brandinge enabled, this will have that brand's subdomain if one exists
+active_account_id       | string        | Unique identifier of user's active Account
 
 ### UserJson Attributes
 
