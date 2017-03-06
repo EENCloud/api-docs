@@ -3,7 +3,7 @@
 <!--===================================================================-->
 ## Overview
 
-The poll service provides a mechanism for an application to receive notifications of events or spans from the Eagle Eye service. These entities are grouped by resource. There are five main resources:
+The poll service provides a mechanism for an application to receive intial state and change notifications of events from the Eagle Eye service. These entities are grouped by resource. There are five main resources:
 
   * thumb - Thumbnail resource. Provides a timestamp for a thumbnail image. One can use the timestamp to grab the actual thumbnail image.
   * pre - Preview resource. Provides a timestamp for a preview image. One can use the timestamp to grab the actual preview image.
@@ -11,19 +11,22 @@ The poll service provides a mechanism for an application to receive notification
   * event - Event resource. Provides full event information.
   * [status](#status-bitmask) - A bitmask flag defining the state of a bridge or a camera.
 
-Events can come from lots of sources:
+Events come from lots of sources:
 
   * Devices or Cameras (camera alerts, start and stop recording, etc.)
   * System Events (maintenance, server changes)
   * Account Events (other user changes, account alerts, layout changes).
+  * Analytic and API events (ANNT events)
 
-Device and Camera events include, on, off, online, offline, currently recording, currently sensing motion, start/stop schedule event, being controlled with PTZ)
+Events reflect the current state in the system, and a new event is generated when something changes.  Almost every aspect of the system can be tracked via events  - motion in front of a camera, camera on/offline, camera turned on/off, downloads complete, cameras added or deleted  etc.  Resources provide summaries of common events, but through the "event" resource any activity can be monitored.
 
-This service will continually be extended. Any UI should not care about stuff that it does not understand.
+This service will continually be extended. Any UI should not care about stuff that it does not understand. 
 
-Poll is a stateful request for updates any time a matching event occurs within the service. The initial poll request is a POST with a JSON formatted body indicating the resources to track. Resources that are video, pre, and thumbnail automatically register the api caller to their respective events. However, resource type ‘event’ requires the api caller to tell the API what events to listen for.
+Poll supports two protocals - http and websocket.  Both provide the same basic functionality - a json request describes the events of interest, the server provides a json response with initial state for the requested  events, and updates when any change. Websocket is a much more efficient model, and should be used where ever possible.
 
-Each object consists an id element and a list of resource types to be monitored. The POST transaction receives an immediately responds with a JSON formatted body indicating the current timestamp for all requested resources. The response also includes a cookie, which can be used to track changes to the indicated resources via GET transaction.
+HTTP Poll implements a  stateful request model via successive HTTP requests. The initial request is a POST with a JSON body describing the events of interest, which receive a JSON response containing state of all the requested objects and a token.  Subsequent GET requests include the token, and the server will respond when any event of interest changes (or when the request times out).  The session is maintained server side as long as the client continues to request with the token. To change the entries in the subscription a new session is initiated with a new POST. 
+
+Websocket poll has a somewhat more flexible model.  The websocket connection implements the session logic. JSON formatted messages from the client modify the state of the session.  As new events are added to the session, their initial state is pushed from the server, and subsequent messages are pushed on any event change. There are two websocket interfaces ws_poll (deprecated) and ws_poll2.  The older ws_poll interface mirrors the statefull symantics of the http interface - all events specified in a subscription will be update in the initial response. The ws_poll2 interface can spread the response over many messages. This results in ws_poll2 being much more responsive on initial start up.  ws_poll2 also allows deletion of events from the session, and will maintain the subscription even if some event is not available.
 
 Each resource type has a specific object format in response:
 
@@ -77,63 +80,100 @@ IF "Invalid" (bit 16)==1 THEN no status change (use whatever status bits were se
 
 ## Event Objects
 
-Four CC   | Description
---------- | -----------      
-VRES      | Video start event
-VREE      | Video end event
-VRKF      | Video key frame event
-VRSU      | Video update event
-PRSS      | Preview stream start event
-PRTH      | Thumbnail event
-PRFR      | Preview event
-PRSE      | Preview stream end event
-PRSU      | Preview stream update event
-EMES      | Motion start event
-EMEE      | Motion end event
-ESES      | Event stream start
-EVVS      | Video swap event
-ESEE      | Event stream stop
-ECON      | The camera is online
-ECOF      | The camera is offline
-AELI      | Account event log in
-AELO      | Account event log out
-AEDO      | Download video event
-AEUC      | Create user event
-AEUD      | Delete user event
-AECC      | User config change event
-AELD      | Live display event
-AEPT      | Pan tilt zoom event
-AAEC      | Layout create event
-AEED      | Layout delete event
-AEEL      | Layout change event
-AEAC      | Account create event
-AEAD      | Account delete event
-AEAH      | Account change event
-AEDC      | Device create event
-AEDD      | Device delete event
-AEDH      | Device change event
-CECF      | Camera found event
-CSAT      | Camera stream attach event
-CSDT      | Camera stream detach event
-COFF      | Camera off event
-CONN      | Camera on event
-COBC      | Camera bounce event
-CSTS      | Camera settings event
-CSTC      | Camera settings change event
-CPRG      | Camera purge event
-CDLT      | Camera data lost event
-CBWS      | Camera bandwidth sample event
-BBWS      | Bridge bandwidth sample event
-AEDA      | Device alert event
-AEDN      | Device alert notification event
-MRBX      | Motion Box event
-MRSZ      | Motion size reports
-ROMS      | Region of interest motion start
-ROME      | Region of interest motion end
-ALMS      | Alert Motion Start
-ALME      | Alert Motion End
-ALRS      | Alert Region Of Interest Start
-ALRE      | Alert Region Of Interest End
+fourcc | name
+-----|-------
+AABT | ETagCameraArchiverAbort
+ABRT | ETagCameraAbort
+AEAC | ETagAccountEventAccountCreate
+AEAD | ETagAccountEventAccountDelete
+AEAH | ETagAccountEventAccountChange
+AECC | ETagAccountEventUserConfigChange
+AEDA | ETagAlertDevice
+AEDC | ETagAccountEventDeviceCreate
+AEDD | ETagAccountEventDeviceDelete
+AEDH | ETagAccountEventDeviceChange
+AEDN | ETagAlertNotification
+AEDO | ETagAccountEventDownload
+AEEC | ETagAccountEventLayoutCreate
+AEED | ETagAccountEventLayoutDelete
+AEEL | ETagAccountEventLayoutChange
+AELD | ETagAccountEventLiveDisplay
+AELI | ETagAccountEventLogIn
+AELO | ETagAccountEventLogOut
+AEPT | ETagAccountEventPTZ
+AEUC | ETagAccountEventUserCreate
+AEUD | ETagAccountEventUserDelete
+ALME | ETagAlertMotionEnd
+ALMS | ETagAlertMotionStart
+ALRE | ETagAlertRoiMotionEnd
+ALRS | ETagAlertRoiMotionStart
+ANNT | ETagAnnotate
+BBOO | ETagBridgeBoot
+BBWS | ETagBridgeBWSample
+BUBW | ETagUploadBandwidth
+CBWS | ETagCameraBWSample
+CCCF | ETagCurlFail
+CCLC | ETagCloudConnect
+CCLD | ETagCloudDisconnect
+CDLT | ETagCameraDataLost
+CECF | ETagCameraFound
+CECL | ETagCameraLost
+COBC | ETagCameraBounce
+COFF | ETagCameraOff
+CONN | ETagCameraOn
+CPRG | ETagCameraPurge
+CSAT | ETagCameraStreamAttach
+CSAU | ETagCameraStreamAttachUnique
+CSDT | ETagCameraStreamDetach
+CSDU | ETagCameraStreamDetachUnique
+CSST | ETagStreamStats
+CSSU | ETagStreamStatsUnique
+CSTC | ETagCameraSettingsChange
+CSTS | ETagCameraSettings
+CZDC | ETagCameraSettingsDeltaZ
+CZTC | ETagCameraSettingsChangeZ
+CZTS | ETagCameraSettingsZ
+EAEE | ETagEventAlwaysEnd
+EAES | ETagEventAlwaysStart
+ECOF | ETagStatusCameraOffline
+ECON | ETagStatusCameraOnline
+EMEE | ETagEventMotionEnd
+EMES | ETagEventMotionStart
+EMEU | ETagEventMotionUpdate
+ENEE | ETagEventAppEnd
+ENES | ETagEventAppStart
+ENEU | ETagEventAppUpdate
+EPEE | ETagEventPTZEnd
+EPES | ETagEventPTZStart
+ESEE | ETagEventStreamEnd
+ESES | ETagEventStreamStart
+EVVS | ETagEventVideoSwap
+ITFU | ETagInterfaceUpdate
+MRBX | ETagMotionBoxes
+MRSZ | ETagMotionSizeReport
+NOOP | ETagNOOP
+NVPT | ETagNameValueTable
+PRFB | ETagPreviewBacking
+PRFR | ETagPreviewFrame
+PRFU | ETagPreviewUploaded
+PRSE | ETagPreviewStreamEnd
+PRSS | ETagPreviewStreamStart
+PRSU | ETagPreviewStreamUpdate
+PRTH | ETagThumbFrame
+PTZS | ETagPTZStatus
+RCHB | ETagStatusRegisterCameraHeartbeat
+RCOF | ETagStatusRegisterCameraOffline
+RCON | ETagStatusRegisterCameraOnline
+ROME | ETagRoiMotionEnd
+ROMS | ETagRoiMotionStart
+ROMU | ETagRoiMotionUpdate
+SBWS | ETagStreamBWSample
+SCRN | ETagScreen
+SSTE | ETagStreamerStatusEvent
+VREE | ETagVideoEnd
+VRES | ETagVideoStart
+VRKF | ETagVideoKeyFrame
+VRSU | ETagVideoStatusUpdate
 
 <!--===================================================================-->
 ## Initialize Poll
@@ -356,5 +396,245 @@ HTTP Status Code    | Data Type
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
+
+## WebSocket Interface
+
+`https://login.eagleeyenetworks.com/ws_poll?id=<esn>`
+
+Parameter       | Data Type   	| Description
+---------       | ------------- | -----------
+id 		| esn(string) 		| esn hint for infrastructure, pick any cameraid
+
+### HTTP Status Codes
+
+HTTP Status Code    | Notes
+------------------- | ----------- 
+101 | (switch to websocket - invisible)
+404 | Not Found (esn is invalid)
+502 | Resource not available 
+503 | Resource not available (internal only)
+
+### Overview
+The websocket interface is a subscription model over a websocket session.  Clients issue a JSON requests, which add resources to the session.  If a request encounters an error, an overall error response is returned and the session is closed.
+
+
+>Websocket JSON Request Message Format
+
+```json
+{
+    "cameras": {
+        "<esn>": {
+            "resource": [ "list of resource types" ],
+            "event": [ "list of 4CC strings for event resource" ]
+        }
+    }
+}
+```
+
+>Websocket JSON Respsonse Message Format
+
+```json
+{
+    "response_code": 0,
+    "response_message": "OK",
+    "data": " object responses per response type above"
+}
+```
+
+
+### Websocket Response Codes
+Status Code    | Reason
+------------------- | ----------- 
+0 | OK
+200 | OK
+400 | malformed request
+401 | permission denied (one or more esns are invalid)
+503 | system not ready
+
+
+## WebSocket2 Interface
+
+`https://login.eagleeyenetworks.com/api/v2/System/<esn>/Events`
+
+Parameter       | Data Type   	| Description
+---------       | ------------- | -----------
+id 		| esn(string) 		| esn hint for infrastructure, pick any cameraid
+
+
+### HTTP Status Codes
+
+HTTP Status Code    | Notes
+------------------- | ----------- 
+101 | (switch to websocket - invisible)
+404 | Not Found (esn is invalid)
+502 | Resource not available 
+503 | Resource not available (internal only)
+
+### Overview
+The Websocket2 interface is an API compatible redesign of websocket poll.  The primary change is "camera" entities are moved to independent interactions over the websocket, and will respond on their own (so all cameras may not respond at the same time) and can fail independently.  Initial start up is significantly faster in most cases (as all resolution of cameras is done in parallel) and the session remains intact if there is an issue with an individual camera or request.
+
+The change requires a new response concept. An entity can receive an "error" resource, which describes a entity specific error, without cancelling the entire session. The specific entity will be removed from the session, but all others willremain.
+
+
+### Websocket2 Entities
+
+Entity Name | Notes
+------------| ------
+cameras | subscription to an esn denoted entity (account, bridge, user, camera)
+keys | subscription to a dhash namespace
+drop | remove cameras or keys from session
+
+The cameras entity is a carry over from websocket poll. It identifies  a named entity in the system with events of interest.
+
+> Websocket 2 Camera Request Format
+
+```json
+{
+    "cameras": {
+        "<esn>": {
+            "resource": [ "list of resource types" ],
+            "event": [ "list of 4CC strings for event resource" ]
+        }
+    }
+}
+```
+
+The keys entity is a subscription to a named JSON object maintained by the EEN Infrastructure.
+
+Key Operation | Notes
+--------| --------
+subscribe | add subscription to the key, current value is returned, follow changes
+once | get current key value, then drop subscription
+drop | identical to drop command below
+
+> Websocket 2 Key Request Format
+
+```json
+{
+    "keys": {
+        "<dname key>": {
+            "op": "<operation>"
+        }
+    }
+}
+```
+
+The drop entity indicates a subscribed resource should be removed from the session.
+
+Drop Resource | Arguments | Notes
+------------| ------------
+cameras | array of esns to remove | 
+keys | array of keys to remove |
+
+> Websocket 2 Drop Request Format
+
+```json
+{
+    "drop": {
+        "keys": [ "array of key names to drop" ],
+        "cameras": [ "array of camera esns to drop" ]
+    }
+}
+```
+
+
+
+### Websocket2 Status Codes
+
+Status Code    | Reason
+------------------- | ----------- 
+200 | OK
+400 | malformed request
+401 | permission denied (invalid esn)
+
+### Websocket2 Error Status Codes
+
+Status Code    | Reason
+------------------- | ----------- 
+400 | malformed request
+404 | not found
+401 | permission denied (invalid esn)
+410 | dropped
+
+> Websocket2 Normal Response Example
+
+```json
+{   
+    "status_code": 200, 
+    "message": "OK", 
+    "data": { 
+        "100b0547": { 
+            "event": { 
+                "VREE": { 
+                    "timestamp": "20161128063213.516", 
+                    "cameraid": "100b0547", 
+                    "videoid": -229238211, 
+                    "videosize": 162300, 
+                    "format": 2, 
+                    "status": 31 
+                } 
+            } 
+        } 
+    } 
+}
+```
+
+> Websocket2 Entity Error Response Example
+
+```json
+{ 
+    "status_code": 200, 
+    "message": "OK", 
+    "data": { 
+        "09999999": { 
+            "error": [ 
+                { 
+                    "status_code": 404, 
+                    "message": "resolve invalid" } 
+            ] 
+        } 
+    } 
+}
+```
+
+> Websocket2 Request Error Response Example
+
+```json
+{ 
+    "status_code": 400, 
+    "message": "JSON request must be a JSON object", 
+    "data": { } 
+}
+```
+
+> Websocket2 Drop Request Example
+
+```json
+{ 
+    "drop": { 
+        "cameras": [ "100b0547"] 
+    }
+}
+
+```
+
+> Websocket2 Drop Response Example
+
+```json
+{ 
+    "status_code": 200, 
+    "message": "OK", 
+    "data": { 
+        "100b0547": { 
+            "error": [ 
+                { 
+                    "status_code": 410, 
+                    "message": "dropped" 
+                } 
+            ] 
+        } 
+    } 
+}
+```
 
 
