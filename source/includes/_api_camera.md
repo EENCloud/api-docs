@@ -1356,3 +1356,55 @@ HTTP Status Code    | Data Type
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
+
+<!--===================================================================-->
+## Turn All Cameras On
+
+> Request
+
+```shell
+curl --cookie "auth_key=[AUTH_KEY]" --request POST https://login.eagleeyenetworks.com/g/action/allon
+```
+
+> Response 
+
+Used to turn on all cameras in the caller user’s account. Requires the account_superuser permission.
+
+### HTTP Request
+
+`POST https://login.eagleeyenetworks.com/g/action/allon`
+
+### Error Status Codes <!--TODO: Investigate archiver error codes -->
+
+HTTP Status Code    | Data Type   
+------------------- | ----------- 
+202	| Request succeeded
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the account_superuser permission
+
+<!--===================================================================-->
+## Turn All Cameras Off
+
+> Request
+
+```shell
+curl --cookie "auth_key=[AUTH_KEY]" --request POST https://login.eagleeyenetworks.com/g/action/alloff
+```
+
+Used to turn off all cameras in the caller user’s account. Requires the account_superuser permission.
+
+> Response 
+
+### HTTP Request
+
+`POST https://login.eagleeyenetworks.com/g/action/alloff`
+
+### Error Status Codes <!--TODO: Investigate archiver error codes -->
+
+HTTP Status Code    | Data Type   
+------------------- | ----------- 
+202	| Request succeeded
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the account_superuser permission

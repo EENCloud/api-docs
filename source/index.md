@@ -20,7 +20,8 @@ includes:
   - api_poll
   - api_layout
   - api_notice
-  - api_action
+  - api_account
+  - api_annotation
   - api_feedback
   - api_metric
   - api_pngspan
