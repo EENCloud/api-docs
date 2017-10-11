@@ -12,6 +12,18 @@ The Environments depend on the following to be installed:
   - `docker`
   - `docker-compose`
 
+## Installing docker-compose
+
+By far the easiest way to manage `docker-compose` installations and or upgrades is by `pip`.
+
+Required packages:
+
+  - python
+  - python-pip
+
+``` bash
+pip install --user docker-compose
+```
 
 # Running the Development Environment
 
@@ -58,3 +70,4 @@ docker exec -it <container> /bash
 # fetch the logs from the container
 docker logs -f <container>
 ```
+
