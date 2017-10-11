@@ -69,4 +69,3 @@ docker exec -it <container> /bash
 # fetch the logs from the container
 docker logs -f <container>
 ```
-
