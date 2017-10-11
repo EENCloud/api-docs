@@ -4,14 +4,25 @@
 This directory holds the HTML, CSS JQuery/JS and Markdown as well as Docker configuration files responsible for hosting or building the EEN API Documentation
 
 
-# Prerequisites
+# Dependencies
 
+The Environment(s) depends on the following to be installed:
 
-The Environments depend on the following to be installed:
+  - [docker](https://docs.docker.com/engine/installation/)
+  - [docker-compose](https://docs.docker.com/compose/install)
 
-  - `docker`
-  - `docker-compose`
+## Post installation
 
+### Linux
+
+By default docker.service is root only, this can be resolved by adding yourself to the docker group.
+
+``` bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
+Please read the [documentation](https://docs.docker.com/engine/installation/linux/linux-postinstall) for further troubleshooting.
 
 # Running the Development Environment
 
@@ -58,3 +69,4 @@ docker exec -it <container> /bash
 # fetch the logs from the container
 docker logs -f <container>
 ```
+
