@@ -15,14 +15,14 @@ The Environment(s) depends on the following to be installed:
 
 ### Linux
 
-By default docker.service is root only, this can be resolved by adding the user to the docker group.
+By default docker.service is root only, this can be resolved by adding the user to the docker group
 
 ``` bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-Please read the [documentation](https://docs.docker.com/engine/installation/linux/linux-postinstall) for further troubleshooting.
+Please read the [documentation](https://docs.docker.com/engine/installation/linux/linux-postinstall) for further troubleshooting
 
 # Running the Development Environment
 
