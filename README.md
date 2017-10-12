@@ -15,7 +15,7 @@ The Environment(s) depends on the following to be installed:
 
 ### Linux
 
-By default docker.service is root only, this can be resolved by adding yourself to the docker group.
+By default docker.service is root only, this can be resolved by adding the user to the docker group.
 
 ``` bash
 sudo groupadd docker
