@@ -323,7 +323,11 @@ id        | string    | <a class="definition" onclick="openModal('DOT-Account-ID
 
 HTTP Status Code | Description
 ---------------- | -----------
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
 409	| Another account with the supplied contact email address already exists
+200	| Request succeeded
 
 <!--===================================================================-->
 ## Update Account
