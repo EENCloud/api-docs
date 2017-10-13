@@ -46,7 +46,7 @@ Login is a two-step process when using Simple Authentication and a three-step pr
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/authenticate -d "username=[USERNAME]" -d "password=[PASSWORD]" -H "Authentication: [API_KEY]:"
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/authenticate -d '{"username": "[USERNAME]", "password": "[PASSWORD]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"
 ```
 
 ### HTTP Request
@@ -128,7 +128,7 @@ This step is only to be executed when TFA is used for the user log in (i.e. if t
 > Request (Two-Factor Authentication)
 
 ```shell
-curl -D - -X POST https://login.eagleeyenetworks.com/g/aaa/two_factor_authenticate -d "token=[TOKEN]" -d "two_factor_authentication_type=[TFA_TYPE]" -H "Authentication: [API_KEY]:"
+curl -D - -X POST https://login.eagleeyenetworks.com/g/aaa/two_factor_authenticate -d '{"token": "[TOKEN]", "two_factor_authentication_type": "[TFA_TYPE]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"
 ```
 
 <!-- TODO: Verify the above TFA curl request -->
@@ -174,13 +174,13 @@ Each account will consistently have the same *branded subdomain* and as such wil
 > Request (Simple Authentication)
 
 ```shell
-curl -D - -X POST https://login.eagleeyenetworks.com/g/aaa/authorize -d "token=[TOKEN]" -H "Authentication: [API_KEY]:"
+curl -D - -X POST https://login.eagleeyenetworks.com/g/aaa/authorize -d '{"token": "[TOKEN]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"
 ```
 
 > Request (Two-Factor Authentication)
 
 ```shell
-curl -D - -X POST https://login.eagleeyenetworks.com/g/aaa/authorize -d "token=[TOKEN]" "two_factor_authentication_code=[TFA_CODE]" -H "Authentication: [API_KEY]:"
+curl -D - -X POST https://login.eagleeyenetworks.com/g/aaa/authorize -d '{"token": "[TOKEN]", "two_factor_authentication_code": "[TFA_CODE]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"
 ```
 
 <!-- TODO: Verify the above TFA curl requests -->
