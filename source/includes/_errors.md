@@ -3,11 +3,11 @@
 HTTP Status Code | Description
 ---------------- | -----------
 400	| The request had bad syntax or was inherently impossible to be satisfied
-401	| Supplied credentials are not valid or invalid session cookie
+401	| Supplied credentials are not valid / invalid session cookie
 402	| Account is suspended
 403	| Forbidden due to the user missing the necessary privileges
 404	| Element not found (section specific)
-405	| Incorrect method called for the HTTP request
+405	| Unexpected method used for the HTTP request
 406	| Realm is invalid due to not being a root realm
 409	| Email address has already been registered for the specified realm
 410	| Communication cannot be made to attach the camera to the bridge
