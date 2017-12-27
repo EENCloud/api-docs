@@ -264,7 +264,6 @@ When the user's account has been locked the user is notified of this fact by ema
     "last_login": "20181006173752.672",
     "alternate_email": "alternate.email@nodomain.com",
     "sms_phone": "222111222",
-    "is_sms_include_picture": 0,
     "json": "{\"een\":{\"notify_levels\":[], \"permissions\":{}}}",
     "camera_access": [
         [
