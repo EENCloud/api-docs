@@ -158,12 +158,7 @@ HTTP Status Code | Description
 ## Get Video
 <!--===================================================================-->
 
-Get a video stream in the requested format based on the specified timestamps. Returns binary video data in the requested format
-
-### Video formats:
-
-  - **FLV** *(The recommended format for web streaming)*
-  - **MP4**
+Get a video stream in FLV format based on the specified timestamps. Returns binary video data
 
 > Request
 
@@ -177,7 +172,7 @@ curl -X GET https://login.eagleeyenetworks.com/asset/play/video.flv -d "id=[CAME
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/asset/play/video.{video_format}`
+`GET https://login.eagleeyenetworks.com/asset/play/video.flv`
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
@@ -194,7 +189,7 @@ FLV<file_content>
 
 ### HTTP Response
 
-The returned response is binary video data in the requested file format
+The returned response is binary video data in FLV format
 
 ### Error Status Codes
 
