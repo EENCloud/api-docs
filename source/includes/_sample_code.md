@@ -11,7 +11,7 @@
 > Authenticate Request
 
 ```shell
-curl --request POST https://login.eagleeyenetworks.com/g/aaa/authenticate --data "username=[USERNAME]&password=[PASSWORD]" -H "Authentication: [API_KEY]:"
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/authenticate -d '{"username": "[USERNAME]", "password": "[PASSWORD]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"
 ```
 
 In this section we will walk you through the process of making API requests using the **cURL** command line tool. The Eagle Eye APIs are platform agnostic and we use them to create the web, Android and iOS Eagle Eye clients. Curl is a tool for transferring data to and from a server using a wide range of supported protocols including HTTP/HTTPS, which is what we are interested in
@@ -248,7 +248,9 @@ The ease of constructing layouts is highly dependent on the robustness of the 3r
 ## Playing Live Video
 <!--===================================================================-->
 
-Video playback functionality can be accessed through the `'/asset/play/video.{video_format}'` API. We will show you how to use this API to play live video, though the same API can also be used to play historic video
+Please see <a href="https://www.eagleeyenetworks.com/authentication-live-camera-preview-stream/" target="\_blank">this article</a> for a detailed version with reference material or continue in this section
+
+Video playback functionality can be accessed through the `'/asset/play/video.flv'` API. We will show you how to use this API to play live video, though the same API can also be used to play historic video
 
 Below is the Javascript code that creates the URL for playing live video footage with a HTML flash video player. You can run the javascript code on [this site](https://js.do) to generate the URL string
 
