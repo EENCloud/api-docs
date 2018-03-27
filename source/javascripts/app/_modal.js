@@ -152,7 +152,7 @@ function customModal(header, body) {
 $(document).ready(function closeModal() {
 
     // Press 'ESC' to close the Modal
-    $(document).on("keydown" || "keyup", function(event) {    //Multifold triggers [ preventDefault() works only with 'keydown', but 'keyup' is supported across more browsers ]
+    $(document).on("keydown" || "keyup", function(event) {    // Multifold triggers [ preventDefault() works only with 'keydown', but 'keyup' is supported across more browsers ]
 
         if (event.which === 27 || event.keyCode == 27) {      // Multifold event listeners [ 'which' is supported across more browsers, 'keyCode' is for older browsers ]
 
