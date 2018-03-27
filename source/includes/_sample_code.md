@@ -264,20 +264,6 @@ eagleEyeLiveVideoApiUrl = "https://login.eagleeyenetworks.com/asset/play/video.f
     "&A=[AUTH_KEY]";
 `
 
-`
-htmlFlashVideoPlayerUrl = "https://login.eagleeyenetworks.com/strobe/embed.html?src="+encodeURIComponent(eagleEyeLiveVideoApiUrl)+"&autoPlay=true&bufferingOverlay=false&streamType=live&bufferTime=1&initialBufferTime=1&expandedBufferTime=5&liveBufferTime=2&liveDynamicStreamingBufferTime=4&minContinuousPlaybackTime=5";
-`
-
-`
-document.write(htmlFlashVideoPlayerUrl);
-`
-
-Note that we have 2 variables: `'eagleEyeLiveVideoApiUrl'` and `'htmlFlashVideoPlayerUrl'`. The `'htmlFlashVideoPlayerUrl'` variable contains the video player being used to play the Flash Player. Users are free to use any video player of this liking and the one referenced in the code is just an example video player we are using. The output of this JS code is a URL that looks like this. Use this to embed live video into your application:
-
-`
-https://login.eagleeyenetworks.com/strobe/embed.html?autoPlay=true&src=https%3A%2F%2Flogin.eagleeyenetworks.com%2Fasset%2Fplay%2Fvideo.flv%3Fc%3D[DEVICE_ID]%3Bt%3Dstream_1401291315740%3Be%3D%2B300000%3BA%3D[AUTH_KEY]&bufferingOverlay=false&streamType=live&bufferTime=1&initialBufferTime=1&expandedBufferTime=5&liveBufferTime=2&liveDynamicStreamingBufferTime=4&minContinuousPlaybackTime=5
-`
-
 <!--===================================================================-->
 ## Long Polling
 <!--===================================================================-->
