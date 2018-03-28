@@ -13,6 +13,7 @@ includes:
   - api_authentication
   - api_aaa
   - api_account
+  - api_statistics
   - api_user
   - api_bridge
   - api_managed_switch
