@@ -249,12 +249,12 @@ Used to get the number of all online cameras for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/camera_online_total -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/camera_online_total`
+`GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
