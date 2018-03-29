@@ -214,7 +214,7 @@ brand_support_phone                   | string               | Branded support p
 default_cluster                       | string               | Indicates the data center cluster the account is assigned to                         | **&check;** |
 is_system_notification_images_enabled | int                  | Indicates whether email notifications about online/offlice status should contain images from those cameras (1) or not (0)                                                                                                                                      | **&check;** |
 map_lines                             | json                 | This is used by the front end to overlay lines over a map of the cameras for the account | **&check;** |
-is_two_factor_authentication_forced   | int                  | Indicates whether Two-Factor Authentication is forced for all users in the account (1) or not and users are able to choose between Simple Authentication and TFA (0)                                                                                            | **&check;** |  
+is_two_factor_authentication_forced   | int                  | Indicates whether Two-Factor Authentication is forced for all users in the account (1) or not and users are able to choose between Simple Authentication and TFA (0)                                                                                            | **&check;** |
 contact_utc_offset                    | int                  | This field is no longer being used <small>**(DEPRECATED)**</small>                   | **&check;** |
 
 ### Account - camera_share_perms - \<camera_id\>
@@ -540,3 +540,285 @@ HTTP Status Code | Description
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 200	| Request succeeded
+
+<!--===================================================================-->
+## Account Statistics
+<!--===================================================================-->
+
+This service allows to retrieve Statistics about a specific <a class="definition" onclick="openModal('DOT-Account')">Account</a> or all <a class="definition" onclick="openModal('DOT-Sub-Account')">Sub-Accounts</a> (for a <a class="definition" onclick="openModal('DOT-Master-Account')">Master Account</a>)
+
+Obtains the total amount of:
+
+- [Sub-Accounts](#total-number-of-sub-accounts)
+- [Users](#total-number-of-users)
+- [Bridges](#total-number-of-bridges)
+- [Cameras](#total-number-of-cameras)
+- [Online Users](#total-number-of-online-users)
+- [Online Cameras](#total-number-of-online-cameras)
+
+Each statistics request extends the `/g/account` endpoint in the following way `/g/account/statistics/<type_of_statistic>`
+
+
+### Total Number of Sub-Accounts
+<!--===================================================================-->
+
+Used to get the number of all sub-accounts for the specific account
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/sub_accounts -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/account/statistics/sub_accounts`
+
+Parameter       | Data Type    | Description | Is Required
+---------       | ---------    | ----------- | -----------
+account_id      | string       | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> for which the statistics will be returned (defaults to the account of the user) | false
+
+> Json Response
+
+```json
+{
+    "account_total": 6
+}
+```
+
+### HTTP Response (Json Attributes)
+
+Parameter     | Data Type  | Description
+---------     | ---------  | -----------
+account_total | int        | Total number of sub-accounts (defaults to 0 for sub-accounts)
+
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | Account not found
+200 | Request succeeded
+
+### Total Number of Users
+<!--===================================================================-->
+
+Used to get the number of all users for the specific account
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/account/statistics/users`
+
+Parameter       | Data Type    | Description | Is Required
+---------       | ---------    | ----------- | -----------
+account_id      | string       | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> for which the statistics will be returned (defaults to the account of the user) | false
+
+> Json Response
+
+```json
+{
+    "user_total": 26
+}
+```
+
+### HTTP Response (Json Attributes)
+
+Parameter  | Data Type  | Description
+---------  | ---------  | -----------
+user_total | int        | Total number of users
+
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | Account not found
+200 | Request succeeded
+
+### Total Number of Bridges
+<!--===================================================================-->
+
+Used to get the number of all bridges for the specific account
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/bridges -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/account/statistics/bridges`
+
+Parameter       | Data Type    | Description | Is Required
+---------       | ---------    | ----------- | -----------
+account_id      | string       | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> for which the statistics will be returned (defaults to the account of the user) | false
+
+> Json Response
+
+```json
+{
+    "bridge_total": 1
+}
+```
+
+### Total Number of Cameras
+<!--===================================================================-->
+
+Used to get the number of all cameras for the specific account
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/account/statistics/cameras`
+
+Parameter       | Data Type    | Description | Is Required
+---------       | ---------    | ----------- | -----------
+account_id      | string       | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> for which the statistics will be returned (defaults to the account of the user) | false
+
+> Json Response
+
+```json
+{
+    "camera_total": 8
+}
+```
+
+### HTTP Response (Json Attributes)
+
+Parameter    | Data Type  | Description
+---------    | ---------  | -----------
+camera_total | int        | Total number of cameras
+
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | Account not found
+200 | Request succeeded
+
+### HTTP Response (Json Attributes)
+
+Parameter    | Data Type  | Description
+---------    | ---------  | -----------
+bridge_total | int        | Total number of bridges
+
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | Account not found
+200 | Request succeeded
+
+### Total Number of Online Users
+<!--===================================================================-->
+
+Used to get the number of all online users for the specific account
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/account/statistics/online_users`
+
+Parameter       | Data Type    | Description | Is Required
+---------       | ---------    | ----------- | -----------
+account_id      | string       | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> for which the statistics will be returned (defaults to the account of the user) | false
+
+> Json Response
+
+```json
+{
+    "online_user_total": 6
+}
+```
+
+### HTTP Response (Json Attributes)
+
+Parameter         | Data Type  | Description
+---------         | ---------  | -----------
+online_user_total | int        | Total number of online users
+
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | Account not found
+200 | Request succeeded
+
+### Total Number of Online Cameras
+<!--===================================================================-->
+
+Used to get the number of all online cameras for the specific account
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras`
+
+Parameter       | Data Type    | Description | Is Required
+---------       | ---------    | ----------- | -----------
+account_id      | string       | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> for which the statistics will be returned (defaults to the account of the user) | false
+
+> Json Response
+
+```json
+{
+    "camera_online_total": 5
+}
+```
+
+### HTTP Response (Json Attributes)
+
+Parameter           | Data Type  | Description
+---------           | ---------  | -----------
+camera_online_total | int        | Total number of online cameras
+
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | Account not found
+200 | Request succeeded
