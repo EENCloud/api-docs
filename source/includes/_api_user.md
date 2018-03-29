@@ -583,7 +583,7 @@ curl --request GET https://login.eagleeyenetworks.com/g/user/list -H "Authentica
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
-email     | string    | Email address of the user. The returned array will contain only the user which this email address is assigned to, or will be empty if the user does not exist. The unique aspect of this parameter is that the search scope for a master account will be extended to all sub-accounts | false
+email     | string    | Email address of the user. The returned array will contain only the user which this email address is assigned to (empty if the user does not exist) <br><br>The search scope for a master account will be extended to all sub-accounts | false
 
 ### HTTP Request
 
