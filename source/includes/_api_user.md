@@ -581,6 +581,10 @@ Returns array of arrays with each sub-array representing a User available to the
 curl --request GET https://login.eagleeyenetworks.com/g/user/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
 ```
 
+Parameter | Data Type | Description | Is Required
+--------- | --------- | ----------- | -----------
+email     | string    | Email address of the <a class="definition" onclick="openModal('DOT-User')">User</a>. The returned array will contain only the user which this email address is assigned to, or will be empty if the user does not exist. The unique aspect of this parameter is that the search scope for a <a class="definition" onclick="openModal('DOT-Master-Account')">Master Account</a> will be extended to all <a class="definition" onclick="openModal('DOT-Sub-Account')">Sub-Accounts</a> | false
+
 ### HTTP Request
 
 `GET https://login.eagleeyenetworks.com/g/user/list`
