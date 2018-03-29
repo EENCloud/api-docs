@@ -581,6 +581,10 @@ Returns array of arrays with each sub-array representing a User available to the
 curl --request GET https://login.eagleeyenetworks.com/g/user/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
 ```
 
+Parameter | Data Type | Description | Is Required
+--------- | --------- | ----------- | -----------
+email     | string    | Email address of the user. The returned array will contain only the user which this email address is assigned to (empty if the user does not exist) <br><br>The search scope for a master account will be extended to all sub-accounts | false
+
 ### HTTP Request
 
 `GET https://login.eagleeyenetworks.com/g/user/list`
