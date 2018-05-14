@@ -295,7 +295,8 @@ HEX Value | Status
 
 ### Overall status
 
-IF "Camera On" (**bit 17**)==0 THEN "Off" (orange forbidden icon)
+IF 0 THEN "No Change"
+<br>ELSE IF "Camera On" (**bit 17**)==0 THEN "Off" (orange forbidden icon)
 <br>ELSE IF "Registered" (**bit 20**)==0 THEN "Internet Offline" (red exclamation icon)
 <br>ELSE IF "Streaming" (**bit 18**)==1 THEN "Online" (green check icon)
 <br>ELSE IF "Password" (**bit 8**)==1 THEN "Password Needed" (effectively "Offline") (red padlock icon)
