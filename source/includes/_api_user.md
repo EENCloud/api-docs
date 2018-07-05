@@ -241,7 +241,7 @@ Required Parameter          | Description
 is_superuser                | <small>**(INTERNAL USE ONLY)**</small>
 is_staff                    | <small>**(INTERNAL USE ONLY)**</small>
 is_account_superuser        | Highest permission level possible for a user. All permissions are enabled (including the view permission)
-is_edit_account             | Enables the management of all accounts (add/delete/modify) and allows for viewing and editing of all account settings (including categories: Control, Days, Security, Camera, Alerts, Notifications, Privacy, Sharing and Responders)
+is_edit_account             | View and edit all account settings (including categories: Control, Days, Security, Camera, Alerts, Notifications, Privacy, Sharing, Responders, and Retention). Ability to create new sub-accounts and access any sub-accounts created
 is_edit_camera_on_off       | Ability to turn cameras on and off. If this is the only camera permission granted all others are hidden
 is_edit_cameras             | Allows editing all camera settings (does not allow adding or deleting cameras). View previews is enabled automatically with this permission
 is_edit_motion_areas        | Enables the *Motion* tab under camera settings. View previews and view recorded video is enabled automatically with this permission
