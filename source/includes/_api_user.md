@@ -30,6 +30,7 @@ The <a class="definition" onclick="openModal('DOT-User')">User</a> service allow
     "is_user_admin": 1,
     "is_layout_admin": 1,
     "is_user_create_layout": 1,
+    "is_edit_map": 1,
     "is_live_video": 1,
     "is_export_video": 1,
     "is_recorded_video": 1,
@@ -150,6 +151,7 @@ is_master                            | int                  | Indicates whether 
 is_user_admin                        | int                  | This is for backwards compatibility <small>**(DEPRECATED)**</small>                  | **&check;** |
 is_layout_admin                      | int                  | Indicates whether the user is a layout administrator (1) or not (0)                  | **&check;** |
 is_user_create_layout                | int                  | Indicates whether the user can create layouts (1) or not (0)                         | **&check;** |
+is_edit_map                          | int                  | Indicates whether the user can add and edit floors, lines and shapes on the map(1), or not(0). | **&check;** |
 is_live_video                        | int                  | Indicates whether the user is authorized to access live video (1) or not (0)         | **&check;** |
 is_device_admin                      | int                  | This is for backwards compatibility <small>**(DEPRECATED)**</small>                  | **&check;** |
 is_export_video                      | int                  | Indicates whether the user is authorized to export video (1) or not (0)              | **&check;** |
@@ -255,6 +257,7 @@ is_edit_all_and_add         | Enables the management of bridges and cameras (add
 is_edit_camera_less_billing | Allows editing all camera settings except retention and full video resolution (no ability to add/delete). View Previews is enabled automatically with this permission
 is_layout_admin             | Enables the management of layouts (any user can create/edit/delete their own layouts. User layouts are always visible to admin users)
 is_user_create_layout       | Enables creation of layouts.
+is_edit_map                 | Ability to add and edit floors, lines and shapes on the map.
 is_live_video               | Allows viewing full resolution video live from cameras. View previews is enabled automatically with this permission
 is_ptz_live                 | Enables the control over pan, tilt, zoom and recall stations while viewing preview or live video of PTZ cameras. View previews is enabled automatically with this permission
 is_recorded_video           | View history browser and archived video from cameras. View previews is enabled automatically with this permission
@@ -425,6 +428,7 @@ Parameter             | Data Type | Description | Is Required
 **email**             | string    | The email address of the user | true
 sms_phone             | string    | Phone number to be used for SMS notifications | false
 is_user_create_layout | int       | Indicates whether the user can create layouts (1) or not (0) | false
+is_edit_map           | int       | Indicates whether the user can add and edit floors, lines and shapes on the map(1), or not(0). | false
 
 <aside class="notice">When TFA authentication is used and authorization code delivery via SMS is set, the user's `'sms_phone'` number must be defined</aside>
 
@@ -487,6 +491,7 @@ is_superuser                | int           | Indicates whether the user is a su
 is_account_superuser        | int           | Indicates whether the user is an account superuser (1) or not (0). Only superusers and account superusers can set this
 is_layout_admin             | int           | Indicates whether the user is a layout administrator (1) or not (0)
 is_user_create_layout       | int           | Indicates whether the user can create layouts (1) or not (0)
+is_edit_map                 | int           | Indicates whether the user can add and edit floors, lines and shapes on the map(1), or not(0).
 is_device_admin             | int           | This is for backwards compatibility <small>**(DEPRECATED)**</small>
 is_user_admin               | int           | This is for backwards compatibility <small>**(DEPRECATED)**</small>
 is_live_video               | int           | Indicates whether the user is authorized to access live video (1) or not (0)
