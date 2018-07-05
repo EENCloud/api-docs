@@ -241,7 +241,7 @@ Required Parameter          | Description
 is_superuser                | <small>**(INTERNAL USE ONLY)**</small>
 is_staff                    | <small>**(INTERNAL USE ONLY)**</small>
 is_account_superuser        | Highest permission level possible for a user. All permissions are enabled (including the view permission)
-is_edit_account             | View and edit all account settings (including categories: Control, Days, Security, Camera, Alerts, Notifications, Privacy, Sharing and Responders)
+is_edit_account             | Enables the management of all accounts (add/delete/modify) and allows for viewing and editing of all account settings (including categories: Control, Days, Security, Camera, Alerts, Notifications, Privacy, Sharing and Responders)
 is_edit_camera_on_off       | Ability to turn cameras on and off. If this is the only camera permission granted all others are hidden
 is_edit_cameras             | Allows editing all camera settings (does not allow adding or deleting cameras). View previews is enabled automatically with this permission
 is_edit_motion_areas        | Enables the *Motion* tab under camera settings. View previews and view recorded video is enabled automatically with this permission
@@ -256,7 +256,7 @@ is_live_video               | Allows viewing full resolution video live from cam
 is_ptz_live                 | Enables the control over pan, tilt, zoom and recall stations while viewing preview or live video of PTZ cameras. View previews is enabled automatically with this permission
 is_recorded_video           | View history browser and archived video from cameras. View previews is enabled automatically with this permission
 is_view_preview_video       | Enables the preview of images from cameras
-is_edit_admin_users         | Enables the management of all users in a sub-account (add/delete/modify all users including administrators. Only available to Master Users)
+is_edit_admin_users         | Enables the management of all users in a sub-account (add/delete/modify all users including administrators. Only available to Master Users). Also allows to create new sub-accounts and access any sub-accounts created. (Only available to Master Users.)
 is_edit_all_users           | Enables the management of master users who are not administrators (add/delete/modify master account users) <br><br>Ability to grant access to sub-accounts. No user permissions are granted in sub-accounts. Only available to master account users
 is_device_admin             | This is for backwards compatibility <small>**(DEPRECATED)**</small>
 is_user_admin               | This is for backwards compatibility <small>**(DEPRECATED)**</small>
