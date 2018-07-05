@@ -1,0 +1,17 @@
+ version: '2'
+ services:
+   apidoc:
+     volumes:
+       - .:/usr/src/app
+     ports:
+       - "4567-4568:4567-4568"
+     command: /bin/bash -c "echo ==================== B U I L D ====================;
+                            pwd;
+                            bundle exec middleman build --clean;
+                            chmod 777 -R build build/* Gemfile.lock;
+                            echo;
+                            echo =================== S E R V E R ===================;
+                            bundle exec middleman server;
+                            echo;
+                            echo ==================== A B O R T ===================="
+
