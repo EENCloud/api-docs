@@ -219,6 +219,7 @@ When the user's account has been locked the user is notified of this fact by ema
     "is_master": 1,
     "is_user_admin": 1,
     "is_layout_admin": 1,
+    "is_edit_map": 0,
     "is_live_video": 1,
     "is_export_video": 1,
     "is_recorded_video": 1,
