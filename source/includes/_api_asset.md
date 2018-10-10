@@ -121,10 +121,10 @@ curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAM
 <br> Get the first image before the specified timestamp
 
 `GET https://login.eagleeyenetworks.com/asset/next/image.jpeg`
-<br> Get the first image after the specified timestamp. Used with `'timetamp=now'` will wait until the new image comes into existence and return it
+<br> Get the first image after the specified timestamp. Used with `'timestamp=now'` will wait until the new image comes into existence and return it
 
 `GET https://login.eagleeyenetworks.com/asset/after/image.jpeg`
-<br> Get the first image after the specified timestamp. Used with `'timetamp=now'` will return 404 - Image not found
+<br> Get the first image after the specified timestamp. Used with `'timestamp=now'` will return 404 - Image not found
 
 Parameter         | Data Type    | Description   | Is Required
 ---------         | ---------    | -----------   | -----------
