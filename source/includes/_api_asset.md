@@ -27,7 +27,7 @@ Type          | Meaning
 The image request model provides an efficient mechanism for accessing image sequences for several usage models. Image requests can be done directly using the next/after/prev virtual model. This returns images before or after specified timestamps. Alternatively, the timestamp and event information can be fetched through the [List](#get-list-of-images) interface (to get <a class="definition" onclick="openModal('DOT-Event')">Events</a> for history) and [Poll](#poll) interface to track new images as they become available in real-time. The following description provides typical usage models for various events:
 
   - **Low bandwidth video playback:** The preview stream is a sequential set of JPEG images. If played back in order, low resolution video is accomplished
-    - The simplest implementation is to fetch `'next'` with a timestamp of `'now'` (i.e. `'/asset/next/image.jpeg?t=now;c=12345678;a=pre'`) - waiting for the subsequent image after the current time. Each time an image is returned, a new request should be made. If the downstream bandwidth is very low, the image fetch will automatically slow down (because delivery of image A happens after image B has been received, so the next call will fetch image C, skipping display of image B entirely). This approach works well for tracking a single image stream (Tip: the first request should be done as a `'prev'` request to make sure an image is displayed, before the sequential next requests). The downside of this model is it requires a dedicated socket for each image stream being played. Many browsers have a limited pool of open sockets
+    - The simplest implementation is to fetch `'next'` with a timestamp of `'now'` (i.e. `'/asset/next/image.jpeg?timestamp=now;id=12345678;asset_class=pre'`) - waiting for the subsequent image after the current time. Each time an image is returned, a new request should be made. If the downstream bandwidth is very low, the image fetch will automatically slow down (because delivery of image A happens after image B has been received, so the next call will fetch image C, skipping display of image B entirely). This approach works well for tracking a single image stream (Tip: the first request should be done as a `'prev'` request to make sure an image is displayed, before the sequential next requests). The downside of this model is it requires a dedicated socket for each image stream being played. Many browsers have a limited pool of open sockets
     - A more efficient mechanism for tracking multiple image streams is to use the [Poll](#poll) interface. It will provide the timestamp of the next image available for a set of camera, which can then be fetched via the /asset/asset call. Since the poll request supports multiple cameras in a single request, it requires only a single socket for any number of cameras. The client application should implement a *fair* algorithm across the returned timestamps to address low bandwidth situations (that is, make sure every image stream gets updated before you fetch a new image for the same stream). This algorithm will provide smooth frame rate degradation across any number of cameras, whether the performance bottleneck is client CPU or bandwidth. The best model for this is:
       - Receive update <a class="definition" onclick="openModal('DOT-Alert-Notification')">Notifications</a> for all cameras being tracked via a single sequential poll session
       - For each camera, keep track of the latest image notification, replacing the last one even if it has not been fetched yet
@@ -35,7 +35,7 @@ The image request model provides an efficient mechanism for accessing image sequ
   - **Random access image discovery:** The preview and thumb image streams can provide a visual navigation tool for accessing recorded video. The typical implementation requires a map from a timestamp to the *best* image for that timestamp. To implement this approach, the client should use the `'after'` and `'prev'` requests with the timestamp of the user playhead. Both calls provide header data for x-ee-timestamp, x-ee-next and x-ee-prev which identify the current and subsequent images in both directions when it can be easily determined. The usage paradigm for this should be:
     - On navigation event (large jump), determine the timestamp of the user playhead and do an `'/asset/prev'` call to get the appropriate image. Store the x-ee-timestamp, x-ee-next and x-ee-prev values for the image
     - As the user moves the playhead, if the time change is within the next/prev halfway bounds, no new request is required. When the user moves outside of the time range, do an image fetch with the new timestamp
-  - **Thumbnail navigation:** The system provides a *thumbnail* image for each event which is intended to provide a small representation of the event. The easiest mechanism to get a thumbnail for an event is to do an `'/asset/after/image.jpeg?a=thumb...'` image request with the starting timestamp of the event
+  - **Thumbnail navigation:** The system provides a *thumbnail* image for each event which is intended to provide a small representation of the event. The easiest mechanism to get a thumbnail for an event is to do an `'/asset/after/image.jpeg?asset_class=thumb...'` image request with the starting timestamp of the event
 
 ### Image Formats
 
@@ -46,13 +46,13 @@ The image request model provides an efficient mechanism for accessing image sequ
 There are numerous different ways to get a list of images:
 
 Get all preview images between April 1st and April 2nd<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?c=100676b2;t=20180401000000.000;e=20180402000000.000;a=all;`
+`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2;start_timestamp=20180401000000.000;end_timestamp=20180402000000.000;asset_class=all;`
 
 Get 500 images before April 1st<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?c=100676b2;t=20180401000000.000;count=-500;a=all;`
+`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2;start_timestamp=20180401000000.000;count=-500;asset_class=all;`
 
 Get the next 500 images after April 1st<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?c=100676b2;t=20180401000000.000;count=500;a=all;`
+`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2;start_timestamp=20180401000000.000;count=500;asset_class=all;`
 
 ### Retrieve Video
 
