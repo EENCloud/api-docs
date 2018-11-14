@@ -379,12 +379,12 @@ Get a list of objects, where each object contains the ID, start and end timestam
 
 <aside class="notice">When formatting the request, either the `'end_timestamp'` or `'count'` parameter is required</aside>
 
-If the option `'o=coalesce'` has been added, the videos with overlapping start and end timestamps with the previous or next video will be merged into one single video (one single object)
+If the option `'options=coalesce'` has been added, the videos with overlapping start and end timestamps with the previous or next video will be merged into one single video (one single object)
 
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/list/video -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "o=coalesce" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/asset/list/video -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "options=coalesce" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -397,7 +397,7 @@ Parameter           | Data Type    | Description   | Is Required
 **start_timestamp** | string       | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 end_timestamp       | string       | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN
 count               | int          | Used instead of or with an `'end_timestamp'` argument. If used with an `'end_timestamp'` argument, the count is a limit on the number of entries to return, starting at the starting timestamp. If used without the `'end_timestamp'` argument, returns N entries. Supports negative values, which return N entries before sorted in reverse order (i.e. `'-5'` will return 5 events prior to the specified time)
-o                   | string, enum | Additional modifier options <br><br>enum: coalesce <small>(coalesces spans together if the start or end timestamp of either object overlaps with another, otherwise returns the same output)</small>
+options             | string, enum | Additional modifier options <br><br>enum: coalesce <small>(coalesces spans together if the start or end timestamp of either object overlaps with another, otherwise returns the same output)</small>
 
 > Json Response
 
