@@ -100,7 +100,7 @@ x-ee-timestamp    | type-timestamp | Specifies asset type and timestamp of the p
 x-ee-prev         | type-timestamp <br>*(or&nbsp;`'unknown'`)* | Specifies asset type of the previous image matching the class filter or `'unknown'` if the previous image was too complex to figure out
 x-ee-next         | type-timestamp <br>*(or&nbsp;`'unknown'`)* | Specifies asset type of the following image matching the class filter or `'unknown'` if the following image was too complex to figure out
 content-type      | `'image/jpeg'` | Specifies the content type
-location          | `'/asset/asset/image.jpeg?timestamp=20180917213405.700;quality=low;id=xxxxxxxx;asset_class=thumb'` | Identifies actual asset time of the image in response
+location          | `'/asset/asset/image.jpeg?timestamp=20180917213405.700;query=low;id=xxxxxxxx;asset_class=thumb'` | Identifies actual asset time of the image in response
 
 > Request
 
