@@ -349,21 +349,21 @@ Return an object populated by active annotation events as a point in time (optio
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/window  -d "c=[DEVICE_ID]" -d "st=[START_TIMESTAMP]" -d "et=[END_TIMESTAMP]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/window  -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
 
 `GET https://login.eagleeyenetworks.com/annt/annt/window`
 
-Parameter | Data Type | Description                                                                                                                          | Required    |
---------- | --------- | -----------                                                                                                                          |:-----------:|
-**c**     | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> the event is associated with                                | **&check;** |
-**et**    | string    | End timestamp of query in EEN format: YYYYMMDDHHMMSS.NNN                                                                             | **&check;** |
-st        | string    | Timestamp as optional limiter for the searched annotation event(s) in EEN format: YYYYMMDDHHMMSS.NNN (defaults to maximum retention). Matches events with identical start timestamps as the specified `'st'`                                                                                                           | **&cross;** |
-ns        | string    | Namespace(s) as optional comma-separated limiter for the searched annotation event(s). Excludes all except for the specified namespace(s) by excluding results in both categories: `'new'` and `'active'` (defaults to *include all*)                                                                                       | **&cross;** |
-uuid      | string    | Unique identifier(s) as optional comma-separated limiter for the searched annotation event(s). Includes all except for the specified UUID(s) by excluding results from the `'new'` category (defaults to *include all*)                                                                                                | **&cross;** |
-flat      | string    | Flatten the search results to merge heartbeats into the main annotation level and produce one consistent prolonged searchable event. No value is required <br><br>Example: `'flat='`                                                                                                                                   | **&cross;** |
+Parameter            | Data Type | Description                                                                                                                                                                                                                              | Required    |
+-------------------- | --------- | -----------                                                                                                                                                                                                                              |:-----------:|
+**id**               | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> the event is associated with                                                                                                                                    | **&check;** |
+**end_timestamp**    | string    | End timestamp of query in EEN format: YYYYMMDDHHMMSS.NNN                                                                                                                                                                                 | **&check;** |
+start_timestamp      | string    | Timestamp as optional limiter for the searched annotation event(s) in EEN format: YYYYMMDDHHMMSS.NNN (defaults to maximum retention). Matches events with identical start timestamps as the specified `'start_timestamp'`                | **&cross;** |
+namespace            | string    | Namespace(s) as optional comma-separated limiter for the searched annotation event(s). Excludes all except for the specified namespace(s) by excluding results in both categories: `'new'` and `'active'` (defaults to *include all*)    | **&cross;** |
+uuid                 | string    | Unique identifier(s) as optional comma-separated limiter for the searched annotation event(s). Includes all except for the specified UUID(s) by excluding results from the `'new'` category (defaults to *include all*)                  | **&cross;** |
+flat                 | string    | Flatten the search results to merge heartbeats into the main annotation level and produce one consistent prolonged searchable event. No value is required <br><br>Example: `'flat='`                                                     | **&cross;** |
 
 <aside class="notice">If the search criteria has not been matched by any events, the return will be a Json object with an empty array in 'new' and 'active'</aside>
 
