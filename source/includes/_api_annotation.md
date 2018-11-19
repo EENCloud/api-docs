@@ -344,7 +344,7 @@ HTTP Status Code | Description
 ## Window of Annotations
 <!--===================================================================-->
 
-Return an object populated by active annotation events as a point in time (optionally including annotations that have recently ended). The result can be filtered (across create, update, hb, end events) by passing UUIDs to be excluded from the list. By specifying `'st'` the result will include any documents ended between `'st'` and `'et'` (specifying `'st'` does not change the search interval)
+Return an object populated by active annotation events as a point in time (optionally including annotations that have recently ended). The result can be filtered (across create, update, hb, end events) by passing UUIDs to be excluded from the list. By specifying `'start_timestamp'` the result will include any documents ended between `'start_timestamp'` and `'end_timestamp'` (specifying `'start_timestamp'` does not change the search interval)
 
 > Request
 
