@@ -389,6 +389,31 @@ HTTP Status Code | Description
 404	| Account with the `'account_id'` provided cannot be found
 200	| Account context switch successful
 
+
+<!--===================================================================-->
+## Check Authentication is valid
+<!--===================================================================-->
+
+This call allows you to check if the current authentication is still valid.  This is helpful to use before making subsequent calls using existing authentication.
+
+> Request
+
+```shell
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -v
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/aaa/isauth`
+
+### Error Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+401 | Unauthorized due to invalid session cookie
+200 | User authentication is valid
+
+
 <!--===================================================================-->
 ## Logout
 <!--===================================================================-->
