@@ -66,6 +66,12 @@ The start timestamp must match the starting timestamp of a video if the video al
 
 <aside class="notice">Time offsets and end timestamps can be set to any time, but the system will seek to the nearest key frame to start the video</aside>
 
+<aside class="warning">Important note on performace</aside>
+
+API calls can initially be done against `'https://login.eagleeyenetworks.com'` (The host url), but after the authorization response is returned, API calls should then use the **branded subdomain**. At this stage the branded host url will become `'https://[active_brand_subdomain].eagleeyenetworks.com'`, where the `'active_brand_subdomain'` field is returned in the authorization response
+
+Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against `'the active_brand_subdomain'` after authorization. Using the *branded subdomain* is important for speed and robustness
+
 ### Video Formats
 
 The video system is based on H264 video and AAC audio. These streams are encapsulated in different formats for compatibility with different playback modes
