@@ -18,7 +18,7 @@ Since the API is based on REST principles, it’s very easy to write and test ap
 
 ### Requirements
 
-  - TLS 1.1 or greater
+  - TLS 1.2 or greater
 
 <!--===================================================================-->
 ## Get an API Key
