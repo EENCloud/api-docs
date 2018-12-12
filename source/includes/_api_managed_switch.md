@@ -138,7 +138,7 @@ curl -X POST https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/managed_switch`
+`POST https://login.eagleeyenetworks.com/g/managed_switch`
 
 Parameter        | Data Type | Description                                                                                                                          | Required    |
 ---------------- | --------- | -----------                                                                                                                          |:-----------:|
