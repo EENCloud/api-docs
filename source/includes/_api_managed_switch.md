@@ -102,7 +102,7 @@ Returns a Managed Switch object by GUID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch -d "guid=[SWITCH_GUID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -111,8 +111,8 @@ curl -X GET https://login.eagleeyenetworks.com/g/managed_switch -d "guid=[SWITCH
 
 Parameter | Data Type | Description                                                                                                                          | Required    |
 --------- | --------- | -----------                                                                                                                          |:-----------:|
-**guid**  | string    | <a class="definition" onclick="openModal('DOT-GUID')">GUID</a> of the managed switch                                                 | **&check;** |
-bridge    | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a> of the connected or integrated bridge                       | **&cross;** |
+**switch_guid**  | string    | <a class="definition" onclick="openModal('DOT-GUID')">GUID</a> of the managed switch                                          | **&check;** |
+bridge_id        | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a> of the connected or integrated bridge                | **&cross;** |
 
 ### Error Status Codes
 
@@ -133,17 +133,17 @@ Update Managed Switch information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/managed_switch -d "guid=[SWITCH_GUID]" -d "name=[SWITCH_NAME]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -d "name=[SWITCH_NAME]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/managed_switch`
+`POST https://login.eagleeyenetworks.com/g/managed_switch`
 
-Parameter | Data Type | Description                                                                                                                          | Required    |
---------- | --------- | -----------                                                                                                                          |:-----------:|
-**guid**  | string    | <a class="definition" onclick="openModal('DOT-GUID')">GUID</a> of the managed switch                                                 | **&check;** |
-name      | string    | Name of the managed switch                                                                                                           | **&cross;** |
+Parameter        | Data Type | Description                                                                                                                          | Required    |
+---------------- | --------- | -----------                                                                                                                          |:-----------:|
+**switch_guid**  | string    | <a class="definition" onclick="openModal('DOT-GUID')">GUID</a> of the managed switch                                                 | **&check;** |
+name             | string    | Name of the managed switch                                                                                                           | **&cross;** |
 
 ### Error Status Codes
 
