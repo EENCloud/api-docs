@@ -112,7 +112,7 @@ Argument | Description
 > Get List of Devices Request (Authorized)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/list/devices -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 Note that `'-'` after the `-D` indicates that the output *file* is stdout. One of the header elements will be `'Set-Cookie: auth_key=[AUTH_KEY]'`. Copy `'auth_key=[AUTH_KEY]'` into the clipboard as this cookie will need to be set for all other API requests. The cURL request for getting a list of devices will look like in the example to the right
