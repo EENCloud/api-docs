@@ -111,7 +111,7 @@ location          | `'/asset/asset/image.jpeg?timestamp=20180917213405.700;query
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G -v
+curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
 
 > <small>Provide the '<b>-O</b>' option at the end of the request for file output to the current directory</small>
@@ -169,7 +169,7 @@ Get a video stream in FLV format based on the specified timestamps. Returns bina
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/play/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G -v
+curl -X GET https://login.eagleeyenetworks.com/asset/play/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
 
 > <small>Provide the '<b>-O</b>' option at the end of the request for file output to the current directory (timestamps must coincide with existing video)</small>
@@ -220,7 +220,7 @@ This API call will ensure the image is in the cloud. If the image is not in the 
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/cloud/image.jpg -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "webhook_url=[WEBHOOK_URL]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/asset/cloud/image.jpg -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "webhook_url=[WEBHOOK_URL]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -268,7 +268,7 @@ This API call will ensure the video is in the cloud. If the video is not in the 
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/cloud/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "webhook_url=[WEBHOOK_URL]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/asset/cloud/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "webhook_url=[WEBHOOK_URL]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -317,7 +317,7 @@ Get a list of objects, where each object contains the type of event delivering t
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/list/image -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/asset/list/image -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -390,7 +390,7 @@ If the option `'options=coalesce'` has been added, the videos with overlapping s
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/list/video -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "options=coalesce" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/asset/list/video -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "options=coalesce" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request

@@ -35,7 +35,7 @@ Returns an array of recording objects that match a search value
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/search/recordings -d "value=[SEARCH_VALUE]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/search/recordings -d "value=[SEARCH_VALUE]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request

@@ -144,7 +144,7 @@ Returns a Layout object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -174,7 +174,7 @@ Create a new Layout
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/layout -d '{"name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://login.eagleeyenetworks.com/g/layout -d '{"name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -220,7 +220,7 @@ Update Layout information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/layout -d '{"id": "[LAYOUT_ID]", "name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/layout -d '{"id": "[LAYOUT_ID]", "name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -268,7 +268,7 @@ Delete a Layout
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -298,7 +298,7 @@ Returns an array of arrays with each sub-array representing a Layout available t
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request

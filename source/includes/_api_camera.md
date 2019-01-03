@@ -1445,7 +1445,7 @@ Returns a Camera object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -1474,7 +1474,7 @@ Adds an unattached Camera to the bridge
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/device -d '{"name":"[NAME]","timezone":[TIMEZONE],"settings":{"bridge":"[BRIDGE_ID]","guid":"[CAMERA_GUID]","username":"","password":""}}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://login.eagleeyenetworks.com/g/device -d '{"name":"[NAME]","timezone":[TIMEZONE],"settings":{"bridge":"[BRIDGE_ID]","guid":"[CAMERA_GUID]","username":"","password":""}}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -1524,7 +1524,7 @@ Update Camera information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/device -d '{"id": "[CAMERA_ID], "name": "[NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"  --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/device -d '{"id": "[CAMERA_ID], "name": "[NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]"  --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -1575,7 +1575,7 @@ Delete a Camera from the bridge (effectively unassigning it, the camera can then
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://login.eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -1606,7 +1606,7 @@ Returns an array of arrays with each sub-array representing a Camera available t
 > Request
 
 ```shell
-curl --request GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl --request GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request

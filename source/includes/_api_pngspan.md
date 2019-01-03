@@ -57,7 +57,7 @@ PNG images can be retrieved for supporting metric visualization
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/pngspan/etag.png -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "width=[WIDTH]" -d "id=[CAMERA_ID]" -d "foreground_color=[COLOR_CODE]" -d "background_color=[COLOR_CODE]" -d "etag=[FOUR_CC]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G -v
+curl -X GET https://login.eagleeyenetworks.com/pngspan/etag.png -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "width=[WIDTH]" -d "id=[CAMERA_ID]" -d "foreground_color=[COLOR_CODE]" -d "background_color=[COLOR_CODE]" -d "etag=[FOUR_CC]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
 
 > <small>Provide the '<b>-O</b>' option at the end of the request for file output to the current directory</small>
