@@ -421,7 +421,7 @@ Returns an array of Annotations by count or time range
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/list -d "id=[DEVICE_ID]" -d "st=[START_TIMESTAMP]" -d "et=[END_TIMESTAMP]" -H 'Content-type: application/json' -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/list -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H 'Content-type: application/json' -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
