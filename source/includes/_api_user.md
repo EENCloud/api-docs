@@ -384,7 +384,7 @@ Returns a User object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/user -d "id=[USER_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/user -d "id=[USER_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -414,7 +414,7 @@ Create a new User. After being created the user is in the pending state (`'is_pe
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/user -d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://login.eagleeyenetworks.com/g/user -d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -465,7 +465,7 @@ Update User information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/user -d '{"id": "[USER_ID]", "first_name": "[FIRST_NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/user -d '{"id": "[USER_ID]", "first_name": "[FIRST_NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -558,7 +558,7 @@ Delete a User
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/user -d "id=[USER_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://login.eagleeyenetworks.com/g/user -d "id=[USER_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -588,7 +588,7 @@ Returns array of arrays with each sub-array representing a User available to the
 > Request
 
 ```shell
-curl --request GET https://login.eagleeyenetworks.com/g/user/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl --request GET https://login.eagleeyenetworks.com/g/user/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 Parameter | Data Type | Description | Is Required

@@ -18,7 +18,7 @@ api.kittens.get()
 
 ```shell
 curl "http://example.com/api/kittens"
-  -H "Authentication: [API_KEY]:" -H "Authorization: meowmeowmeow"
+  -H "Authentication: [API_KEY]" -H "Authorization: meowmeowmeow"
 ```
 
 > The above command returns JSON structured like this:
@@ -77,7 +77,7 @@ api.kittens.get(2)
 
 ```shell
 curl "http://example.com/api/kittens/3"
-  -H "Authentication: [API_KEY]:" -H "Authorization: meowmeowmeow"
+  -H "Authentication: [API_KEY]" -H "Authorization: meowmeowmeow"
 ```
 
 > The above command returns JSON structured like this:

@@ -16,7 +16,7 @@ Used to query the <a class="definition" onclick="openModal('DOT-Bridge')">Bridge
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/metric/bridgebandwidth -d "id=[BRIDGE_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/metric/bridgebandwidth -d "id=[BRIDGE_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -156,7 +156,7 @@ Used to query the <a class="definition" onclick="openModal('DOT-Camera')">Camera
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/metric/camerabandwidth -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/metric/camerabandwidth -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request

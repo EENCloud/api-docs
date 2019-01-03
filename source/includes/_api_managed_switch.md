@@ -102,7 +102,7 @@ Returns a Managed Switch object by GUID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -133,7 +133,7 @@ Update Managed Switch information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -d "name=[SWITCH_NAME]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -d "name=[SWITCH_NAME]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -164,7 +164,7 @@ This API call enables control of the Managed Switch (i.e. for turning ports on o
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/managed_switch/control -d '{"switch_guid": "[SWITCH_GUID]", "ports": ["port_1", "port_2"], "command": "reboot"}'  -H "Content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/managed_switch/control -d '{"switch_guid": "[SWITCH_GUID]", "ports": ["port_1", "port_2"], "command": "reboot"}'  -H "Content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -214,7 +214,7 @@ This API call enables control of camera power using the camera identifier rather
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/camera/power_cycle -d '{"identifier": "[ESN]"}' -H "Content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/camera/power_cycle -d '{"identifier": "[ESN]"}' -H "Content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -265,14 +265,14 @@ Returns an array of switch objects with each entry representing a Managed Switch
 > Request (basic)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/managed_switch/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 
 ```
 
 > Request (detailed)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch/list -d "is_detailed=true" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/managed_switch/list -d "is_detailed=true" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 
 ```
 

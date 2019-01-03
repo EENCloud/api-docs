@@ -29,7 +29,7 @@ Since the API is based on REST principles, it’s very easy to write and test ap
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/user -d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "Authentication: [API_KEY]:" -H "content-type: application/json" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X PUT https://login.eagleeyenetworks.com/g/user -d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "Authentication: [API_KEY]" -H "content-type: application/json" --cookie "auth_key=[AUTH_KEY]" -v
 ```
 
 > Json Response

@@ -16,7 +16,7 @@ Create a new account and the superuser for the account. As a part of the creatio
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/create_account -d "email=[EMAIL]" -d "password=[PASSWORD]" -H "Authentication: [API_KEY]:" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/create_account -d "email=[EMAIL]" -d "password=[PASSWORD]" -H "Authentication: [API_KEY]" -v
 ```
 
 ### HTTP Request
@@ -52,7 +52,7 @@ Verify the email address supplied when the account is created. When successful, 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/validate_account -d "id=[ID]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]:"
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/validate_account -d "id=[ID]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]"
 ```
 
 ### HTTP Request
@@ -103,7 +103,7 @@ Password recovery is a multi-step process:
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/forgot_password -d "email=[EMAIL]" -H "Authentication: [API_KEY]:" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/forgot_password -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
 ```
 
 ### HTTP Request
@@ -136,7 +136,7 @@ This is step two of the password recover/reset process. It verifies that the sup
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token -d "token=[TOKEN]" -H "Authentication: [API_KEY]:" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token -d "token=[TOKEN]" -H "Authentication: [API_KEY]" -v
 ```
 
 ### HTTP Request
@@ -168,7 +168,7 @@ This is step three of the password recover/reset process. It both verifies that 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/reset_password -d "password=[PASSWORD]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]:"
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/reset_password -d "password=[PASSWORD]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]"
 ```
 
 ### HTTP Request
@@ -216,7 +216,7 @@ For users who have registered for an account, but never confirmed the registrati
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/resend_registration_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]:" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/resend_registration_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
 ```
 
 ### HTTP Request
@@ -249,7 +249,7 @@ For users who have had a user account created, but never confirmed their user ac
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/resend_user_verification_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]:" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/resend_user_verification_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
 ```
 
 ### HTTP Request
@@ -286,7 +286,7 @@ This allows a user to change their password directly while authenticated and als
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/change_password -d "password=[PASSWORD]" -d "current_password=[CURRENT_PASSWORD]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/change_password -d "password=[PASSWORD]" -d "current_password=[CURRENT_PASSWORD]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -332,7 +332,7 @@ Allows a user to 'log in' to another account which the they have access to (see 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/switch_account -d "account_id=[ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -H "Authentication: [API_KEY]:" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/switch_account -d "account_id=[ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
 
 ### HTTP Request
@@ -373,7 +373,7 @@ Then using the saml named ID path, the user's email will be extracted and an `'a
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/sso -H "Authentication: [API_KEY]:"
+curl -X POST https://login.eagleeyenetworks.com/g/sso -H "Authentication: [API_KEY]"
 ```
 
 ### HTTP Request
@@ -399,7 +399,7 @@ This call allows you to check if the current authentication is still valid.  Thi
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
 
 ### HTTP Request
@@ -423,7 +423,7 @@ Log out user and invalidate HTTP session cookie
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/logout -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/logout -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
 
 ### HTTP Request

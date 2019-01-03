@@ -11,7 +11,7 @@
 > Authenticate Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/authenticate -d '{"username": "[USERNAME]", "password": "[PASSWORD]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:"
+curl -X POST https://login.eagleeyenetworks.com/g/aaa/authenticate -d '{"username": "[USERNAME]", "password": "[PASSWORD]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]"
 ```
 
 In this section we will walk you through the process of making API requests using the **cURL** command line tool. The Eagle Eye APIs are platform agnostic and we use them to create the web, Android and iOS Eagle Eye clients. Curl is a tool for transferring data to and from a server using a wide range of supported protocols including HTTP/HTTPS, which is what we are interested in
@@ -33,13 +33,13 @@ With cURL installed the next step is to log in and have a valid session (visit t
 > A certain degree of variation is possible within cURL for formulating HTTP requests:
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 > Alternatively, the above request could be formulated as:
 
 ```shell
-curl --request GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID];timestamp=[TIMESTAMP];asset_class=[ASSET_CLASS];A=[AUTH_KEY]" -H "Authentication: [API_KEY]:"
+curl --request GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID];timestamp=[TIMESTAMP];asset_class=[ASSET_CLASS];A=[AUTH_KEY]" -H "Authentication: [API_KEY]"
 ```
 
 **It is important to disassociate the types of request *data* from one another:**
@@ -51,7 +51,7 @@ curl --request GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=
       - `-d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "content-type: application/json"` <br>Alternatively the same data could be provided without specifying the data type in the following ways:
       - `-d "first_name=[FIRST_NAME]" -d "last_name=[LAST_NAME]" -d "email=[EMAIL]"`
       - `-d "first_name=[FIRST_NAME]&last_name=[LAST_NAME]&email=[EMAIL]"`
-  - **HTTP headers or cookies** (`-H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"`)
+  - **HTTP headers or cookies** (`-H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"`)
 
 The same request can frequently be mimicked using all 3 methods like with the *authentication key* in the following examples:
 
@@ -62,13 +62,13 @@ The same request can frequently be mimicked using all 3 methods like with the *a
 **Request body (-d "A=[AUTH_KEY]")**
 <br><small>(sneaky way of forcing GET to accept parameters via the data field, in this case data is still pushed as parameters and not in the request body)</small>
 
-`curl -G https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -d "A=[AUTH_KEY]" -H "Authentication: [API_KEY]:"`
+`curl -G https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -d "A=[AUTH_KEY]" -H "Authentication: [API_KEY]"`
 <br><small>or</small></br>
-`curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]:" -G`
+`curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]" -G`
 
 **Cookie (--cookie "auth_key=[AUTH_KEY]")**
 
-`curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G`
+`curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G`
 
 ---
 
@@ -112,7 +112,7 @@ Argument | Description
 > Get List of Devices Request (Authorized)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 Note that `'-'` after the `-D` indicates that the output *file* is stdout. One of the header elements will be `'Set-Cookie: auth_key=[AUTH_KEY]'`. Copy `'auth_key=[AUTH_KEY]'` into the clipboard as this cookie will need to be set for all other API requests. The cURL request for getting a list of devices will look like in the example to the right
@@ -126,7 +126,7 @@ Note that `'-'` after the `-D` indicates that the output *file* is stdout. One o
 > Get List of Layouts (Request)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://login.eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 > Get List of Layouts (Json Response)
@@ -175,7 +175,7 @@ We take the layout ID attribute for each layout of interest and pass it to the G
 > Get Layout (Request)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -G -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -G -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 > Get Layout (Json Response)

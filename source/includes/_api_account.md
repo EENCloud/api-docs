@@ -242,7 +242,7 @@ Returns an Account object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -272,7 +272,7 @@ Create a new Account
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/account -d '{"name": "[NAME]", "contact_first_name": "[CONTACT_FIRST_NAME]", "contact_last_name": "[CONTACT_LAST_NAME]", "contact_email": "[CONTACT_EMAIL]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://login.eagleeyenetworks.com/g/account -d '{"name": "[NAME]", "contact_first_name": "[CONTACT_FIRST_NAME]", "contact_last_name": "[CONTACT_LAST_NAME]", "contact_email": "[CONTACT_EMAIL]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -338,7 +338,7 @@ Update Account information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/account -d '{"id": "[ACCOUNT_ID]", "contact_first_name": "[CONTACT_FIRST_NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/account -d '{"id": "[ACCOUNT_ID]", "contact_first_name": "[CONTACT_FIRST_NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -438,7 +438,7 @@ Delete an Account
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://login.eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -468,7 +468,7 @@ Returns an array of arrays with each sub-array representing an Account available
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/list -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -567,7 +567,7 @@ Used to get the number of all sub-accounts for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/sub_accounts -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/sub_accounts -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -611,7 +611,7 @@ Used to get the number of all users for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -655,7 +655,7 @@ Used to get the number of all bridges for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/bridges -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/bridges -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -682,7 +682,7 @@ Used to get the number of all cameras for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -743,7 +743,7 @@ Used to get the number of all online users for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -787,7 +787,7 @@ Used to get the number of all online cameras for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request

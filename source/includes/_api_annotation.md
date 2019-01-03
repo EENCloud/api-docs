@@ -69,7 +69,7 @@ Returns an Annotation object by ID/UUID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/get -d "id=[DEVICE_ID]" -d "uuid=[UUID1],[UUID2],[UUID3]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/get -d "id=[DEVICE_ID]" -d "uuid=[UUID1],[UUID2],[UUID3]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -101,7 +101,7 @@ Create an Annotation for a device with a specific timestamp and data describing 
 > Request
 
 ```shell
-curl -X PUT "https://login.eagleeyenetworks.com/annt/set?c=[DEVICE_ID]&ts=[TIMESTAMP]&ns=[NAMESPACE]" -d '{"[KEY_NAME]": "[ANNOTATION_DATA]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT "https://login.eagleeyenetworks.com/annt/set?c=[DEVICE_ID]&ts=[TIMESTAMP]&ns=[NAMESPACE]" -d '{"[KEY_NAME]": "[ANNOTATION_DATA]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -155,7 +155,7 @@ The Annotation can be ended at any given time by specifying an end event (`'type
 > Request
 
 ```shell
-curl -X POST "https://login.eagleeyenetworks.com/annt/set?u=[UUID];c=[DEVICE_ID];ns=[NAMESPACE];ts=[TIMESTAMP]" -d '{"[KEY_NAME]": "[ANNOTATION_DATA]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST "https://login.eagleeyenetworks.com/annt/set?u=[UUID];c=[DEVICE_ID];ns=[NAMESPACE];ts=[TIMESTAMP]" -d '{"[KEY_NAME]": "[ANNOTATION_DATA]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
@@ -209,7 +209,7 @@ Returns an object populated by Annotation events occurring *around* the defined 
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/next -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/next -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -279,7 +279,7 @@ Returns an object populated by Annotation events occurring *around* the defined 
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/prev -d "id=[DEVICE_ID]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/prev -d "id=[DEVICE_ID]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -349,7 +349,7 @@ Return an object populated by active annotation events as a point in time (optio
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/window  -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/window  -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -421,7 +421,7 @@ Returns an array of Annotations by count or time range
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/annt/list -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H 'Content-type: application/json' -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/annt/list -d "id=[DEVICE_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H 'Content-type: application/json' -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
@@ -505,7 +505,7 @@ Returns an array of Events by count or time range
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/annt/event/list -d "id=[DEVICE_ID]" -d "st=[START_TIMESTAMP]" -d "et=[END_TIMESTAMP]" -H 'Content-type: application/json' -H "Authentication: [API_KEY]:" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://login.eagleeyenetworks.com/annt/event/list -d "id=[DEVICE_ID]" -d "st=[START_TIMESTAMP]" -d "et=[END_TIMESTAMP]" -H 'Content-type: application/json' -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
 
 ### HTTP Request
