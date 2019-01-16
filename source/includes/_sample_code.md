@@ -39,13 +39,13 @@ curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAM
 > Alternatively, the above request could be formulated as:
 
 ```shell
-curl --request GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID];timestamp=[TIMESTAMP];asset_class=[ASSET_CLASS];A=[AUTH_KEY]" -H "Authentication: [API_KEY]"
+curl --request GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]"
 ```
 
 **It is important to disassociate the types of request *data* from one another:**
 <br><small>(certain request types require data to be sent via *parameters*, other types require the data to be delivered via *data* - as HTTP body)</small>
 
-  - **Parameters** by providing the parameters following the request url with a `?` and injecting them into it (i.e. `id=[CAMERA_ID];timestamp=[TIMESTAMP]` in `https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID];timestamp=[TIMESTAMP]`)
+  - **Parameters** by providing the parameters following the request url with a `?` and injecting them into it (i.e. `id=[CAMERA_ID]&timestamp=[TIMESTAMP]` in `https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]`)
   - **HTTP request body** via `--data` or `-d` (i.e. `-d "id=[CAMERA_ID]&timestamp=[TIMESTAMP]"`)
     - Example: data in a standard PUT/POST request including **Json-formatted data**, which can be explicitly specified by adding the appropriate header `-H 'Content-type: application/json'` in the following way during a Create User call:
       - `-d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "content-type: application/json"` <br>Alternatively the same data could be provided without specifying the data type in the following ways:
@@ -57,7 +57,7 @@ The same request can frequently be mimicked using all 3 methods like with the *a
 
 **Parameter (A=[AUTH_KEY])**
 
-`curl -X GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID];timestamp=[TIMESTAMP];asset_class=[ASSET_CLASS];A=[AUTH_KEY]"`
+`curl -X GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]"`
 
 **Request body (-d "A=[AUTH_KEY]")**
 <br><small>(sneaky way of forcing GET to accept parameters via the data field, in this case data is still pushed as parameters and not in the request body)</small>

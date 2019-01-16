@@ -155,7 +155,7 @@ The Annotation can be ended at any given time by specifying an end event (`'type
 > Request
 
 ```shell
-curl -X POST "https://login.eagleeyenetworks.com/annt/set?u=[UUID];c=[DEVICE_ID];ns=[NAMESPACE];ts=[TIMESTAMP]" -d '{"[KEY_NAME]": "[ANNOTATION_DATA]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST "https://login.eagleeyenetworks.com/annt/set?u=[UUID]&c=[DEVICE_ID]&ns=[NAMESPACE]&ts=[TIMESTAMP]" -d '{"[KEY_NAME]": "[ANNOTATION_DATA]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 ### HTTP Request
