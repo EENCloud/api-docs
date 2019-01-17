@@ -58,7 +58,7 @@ If the end time of the segment is in the future, the video will follow the data 
 
 The keyword `'stream_<streamid>'` can be used for the starting timestamp. This forces the camera to capture video and stream it to the cloud live. The stream ID should be globally unique(ish) string - combination of a timestamp and user ID works well
 
-The start timestamp must match the starting timestamp of a video if the video already exists. Subsegments of a video span can be specified by using the `'time_offset'` (time offset) argument. For example assume a 5 minute video has been recorded from 12:30 to 12:35. The query `'?start_timestamp=20181120123000.000&end_timestamp=20181120123400.000&time_offset=180000&...'` will play one minute of video (timestamped at 12:33), 3 minutes into the video starting at 12:30, clipping off the last minute of the recorded segment
+The start timestamp must match the starting timestamp of a video if the video already exists. Subsegments of a video span can be specified by using the `'time_offset'` argument. For example assume a 5 minute video has been recorded from 12:30 to 12:35. The query `'?start_timestamp=20181120123000.000&end_timestamp=20181120123400.000&time_offset=180000&...'` will play one minute of video (timestamped at 12:33), 3 minutes into the video starting at 12:30, clipping off the last minute of the recorded segment
 
 <aside class="notice">Time offsets and end timestamps can be set to any time, but the system will seek to the nearest key frame to start the video</aside>
 
