@@ -399,7 +399,7 @@ This call allows you to check if the current authentication is still valid.  Thi
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X GET https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
 
 ### HTTP Request

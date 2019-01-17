@@ -16,10 +16,6 @@ Type          | Meaning
 
   - **<a class="definition" onclick="openModal('DOT-Timestamp')">Timestamp</a>:** Eagle Eye timestamps have the format YYYYMMDDhhmmss.xxx and are always specified in GMT time. In most contexts special tokens can also be used to specify relative times - `'now'` is the current time (a value starting with + or - is an offset from the current time, +/- offsets from `'now'` are valid in milliseconds)
   - **<a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a>:** Cameras are identified by a 8 character hexadecimal string, representing a unique 32 bit ID associated with a specific camera (Camera ID are not necessarily linked to specific hardware devices to allow device upgrade and replacement without disruption of history storage)
-  - **Quality*****(Future Feature)*****:** Images and video may have multiple quality levels, each representing the same base asset. Video can be transcoded between quality levels on demand (at some point) to support reduced bandwidth for mobile devices. Normally cameras will capture at medium or high quality. Additional quality levels will be supported in time
-    - **low:** around 100 KB/s
-    - **med:** under 500 KB/s
-    - **high:** around 1 MB/s
   - **Format:** Images are always returned as **JPEG** images. Video can currently be returned as either **FLV** format (playback in browsers via Flash) or **MP4** (download and export format)
 
 ### Retrieve Image
@@ -27,7 +23,7 @@ Type          | Meaning
 The image request model provides an efficient mechanism for accessing image sequences for several usage models. Image requests can be done directly using the next/after/prev virtual model. This returns images before or after specified timestamps. Alternatively, the timestamp and event information can be fetched through the [List](#get-list-of-images) interface (to get <a class="definition" onclick="openModal('DOT-Event')">Events</a> for history) and [Poll](#poll) interface to track new images as they become available in real-time. The following description provides typical usage models for various events:
 
   - **Low bandwidth video playback:** The preview stream is a sequential set of JPEG images. If played back in order, low resolution video is accomplished
-    - The simplest implementation is to fetch `'next'` with a timestamp of `'now'` (i.e. `'/asset/next/image.jpeg?timestamp=now;id=12345678;asset_class=pre'`) - waiting for the subsequent image after the current time. Each time an image is returned, a new request should be made. If the downstream bandwidth is very low, the image fetch will automatically slow down (because delivery of image A happens after image B has been received, so the next call will fetch image C, skipping display of image B entirely). This approach works well for tracking a single image stream (Tip: the first request should be done as a `'prev'` request to make sure an image is displayed, before the sequential next requests). The downside of this model is it requires a dedicated socket for each image stream being played. Many browsers have a limited pool of open sockets
+    - The simplest implementation is to fetch `'next'` with a timestamp of `'now'` (i.e. `'/asset/next/image.jpeg?timestamp=now&id=12345678&asset_class=pre'`) - waiting for the subsequent image after the current time. Each time an image is returned, a new request should be made. If the downstream bandwidth is very low, the image fetch will automatically slow down (because delivery of image A happens after image B has been received, so the next call will fetch image C, skipping display of image B entirely). This approach works well for tracking a single image stream (Tip: the first request should be done as a `'prev'` request to make sure an image is displayed, before the sequential next requests). The downside of this model is it requires a dedicated socket for each image stream being played. Many browsers have a limited pool of open sockets
     - A more efficient mechanism for tracking multiple image streams is to use the [Poll](#poll) interface. It will provide the timestamp of the next image available for a set of camera, which can then be fetched via the /asset/asset call. Since the poll request supports multiple cameras in a single request, it requires only a single socket for any number of cameras. The client application should implement a *fair* algorithm across the returned timestamps to address low bandwidth situations (that is, make sure every image stream gets updated before you fetch a new image for the same stream). This algorithm will provide smooth frame rate degradation across any number of cameras, whether the performance bottleneck is client CPU or bandwidth. The best model for this is:
       - Receive update <a class="definition" onclick="openModal('DOT-Alert-Notification')">Notifications</a> for all cameras being tracked via a single sequential poll session
       - For each camera, keep track of the latest image notification, replacing the last one even if it has not been fetched yet
@@ -46,13 +42,13 @@ The image request model provides an efficient mechanism for accessing image sequ
 There are numerous different ways to get a list of images:
 
 Get all preview images between April 1st and April 2nd<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2;start_timestamp=20180401000000.000;end_timestamp=20180402000000.000;asset_class=all;`
+`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&end_timestamp=20180402000000.000&asset_class=all`
 
 Get 500 images before April 1st<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2;start_timestamp=20180401000000.000;count=-500;asset_class=all;`
+`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&count=-500&asset_class=all`
 
 Get the next 500 images after April 1st<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2;start_timestamp=20180401000000.000;count=500;asset_class=all;`
+`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&count=500&asset_class=all`
 
 ### Retrieve Video
 
@@ -62,7 +58,7 @@ If the end time of the segment is in the future, the video will follow the data 
 
 The keyword `'stream_<streamid>'` can be used for the starting timestamp. This forces the camera to capture video and stream it to the cloud live. The stream ID should be globally unique(ish) string - combination of a timestamp and user ID works well
 
-The start timestamp must match the starting timestamp of a video if the video already exists. Subsegments of a video span can be specified by using the `'to'` (time offset) argument. For example assume a 5 minute video has been recorded from 12:30 to 12:35. The query `'?t=20181120123000.000;e=20181120123400.000;to=180000;...'` will play one minute of video (timestamped at 12:33), 3 minutes into the video starting at 12:30, clipping off the last minute of the recorded segment
+The start timestamp must match the starting timestamp of a video if the video already exists. Subsegments of a video span can be specified by using the `'time_offset'` argument. For example assume a 5 minute video has been recorded from 12:30 to 12:35. The query `'?start_timestamp=20181120123000.000&end_timestamp=20181120123400.000&time_offset=180000&...'` will play one minute of video (timestamped at 12:33), 3 minutes into the video starting at 12:30, clipping off the last minute of the recorded segment
 
 <aside class="notice">Time offsets and end timestamps can be set to any time, but the system will seek to the nearest key frame to start the video</aside>
 
@@ -78,14 +74,6 @@ The video system is based on H264 video and AAC audio. These streams are encapsu
 
   - **FLV:** Native format for the system. Playable in any Flash player, VLC as well as other players
   - **MP4:** MPEG4 files have a very broad playback compatibility (in line with all the major video players), however *MP4 is NOT a streamable format*, so it is only used for download functionality and will return an error if the video is live
-
-### Video Quality
-
-The H264 codec has the concept of profiles and levels to convey whether a playback device is compatible with a specific video stream
-
-  - **low:** maximum profile of *baseline (640x480 max)*
-  - **med:** maximum profile of *main*
-  - **high:** maximum profile of *high*
 
 <!-- Placed before "### Video Quality" after the last file format description
     <aside class="warning">While streaming any video format on the web other than FLV (system native format), you may initially get a 502 response</aside>
@@ -106,7 +94,7 @@ x-ee-timestamp    | type-timestamp | Specifies asset type and timestamp of the p
 x-ee-prev         | type-timestamp <br>*(or&nbsp;`'unknown'`)* | Specifies asset type of the previous image matching the class filter or `'unknown'` if the previous image was too complex to figure out
 x-ee-next         | type-timestamp <br>*(or&nbsp;`'unknown'`)* | Specifies asset type of the following image matching the class filter or `'unknown'` if the following image was too complex to figure out
 content-type      | `'image/jpeg'` | Specifies the content type
-location          | `'/asset/asset/image.jpeg?timestamp=20180917213405.700;query=low;id=xxxxxxxx;asset_class=thumb'` | Identifies actual asset time of the image in response
+location          | `'/asset/asset/image.jpeg?timestamp=20180917213405.700&id=xxxxxxxx&asset_class=thumb'` | Identifies actual asset time of the image in response
 
 > Request
 
@@ -137,7 +125,6 @@ Parameter         | Data Type    | Description   | Is Required
 **id**            | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 **timestamp**     | string       | Timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **asset_class**   | string, enum | <a class="definition" onclick="openModal('DOT-Asset-Class')">Asset Class</a> of the image <br><br>enum: all, pre, thumb | true
-quality           | string, enum | ***(Future Feature)*** Quality of the image <br><br>enum: low, med, high
 
 > Response
 
@@ -185,7 +172,6 @@ Parameter           | Data Type    | Description    | Is Required
 **id**              | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 **start_timestamp** | string       | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **end_timestamp**   | string       | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
-quality             | string, enum | ***(Future Feature)*** Indicates the requested resolution if multiple are available <br><br>enum: low, med, high
 
 > Response
 
