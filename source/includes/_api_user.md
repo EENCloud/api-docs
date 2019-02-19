@@ -395,15 +395,16 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a> | false
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| No user matching the unique identifier was found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Create User
@@ -446,15 +447,16 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 409	| The email address is currently already in use
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update User
@@ -539,15 +541,16 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| No user matching the unique identifier was found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Delete User
@@ -569,15 +572,16 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| No user matching the unique identifier was found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Users
@@ -652,10 +656,11 @@ Array Index | Attribute   | Data Type     | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

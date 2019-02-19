@@ -71,14 +71,15 @@ camera_ids  | array[string] | Array of camera IDs which had recording started fo
 layout_name | string        | Name of layout at the time the recording started
 user_id     | string        | ID of the user who started/stopped the recording
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
-200 | Request succeeded
+
 
 <!--===================================================================-->
 ## Search Annotations
@@ -115,11 +116,12 @@ Parameter | Data Type     | Description
 </details>
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
-200 | Request succeeded
+

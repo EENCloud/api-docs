@@ -45,14 +45,15 @@ Parameter         | Data Type | Description | Is Required
 ---------         | --------- | ----------- | -----------
 **recording_key** | string    | Recording key | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Recording Object
@@ -88,11 +89,12 @@ Parameter | Data Type | Description
 </details>
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

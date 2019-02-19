@@ -155,15 +155,16 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Layout-ID')">Layout ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Layout ID not found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Create Layout
@@ -202,14 +203,15 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Layout-ID')">Layout ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Layout
@@ -249,15 +251,16 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Layout-ID')">Layout ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Layout ID not found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Delete Layout
@@ -279,15 +282,16 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Layout-ID')">Layout ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Layout matching the ID was not found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Layouts
@@ -342,11 +346,12 @@ Array Index | Attribute   | Data Type     | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

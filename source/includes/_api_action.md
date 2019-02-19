@@ -24,14 +24,15 @@ curl -X POST https://login.eagleeyenetworks.com/g/action/allon -H "Authenticatio
 
 `POST https://login.eagleeyenetworks.com/g/action/allon`
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-202	| Request succeeded
+
 
 <!--===================================================================-->
 ## Turn All Cameras Off
@@ -49,14 +50,15 @@ curl -X POST https://login.eagleeyenetworks.com/g/action/alloff -H "Authenticati
 
 `POST https://login.eagleeyenetworks.com/g/action/alloff`
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-202	| Request succeeded
+
 
 <!--===================================================================-->
 ## Recording On
@@ -80,14 +82,15 @@ device_id     | string    | ID of the camera to record. If this parameter and th
 layout_id     | string    | ID of the layout for which cameras will be set to record. All cameras in the layout will be affected. If this parameter and the `'device_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
 recording_key | string    | A key used to tag this recording. Can be used to retrieve this recording info later using the GET `'recording'` service
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-202	| Request succeeded
+
 
 <!--===================================================================-->
 ## Recording Off
@@ -110,11 +113,12 @@ Parameter | Data Type | Description
 device_id | string    | ID of the camera to turn off recording for. If this parameter and the `'layout_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
 layout_id | string    | ID of the layout for which cameras will have recording turned off. All cameras in the layout will be affected. If this parameter and the `'device_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-202	| Request succeeded
+

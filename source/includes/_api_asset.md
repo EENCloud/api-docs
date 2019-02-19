@@ -136,16 +136,17 @@ JPEG<file_content>
 
 The returned response is binary image data in JPEG format
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 301	| Asset has been moved to a different archiver
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Image not found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get Video
@@ -183,10 +184,11 @@ FLV<file_content>
 
 The returned response is binary video data in FLV format
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 301	| Asset has been moved to a different archiver
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
@@ -194,8 +196,10 @@ HTTP Status Code | Description
 404	| Camera not provisioned
 404	| Camera get error
 410	| Video is out of retention
-503	| Camera tag maps not loaded
-200	| Request succeeded
+502 | Bad Gateway.  We were unable to return the requested data.  Please try again.
+503 | Internal Camera Tag Maps Error.  Please contact our support department.
+504 | Gateway Timeout.  We were unable to return the requested data inside our time limit.  Please try again.
+
 
 <!--===================================================================-->
 ## Prefetch Image
@@ -353,15 +357,16 @@ Parameter | Data Type | Description
 t         | string    | Type of the requested event denoted by the object's [Four CC](#event-objects)
 s         | string    | Timestamp of the image in EEN format: YYYYMMDDHHMMSS.NNN
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 301	| Asset has been moved to a different archiver
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Videos
@@ -432,12 +437,13 @@ s         | string    | Start timestamp of the image in EEN format: YYYYMMDDHHMM
 e         | string    | End timestamp of the image in EEN format: YYYYMMDDHHMMSS.NNN
 id        | int       | Unique identifier of the video
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 301	| Asset has been moved to a different archiver
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

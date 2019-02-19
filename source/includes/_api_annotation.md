@@ -81,14 +81,15 @@ Parameter     | Data Type     | Description                                     
 **id**        | string        | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> the annotation is associated with                   | **&check;** |
 **uuid**      | array[string] | Array of comma-separated annotation UUIDs to return                                                                          | **&check;** |
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Create Annotation
@@ -135,14 +136,15 @@ cameraid  | string    | <a class="definition" onclick="openModal('DOT-Camera-ID'
 ts        | string    | Timestamp associated with the annotation
 ns        | string    | Namespace associated with the annotation
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Annotation
@@ -191,14 +193,15 @@ cameraid  | string    | <a class="definition" onclick="openModal('DOT-Camera-ID'
 ts        | string    | Timestamp associated with the annotation
 ns        | string    | Namespace associated with the annotation
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Next Annotation
@@ -261,14 +264,15 @@ active    | array[string]     | Array of all annotation UUIDs active around the 
 
 <aside class="notice">If the search criteria has not been matched by any events, the return will be <i>null</i></aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Previous Annotation
@@ -331,14 +335,15 @@ active    | array[string]     | Array of all annotation UUIDs active around the 
 
 <aside class="notice">If the search criteria has not been matched by any events, the return will be <i>null</i></aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Window of Annotations
@@ -403,14 +408,15 @@ ts        | string            | Closest matching timestamp to the requested (to 
 new       | array[array[obj]] | Array of arrays with each returned element being an annotation object with Json-formatted data <br>(See [Annotation Model](#annotation-model) for the returned annotation array structure)
 active    | array[string]     | Array of all annotation UUIDs returned based on the specified criteria
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Annotations
@@ -487,14 +493,15 @@ Array Index | Attribute | Data Type | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Events
@@ -574,11 +581,12 @@ Array Index | Attribute | Data Type | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

@@ -601,15 +601,16 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| No device matching the Connect ID or GUID has been found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Add Bridge to <a class="definition" onclick="openModal('DOT-EEVB')">EEVB</a>
@@ -646,10 +647,11 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
@@ -657,7 +659,7 @@ HTTP Status Code | Description
 409	| Connect ID or GUID is currently already in use by an account
 410	| Communication cannot be made to attach the camera to the bridge
 415	| Device associated with the given GUID is unsupported
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Bridge
@@ -699,16 +701,17 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Device matching the ID was not found
 463	| Unable to communicate with the camera to add/delete camera settings, contact support
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Delete Bridge
@@ -730,16 +733,17 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Device matching the ID was not found
 463	| Unable to communicate with the camera or bridge, contact support
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Bridges
@@ -891,11 +895,12 @@ Array Index | Attribute           | Data Type            | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

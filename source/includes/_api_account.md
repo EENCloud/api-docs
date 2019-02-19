@@ -253,15 +253,15 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Account not found with the supplied ID
-200	| Request succeeded
 
 <!--===================================================================-->
 ## Create Account
@@ -319,15 +319,16 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 409	| Another account with the supplied contact email address already exists
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Account
@@ -419,15 +420,15 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Account not found with the supplied ID
-200	| Request succeeded
 
 <!--===================================================================-->
 ## Delete Account
@@ -449,15 +450,15 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Delete succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Account not found with the supplied ID
-200	| Delete succeeded
 
 <!--===================================================================-->
 ## Get List of Accounts
@@ -532,14 +533,14 @@ Array Index | Attribute              | Data Type | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
 
 <!--===================================================================-->
 ## Account Statistics
@@ -593,15 +594,15 @@ Parameter     | Data Type  | Description
 account_total | int        | Total number of sub-accounts (defaults to 0 for sub-accounts)
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Account not found
-200 | Request succeeded
 
 ### Total Number of Users
 <!--===================================================================-->
@@ -637,15 +638,15 @@ Parameter  | Data Type  | Description
 user_total | int        | Total number of users
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Account not found
-200 | Request succeeded
 
 ### Total Number of Bridges
 <!--===================================================================-->
@@ -708,15 +709,15 @@ Parameter    | Data Type  | Description
 camera_total | int        | Total number of cameras
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Account not found
-200 | Request succeeded
 
 ### HTTP Response (Json Attributes)
 
@@ -725,15 +726,15 @@ Parameter    | Data Type  | Description
 bridge_total | int        | Total number of bridges
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Account not found
-200 | Request succeeded
 
 ### Total Number of Online Users
 <!--===================================================================-->
@@ -769,15 +770,15 @@ Parameter         | Data Type  | Description
 online_user_total | int        | Total number of online users
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Account not found
-200 | Request succeeded
 
 ### Total Number of Online Cameras
 <!--===================================================================-->
@@ -813,12 +814,13 @@ Parameter           | Data Type  | Description
 camera_online_total | int        | Total number of online cameras
 
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Account not found
-200 | Request succeeded
+

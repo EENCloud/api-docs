@@ -1,7 +1,10 @@
-# Errors
+# HTTP Response Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | The request was fulfilled successfully
+202 | The request has been accepted for processing, but the processing has not been completed
+204 | User has been logged out
 400	| The request had bad syntax or was inherently impossible to be satisfied
 401	| Supplied credentials are not valid / invalid session cookie
 402	| Account is suspended
@@ -17,6 +20,3 @@ HTTP Status Code | Description
 461	| Account is pending
 462	| User is pending
 463	| Unable to communicate with the camera or bridge, contact support
-200	| The request was fulfilled successfully
-202	| The request has been accepted for processing, but the processing has not been completed
-204	| User has been logged out
