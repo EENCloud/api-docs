@@ -114,15 +114,16 @@ Parameter | Data Type | Description                                             
 **switch_guid**  | string    | <a class="definition" onclick="openModal('DOT-GUID')">GUID</a> of the managed switch                                          | **&check;** |
 bridge_id        | string    | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a> of the connected or integrated bridge                | **&cross;** |
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Bridge or managed switch not found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Managed Switch
@@ -145,15 +146,16 @@ Parameter        | Data Type | Description                                      
 **switch_guid**  | string    | <a class="definition" onclick="openModal('DOT-GUID')">GUID</a> of the managed switch                                                 | **&check;** |
 name             | string    | Name of the managed switch                                                                                                           | **&cross;** |
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Bridge or managed switch not found
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Control Managed Switch
@@ -193,17 +195,18 @@ Parameter | Data Type | Description
 status    | string    | Command status (e.g. `'Success'`)
 details   | string    | Command resolution
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Bridge or managed switch not found
 406	| Managed switch is not currently in a valid state to be controlled
 415	| Invalid command supplied
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Control Camera Power
@@ -244,17 +247,18 @@ Parameter | Data Type | Description
 status    | string    | Command status (e.g. `'Success'`)
 details   | string    | Command resolution
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Bridge or managed switch not found
 406	| Managed switch is not currently in a valid state to be controlled
 415	| Invalid command supplied
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Managed Switches
@@ -377,11 +381,12 @@ comment           | string        | Comment stored on switch                    
 [port_details](#managed-switch-port_details) | array[obj]    | List of *port details* objects                                                                | **&cross;** |
 available_bridges | array[string] | List of available bridge <a class="definition" onclick="openModal('DOT-ESN')">ESNs</a>, i.e. bridges that this switch can be attached to                                                                                                                                                           | **&cross;** |
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

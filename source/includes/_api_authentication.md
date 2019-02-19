@@ -102,10 +102,11 @@ For TFA, the system uses the parameter `'sms_phone'` from the [User Model](#user
 
 The TFA-related user's data (i.e. SMS phone or email), once set at the time of user's account creation, can only be modified by that user alone. Any such modification will also be TFA authenticated. Account superuser cannot change this data for security reasons
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authenticated (Body contains Json-formatted result)
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Invalid credentials supplied
 402	| Account is suspended
@@ -113,7 +114,7 @@ HTTP Status Code | Description
 461	| Account is pending
 412\*	| User is disabled
 462	| User is pending (This will be thrown before 401 if the username is valid and account is active)
-200	| User has been authenticated (Body contains Json-formatted result)
+
 
 \*Code 412 is also returned if TFA is used and the user's account has been locked due to more than 3 failed attempts to authorize with a TFA code
 
@@ -154,10 +155,11 @@ TFA code expiration is *15 minutes*
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded (TFA code has been sent to the user)
 400	| Unexpected or non-identifiable arguments are supplied
 412	| Unable to send TFA code with the TFA type selected
 415	| Specified TFA type not supported
-200	| Request succeeded (TFA code has been sent to the user)
+
 
 <!--===================================================================-->
 ## 3. Authorize
@@ -317,25 +319,27 @@ When the user's account has been locked the user is notified of this fact by ema
 
 When successful, this API call returns Json data structure following the [User Model](#user-model) with the additional `'user_id'` field, which is present during Authorize and is identical to `'id'`
 
-### Error Status Codes
+### HTTP Status Codes
 
 **When using Simple Authentication**
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Invalid token supplied
-200	| User has been authorized for access to the realm
+
 
 **When using TFA**
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Invalid token supplied, missing TFA code or attempting to authorize with expired TFA code
 406	| Invalid TFA supplied or invalid TFA and invalid token supplied
 429	| This user's account has been locked due to more than 3 failed attempts to Authorize
-200	| User has been authorized for access to the realm
+
 
 <!--===================================================================-->
 ## Forced vs. Optional TFA
@@ -385,10 +389,11 @@ This API call returns no data
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded (Proceed to verification)
 400	| Unexpected or non-identifiable arguments are supplied (i.e. update of `'sms_phone'` is requested with `'two_factor_authentication_type'` set to `'email'` or vice versa)
 401	| Invalid credentials supplied
 415	| Invalid TFA code delivery method supplied in `'two_factor_authentication_type'`
-200	| Request succeeded (Proceed to verification)
+
 
 ### 2. Verify update request with TFA
 
@@ -406,9 +411,10 @@ This API call returns no data
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 406	| Invalid TFA code supplied
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Authorized Devices

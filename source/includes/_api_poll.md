@@ -434,14 +434,15 @@ If a specified event has not been triggered on the device/account, it will not b
 
 <aside class="warning">The status parameter takes precedence (if multiple) and all others will become suppressed when polling over HTTP POST /poll</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Polling
@@ -536,14 +537,15 @@ The returned values are in accordance with the [returned resource types](#resour
 
 <aside class="warning">The status parameter will be omitted (if multiple), all others will be returned when polling over HTTP GET /poll</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## WebSocket Polling
@@ -648,12 +650,13 @@ Parameter | Data Type | Description | Is Required
 
 The server reply completes the handshake. A successful server reply is followed by data transfer
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+101 | Switching protocols
 400	| Header is not understood or has an incorrect value
-101	| Switching protocols
+
 
 ### Data Exchange
 
@@ -669,11 +672,12 @@ The connection can be severed at any given time using the *close* function
 
 WebSocket polling will additionally return *message* response error codes for each individual encountered problem based on the [Errors](#errors) section
 
-### Message Error Status Codes
+### Message HTTP Status Codes
 
 Status Code | Description
 ----------- | -----------
+200 | OK
 400	| Invalid resource
 401	| Access denied
 412	| Auth lost
-200	| OK
+

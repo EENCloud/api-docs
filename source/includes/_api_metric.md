@@ -137,15 +137,16 @@ Index     | Data Type | Description
 0         | string    | EEN Timestamp: YYYYMMDDHHMMSS.NNN
 1         | float     | Bytes difference
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Metrics not found
-200 | Request succeeded
+
 
 <!--===================================================================-->
 ## Camera Bandwidth
@@ -263,12 +264,13 @@ Index     | Data Type | Description
 0         | string    | EEN Timestamp: YYYYMMDDHHMMSS.NNN
 1         | int       | Motion activity value
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400 | Unexpected or non-identifiable arguments are supplied
 401 | Unauthorized due to invalid session cookie
 403 | Forbidden due to the user missing the necessary privileges
 404 | Metrics not found
-200 | Request succeeded
+

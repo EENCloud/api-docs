@@ -1456,14 +1456,56 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+
+
+<!--===================================================================-->
+## Get Camera's RTSP URLs
+<!--===================================================================-->
+
+Returns the full RTSP URLs for a Camera object by ID.
+
+> Request
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/g/device/rtsp -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/g/device/rtsp`
+
+Parameter | Data Type | Description | Is Required
+--------- | --------- | ----------- | -----------
+**id**    | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
+
+
+> Json Response
+
+```json
+{
+  "preview_url": "rtsp://...",
+  "video_url": "rtsp://..."
+}
+```
+
+
+### HTTP Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+200 | Request succeeded
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+
 
 <!--===================================================================-->
 ## Add Camera to <a class="definition" onclick="openModal('DOT-Bridge')">Bridge</a>
@@ -1484,9 +1526,25 @@ curl -X PUT https://login.eagleeyenetworks.com/g/device -d '{"name":"[NAME]","ti
 Parameter | Data Type     | Description | Is Required
 --------- | ---------     | ----------- | -----------
 **name**  | string        | Camera name | true
-**[settings](#camera-settings)** | json          | Json object of basic settings (location, motion regions, etc.) | true
+**[settings](#camera-settings)** | json          | Json object of basic settings (bridge, GUID, username, password, location, motion regions, etc.)  Please note that the GUID value is case-sensitive and should exactly match what is returned by the camera.| true
 timezone  | string        | If unspecified, this will default to the camera’s bridge timezone
 tags      | array[string] | Array of strings each representing a tag name
+
+
+> Example JSON settings object
+
+```json
+{
+  "name": "",
+  "settings": {
+    "bridge": "",
+    "guid": "",
+    "username": "",
+    "password": ""
+  }
+}
+```
+
 
 > Json Response
 
@@ -1502,10 +1560,11 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
@@ -1513,7 +1572,7 @@ HTTP Status Code | Description
 409	| Connect ID or GUID is currently already in use by an account
 410	| Communication cannot be made to attach the camera to the bridge
 415	| Device associated with the given GUID is unsupported
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Update Camera
@@ -1555,16 +1614,17 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Device matching the ID was not found
 463	| Unable to communicate with the camera to add/delete camera settings, contact support
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Delete Camera
@@ -1586,16 +1646,17 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **id**    | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 404	| Device matching the ID was not found
 463	| Unable to communicate with the camera or bridge, contact support
-200	| Request succeeded
+
 
 <!--===================================================================-->
 ## Get List of Cameras
@@ -1747,11 +1808,12 @@ Array Index | Attribute           | Data Type     | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-200	| Request succeeded
+

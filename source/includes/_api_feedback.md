@@ -27,11 +27,12 @@ Parameter   | Data Type | Description | Is Required
 **subject** | string    | Subject of the feedback | true
 **message** | string    | Feedback message content | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-202	| Request succeeded
+

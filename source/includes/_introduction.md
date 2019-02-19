@@ -26,20 +26,6 @@ Since the API is based on REST principles, it’s very easy to write and test ap
 
 ### Create a Developer Account
 
-> Request
-
-```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/user -d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "Authentication: [API_KEY]" -H "content-type: application/json" --cookie "auth_key=[AUTH_KEY]" -v
-```
-
-> Json Response
-
-```json
-{
-    "id": "ca0ffa8c"
-}
-```
-
 <aside><form action="https://login.eagleeyenetworks.com/api_signup.html"><button>&#9654; Create Developer Account</button></form></aside>
 
 To get started with the Eagle Eye Video API you will need an *API Key*. This is used to identify you and your application. It also makes everything secure. To get an *API Key* you will need an account (so that you have some place to do some testing). You can either use your existing account or create a *Developer Account*. You can create an *API Key* in your existing account under the *Account Settings*

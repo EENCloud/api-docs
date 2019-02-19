@@ -85,10 +85,10 @@ flflags             | string       | Limits span rendering to spans with the fla
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Request succeeded
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session
 404	| Not found if camera, etag or table cannot be found
-500	| Problem occurred during data processing or rendering
-200	| Request succeeded
+
 
 <!-- TODO: Confirm a scenario where the error code is applicable: 408	| Required arguments are missing or invalid -->

@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - introduction
+  - http_response_codes
 #  - api_types
   - api_authentication
   - api_aaa
@@ -28,7 +29,7 @@ includes:
   - api_feedback
 #  - api_recording
 #  - api_search
-  - errors
+#  - errors
   - faq
   - sample_code
   - definition_of_terms

@@ -34,14 +34,14 @@ last_name            | string    | User last name
 timezone             | string    | Timezone name (defaults to `'US/Pacific'`)
 is_api_access_needed | boolean   | Grant API access to this new account
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Account has been created and a confirmation email has been sent to the provided email address
 400	| Unexpected or non-identifiable arguments are supplied
 406	| Realm is invalid due to not being a root realm
 409	| Email address has already been registered for the specified realm
-202	| Account has been created and a confirmation email has been sent to the provided email address
 
 <!--===================================================================-->
 ## Validate Account
@@ -78,17 +78,17 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 user_id   | string    | Unique identifier for validated user
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 406	| Information supplied could not be verified
 409	| Account has already been activated
 412	| User is disabled
 460	| Account is inactive
-200	| User has been authorized for access to the realm
 
 <!--===================================================================-->
 ## 1. Forgot Password
@@ -114,10 +114,11 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **email** | string    | Email address | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | A reset email has been sent to the supplied email address. This status will be provided even if the email address was not found. This prevents attacks to discover user accounts
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 406	| Information supplied could not be verified
@@ -125,7 +126,6 @@ HTTP Status Code | Description
 460	| Account is inactive
 461	| Account is pending
 462	| User is pending
-202	| A reset email has been sent to the supplied email address. This status will be provided even if the email address was not found. This prevents attacks to discover user accounts
 
 <!--===================================================================-->
 ## 2. Check Password Reset Token
@@ -147,17 +147,17 @@ Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
 **token** | string    | Password reset token provided in email | true
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Token is valid
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 406	| Token not valid or not found
 412	| User is disabled
 460	| Account is inactive
 461	| Account is pending
-202	| Token is valid
 
 <!--===================================================================-->
 ## 3. Reset Password
@@ -195,17 +195,17 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 user_id   | string    | Unique identifier for validated user
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 406	| Token not valid or not found
 412	| User is disabled
 460	| Account is inactive
 461	| Account is pending
-200	| User has been authorized for access to the realm
 
 <!--===================================================================-->
 ## Resend Registration Email
@@ -228,17 +228,17 @@ Parameter | Data Type | Description | Is Required
 **email** | string    | Email address of the account contact for a pending account | true
 realm     | string    | Realm (defaults to current user's realm)
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | Account was located and verified to be in the pending state. A registration email has been recreated and sent to the provided email address
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 404	| Account with this email address and realm could not be found
 409	| Account is already active (not pending)
 412	| User is disabled
 460	| Account is inactive
-202	| Account was located and verified to be in the pending state. A registration email has been recreated and sent to the provided email address
 
 <!--===================================================================-->
 ## Resend User Verification Email
@@ -261,10 +261,11 @@ Parameter | Data Type | Description | Is Required
 **email** | string    | Email address of the new user | true
 realm     | string    | Realm (defaults to current user's realm)
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+202 | User was located and verified to be in the pending state. A verification email has been recreated and sent to the provided email address
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 404	| User with this email address and realm could not be found
@@ -272,7 +273,6 @@ HTTP Status Code | Description
 412	| User is disabled
 460	| Account is inactive
 461	| Account is pending
-202	| User was located and verified to be in the pending state. A verification email has been recreated and sent to the provided email address
 
 <!--===================================================================-->
 ## Change Password
@@ -313,15 +313,15 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a> of the user having their password changed
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User password was changed successfully
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 404	| User with the `'id'` provided cannot be found
 406	| The `'current_password'` provided does not match the password of the authenticated user
-200	| User password was changed successfully
 
 <!--===================================================================-->
 ## Switch Account
@@ -343,14 +343,14 @@ Parameter  | Data Type | Description
 ---------  | --------- | -----------
 account_id | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> of the account to login to. Defaults to the account which the user belongs to
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Account context switch successful
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 404	| Account with the `'account_id'` provided cannot be found
-200	| Account context switch successful
 
 <!--===================================================================-->
 ## Single Sign On
@@ -380,14 +380,14 @@ curl -X POST https://login.eagleeyenetworks.com/g/sso -H "Authentication: [API_K
 
 `POST https://login.eagleeyenetworks.com/g/sso`
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | Account context switch successful
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 404	| Account with the `'account_id'` provided cannot be found
-200	| Account context switch successful
 
 
 <!--===================================================================-->
@@ -406,12 +406,12 @@ curl -X GET https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: 
 
 `GET https://login.eagleeyenetworks.com/g/aaa/isauth`
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
-401 | Unauthorized due to invalid session cookie
 200 | User authentication is valid
+401 | Unauthorized due to invalid session cookie
 
 
 <!--===================================================================-->
@@ -430,10 +430,10 @@ curl -X POST https://login.eagleeyenetworks.com/g/aaa/logout -H "Authentication:
 
 `POST https://login.eagleeyenetworks.com/g/aaa/logout`
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+204 | User has been logged out
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
-204	| User has been logged out

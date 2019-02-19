@@ -68,17 +68,18 @@ Array Index | Attribute    | Data Type | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
-406	| Information supplied could not be verified
 402	| Account is suspended
+406 | Information supplied could not be verified
+412 | User is disabled
 460	| Account is inactive
 409	| Account has already been activated
-412	| User is disabled
-200	| User has been authorized for access to the realm
+
 
 <!--===================================================================-->
 ## Accept Terms of Service for User
@@ -116,18 +117,19 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 404	| Notice title was not found
 406	| Information supplied could not be verified
-460	| Account is inactive
 409	| Account has already been activated
 412	| User is disabled
-200	| User has been authorized for access to the realm
+460 | Account is inactive
+
 
 <!--===================================================================-->
 ## Get Terms of Service for Account
@@ -219,17 +221,18 @@ Array Index | Attribute         | Data Type | Description
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
-406	| Information supplied could not be verified
 402	| Account is suspended
-460	| Account is inactive
+406 | Information supplied could not be verified
 409	| Account has already been activated
 412	| User is disabled
-200	| User has been authorized for access to the realm
+460 | Account is inactive
+
 
 <!--===================================================================-->
 ## Create Terms of Service for Account
@@ -293,18 +296,18 @@ timestamp         | string    | Date of the term of service
 url               | string    | URL of the file containing the text for the notice
 status            | string    | Status of the term of service (`'active'`, `'retired'`)
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 404	| Terms Title was not found
 406	| Information supplied could not be verified
-460	| Account is inactive
 409	| Account has already been activated
 412	| User is disabled
-200	| User has been authorized for access to the realm
+460 | Account is inactive
 
 <!--===================================================================-->
 ## Update Terms of Service for Account
@@ -368,18 +371,19 @@ status            | string    | Status of the term of service (`'active'`, `'ret
 
 <!--TODO: Investigate whether the curl request and response are correct (why "version" is an unexpected argument)-->
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 404	| Notice title was not found
 406	| Information supplied could not be verified
-460	| Account is inactive
 409	| Account has already been activated
 412	| User is disabled
-200	| User has been authorized for access to the realm
+460 | Account is inactive
+
 
 <!--===================================================================-->
 ## Delete Terms of Service for Account
@@ -437,15 +441,15 @@ timestamp          | string    | Date of the term of service
 url                | string    | URL of the file containing the text for the term of service
 status             | string    | This field is no longer being used <small>**(DEPRECATED)**</small>
 
-### Error Status Codes
+### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
+200 | User has been authorized for access to the realm
 400	| Unexpected or non-identifiable arguments are supplied
 402	| Account is suspended
 404	| Notice title was not found
 406	| Information supplied could not be verified
-460	| Account is inactive
 409	| Account has already been activated
 412	| User is disabled
-200	| User has been authorized for access to the realm
+460 | Account is inactive
