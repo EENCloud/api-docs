@@ -33,6 +33,9 @@ includes:
   - faq
   - sample_code
   - definition_of_terms
+  - mobilesdk
+  - mobilesdk_ios
+  - mobilesdk_android
 
 search: true
 ---
