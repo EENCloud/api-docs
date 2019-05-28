@@ -430,6 +430,20 @@ Parameter             | Data Type | Description | Is Required
 sms_phone             | string    | Phone number to be used for SMS notifications | false
 is_user_create_layout | int       | Indicates whether the user can create layouts (1) or not (0) | false
 is_edit_map           | int       | Indicates whether the user can add and edit floors, lines and shapes on the map(1), or not(0). | false
+language              | string    | The language of the user in the `ISO-639` format. Used for the welcome email message. If not specified, the language of the logged in user will be used, or, if unavailable - `en-us`.             | false
+
+
+Language code | Language
+------------- | --------
+en-us         | English
+ja-jp         | #日本語
+de-de         | Deutsch
+es-es         | Español
+fr-fr         | Français
+it-it         | Italiano
+nl-nl         | Nederlands
+pl-pl         | Polski
+tr-tr         | Türkçe
 
 <aside class="notice">When TFA authentication is used and authorization code delivery via SMS is set, the user's `'sms_phone'` number must be defined</aside>
 
