@@ -207,15 +207,17 @@ MP4<file_content>
 
 ### HTTP Response
 
-The returned response can be binary video data in FLV or MP4 format(depending on request) with status code 200. Alternatively, if video is not immediately available, video id as JSON data with status code 202. In the latter case, please try again.
+The returned response can be binary video data in FLV or MP4 format(depending on request) with status code 200. 
+
+Alternatively, if you request a MP4 and it is not able to be transcoded immediately it will return a video id as JSON data with a status code of 201.  You can safely request the same video again.  if video is not immediately available, video id as JSON data with status code 202. This will continue until the video has been transcoded.  The next request for that video will result in a status code of 200 and the HTTP response will include the MP4 as binary data.
 
 ### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-201 | Created
-202 | Pending
+201 | Created, video download job has been created
+202 | Pending, video download job is in progress
 301	| Asset has been moved to a different archiver
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
