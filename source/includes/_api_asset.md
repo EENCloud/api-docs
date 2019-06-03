@@ -152,12 +152,18 @@ HTTP Status Code | Description
 ## Get Video
 <!--===================================================================-->
 
-Get a video stream in FLV format based on the specified timestamps. Returns binary video data
+Get a video stream in FLV format based on the specified timestamps. Returns binary video data or video id.
 
-> Request
+> Request (flv)
 
 ```shell
 curl -X GET https://login.eagleeyenetworks.com/asset/play/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
+```
+
+> Request (mp4)
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/asset/play/video.mp4 -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
 
 > <small>Provide the '<b>-O</b>' option at the end of the request for file output to the current directory (timestamps must coincide with existing video)</small>
@@ -167,6 +173,10 @@ curl -X GET https://login.eagleeyenetworks.com/asset/play/video.flv -d "id=[CAME
 ### HTTP Request
 
 `GET https://login.eagleeyenetworks.com/asset/play/video.flv`
+<br> Get video in the `.flv` format
+
+`GET https://login.eagleeyenetworks.com/asset/play/video.mp4`
+<br> Get video in the `.mp4` format
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
@@ -174,21 +184,40 @@ Parameter           | Data Type    | Description    | Is Required
 **start_timestamp** | string       | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **end_timestamp**   | string       | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 
-> Response
+> Response (flv)
 
 ```shell
 FLV<file_content>
 ```
 
+> Response (mp4)
+
+```shell
+MP4<file_content>
+```
+
+> Json Response (either)
+
+```json
+{
+    "id": "79a8cbc0-7e2e-11e9-8523-0a580af402b2"
+}
+```
+
+
 ### HTTP Response
 
-The returned response is binary video data in FLV format
+The returned response can be binary video data in FLV or MP4 format(depending on request) with status code 200. 
+
+Alternatively, if you request a MP4 and it is not able to be transcoded immediately it will return a video id as JSON data with a status code of 201.  You can safely request the same video again.  if video is not immediately available, video id as JSON data with status code 202. This will continue until the video has been transcoded.  The next request for that video will result in a status code of 200 and the HTTP response will include the MP4 as binary data.
 
 ### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
+201 | Created, video download job has been created
+202 | Pending, video download job is in progress
 301	| Asset has been moved to a different archiver
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
@@ -204,6 +233,8 @@ HTTP Status Code | Description
 <!--===================================================================-->
 ## Prefetch Image
 <!--===================================================================-->
+
+<aside class="warning">This API call is currently being updated and may change.  Please reach out to api_support@een.com with any problems until this section is updated.</aside>
 
 This API call will ensure the image is in the cloud. If the image is not in the cloud it will do a background upload request to the bridge to aquire the image into the cloud. A webhook provided with the call will be triggered when the upload is successful or an error has occurred. The webhook will be triggered as a POST with Json-formatted data
 
@@ -253,6 +284,8 @@ HTTP Status Code | Description
 ## Prefetch Video
 <!--===================================================================-->
 
+<aside class="warning">This API call is currently being updated and may change.  Please reach out to api_support@een.com with any problems until this section is updated.</aside>
+
 This API call will ensure the video is in the cloud. If the video is not in the cloud it will do a background upload request to the bridge to acquire the video into the cloud. A webhook provided with the call will be triggered when the upload is successful or an error has occurred. The webhook will be triggered as a POST with Json-formatted data
 
 > Request
@@ -270,13 +303,15 @@ Parameter           | Data Type | Description   | Is Required
 **id**              | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 **start_timestamp** | string    | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **end_timestamp**   | string    | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
-**webhook_url**     | string    | The webhook url (must be urlencoded) to trigger | true
+**success_hook**     | string    | The webhook url (must be urlencoded) to trigger if reqeust was successful | true
+**failure_hook**     | string    | The webhook url (must be urlencoded) to trigger if request failed| true
 
 > Webhook Json POST Response
 
 ```json
 {
-    "event:": "[EVENT]"
+    "uuid": "[UUID]",
+    "event": "[EVENT]"
 }
 ```
 
@@ -295,6 +330,9 @@ ASSET_CLOUD_EVENT_ABORT            | General error occurred
 HTTP Status Code | Description
 ---------------- | -----------
 201 | Request has been created and webhook will be triggered upon completion or error
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
 
 <!--===================================================================-->
 ## Get List of Images

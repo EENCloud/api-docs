@@ -178,7 +178,7 @@ user_authenticated_clients           | array[string]        | Array of strings c
 account_utc_offset                   | int                  | Signed integer offset in seconds of the timezone from UTC. This is the `'utc_offset'` value from the user's associated account model                                                                                                                           | **&cross;** |
 account_work_days                    | string               | The `'work_days'` value from the user's associated account model. Indicates which day is a work day                                                                                                                                                | **&cross;** |
 account_work_hours                   | array[string]        | The `'work_hours'` value from the user's associated account model. Indicates work hours for the account                                                                                                                                            | **&cross;** |
-language                             | string               | Language code. The API currently only supports English (en-us) and Japanese (ja) as display languages for the GUI. It accepts any valid language code as input, but it will show English text for the unsupported languages                                      | **&check;** |
+language                             | string               | Language code. The API currently only supports languages listsed in the `Create User` section as display languages for the GUI. It accepts any valid language code as input, but it will show English text for the unsupported languages                                      | **&check;** |
 inactive_session_timeout             | int                  | Maximum time period in seconds without activity before web session expires. Defined in the settings of the account which the user belongs to                                                                                                                                | **&cross;** |
 utc_offset                           | int                  | Signed integer offset in seconds of the timezone from UTC. Automatically generated based on the timezone field                                                                                                                                              | **&cross;** |
 timezone                             | string               | Timezone of the user. Defaults to `'US/Pacific'` <br><br>Possible values: <br>`'US/Alaska'`, `'US/Arizona'`, `'US/Central'`, `'US/Eastern'`, `'US/Hawaii'`, `'America/Anchorage'`, `'UTC'`, ...                                                                 | **&check;** |
@@ -430,6 +430,20 @@ Parameter             | Data Type | Description | Is Required
 sms_phone             | string    | Phone number to be used for SMS notifications | false
 is_user_create_layout | int       | Indicates whether the user can create layouts (1) or not (0) | false
 is_edit_map           | int       | Indicates whether the user can add and edit floors, lines and shapes on the map(1), or not(0). | false
+language              | string    | The language of the user in the `ISO-639` format. Used for the welcome email message. If not specified, the language of the logged in user will be used, or, if unavailable - `en-us`.             | false
+
+
+Language code | Language
+------------- | --------
+en-us         | English
+ja-jp         | #日本語
+de-de         | Deutsch
+es-es         | Español
+fr-fr         | Français
+it-it         | Italiano
+nl-nl         | Nederlands
+pl-pl         | Polski
+tr-tr         | Türkçe
 
 <aside class="notice">When TFA authentication is used and authorization code delivery via SMS is set, the user's `'sms_phone'` number must be defined</aside>
 
@@ -513,7 +527,7 @@ is_view_contract            | int           | Indicates whether the user is auth
 is_ptz_live                 | int           | Indicates whether the user is authorized to control pan, tilt, zoom and recall stations while viewing preview or live video of PTZ cameras (1) or not (0)
 is_edit_users               | int           | Indicates whether the user is authorized to manage users who are not administrators in a sub-account (1) or not (0)
 is_edit_motion_areas        | int           | Indicates whether the user is authorized to view and edit the *Motion* tab under camera settings (1) or not (0)
-language                    | string        | Language code. The API currently only supports English (en-us) and Japanese (ja) as display languages for the GUI. It accepts any valid language code as input, but it will show English text for the unsupported languages
+language                    | string        | Language code. The API currently only supports languages listsed in the `Create User` section as display languages for the GUI. It accepts any valid language code as input, but it will show English text for the unsupported languages
 timezone                    | string        | Timezone of the user. Defaults to `'US/Pacific'` <br><br>Possible values: <br>`'US/Alaska'`, `'US/Arizona'`, `'US/Central'`, `'US/Eastern'`, `'US/Hawaii'`, `'America/Anchorage'`, `'UTC'`, ...
 alternate_email             | string        | Alternate email address
 sms_phone                   | string        | Phone number to be used for Two Factor authentication code delivery when SMS method is selected
