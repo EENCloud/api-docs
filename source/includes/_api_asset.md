@@ -234,6 +234,8 @@ HTTP Status Code | Description
 ## Prefetch Image
 <!--===================================================================-->
 
+<aside class="warning">This API call is currently being updated and may change.  Please reach out to api_support@een.com with any problems until this section is updated.</aside>
+
 This API call will ensure the image is in the cloud. If the image is not in the cloud it will do a background upload request to the bridge to aquire the image into the cloud. A webhook provided with the call will be triggered when the upload is successful or an error has occurred. The webhook will be triggered as a POST with Json-formatted data
 
 > Request
@@ -282,6 +284,8 @@ HTTP Status Code | Description
 ## Prefetch Video
 <!--===================================================================-->
 
+<aside class="warning">This API call is currently being updated and may change.  Please reach out to api_support@een.com with any problems until this section is updated.</aside>
+
 This API call will ensure the video is in the cloud. If the video is not in the cloud it will do a background upload request to the bridge to acquire the video into the cloud. A webhook provided with the call will be triggered when the upload is successful or an error has occurred. The webhook will be triggered as a POST with Json-formatted data
 
 > Request
@@ -299,13 +303,15 @@ Parameter           | Data Type | Description   | Is Required
 **id**              | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 **start_timestamp** | string    | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **end_timestamp**   | string    | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
-**webhook_url**     | string    | The webhook url (must be urlencoded) to trigger | true
+**success_hook**     | string    | The webhook url (must be urlencoded) to trigger if reqeust was successful | true
+**failure_hook**     | string    | The webhook url (must be urlencoded) to trigger if request failed| true
 
 > Webhook Json POST Response
 
 ```json
 {
-    "event:": "[EVENT]"
+    "uuid": "[UUID]",
+    "event": "[EVENT]"
 }
 ```
 
@@ -324,6 +330,9 @@ ASSET_CLOUD_EVENT_ABORT            | General error occurred
 HTTP Status Code | Description
 ---------------- | -----------
 201 | Request has been created and webhook will be triggered upon completion or error
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
 
 <!--===================================================================-->
 ## Get List of Images
