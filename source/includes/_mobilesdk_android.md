@@ -61,8 +61,8 @@ Please download the latest version to make sure you have the latest features and
 
 Version | Download | Description 
 ------- | -------- | -----------
-1.0.0   | [sdk-v1.0.0.zip](/images/Android/skd-v1.0.0.zip) | Release version, contains AAR file that should be imported
-1.0.0   | [Sample-v1.0.0.zip](/images/Android/Sample-v1.0.0.zip) | Demo application
+2.0.0   | [sdk-v2.0.0.zip](/images/Android/sdk-v2.0.0.zip) | Release version, contains AAR file that should be imported
+2.0.0   | [Sample-v2.0.0.zip](/images/Android/Sample-v2.0.0.zip) | Demo application
 
 
 

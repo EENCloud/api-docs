@@ -37,9 +37,9 @@ Please download the latest version to make sure you have the latest features and
 
 Version | Download | Description 
 ------- | -------- | -----------
-1.0.0   | [release-iphoneos-v100.zip](/images/iOS/release-iphoneos-v100.zip) | Release version, built with Xcode 10.2.1 (10E1001)
-1.0.0   | [release-iphoneos-v100.zip](/images/iOS/debug-iphoneuniversal-v100.zip) | Debug version, built with Xcode 10.2.1 (10E1001)
-1.0.0   | [release-iphoneos-v100.zip](/images/iOS/sample-app-v100.zip) | Demo application, built with Xcode 10.2.1 (10E1001) and EENSDK-iOS v1.0.0
+2.0.0   | [release-iphoneos-v200.zip](/images/iOS/release-iphoneos-v200.zip) | Release version, built with Xcode 10.2.1 (10E1001)
+2.0.0   | [debug-iphoneuniversal-v1200.zip](/images/iOS/debug-iphoneuniversal-v200.zip) | Debug version, built with Xcode 10.2.1 (10E1001)
+2.0.0   | [sample-app-v200.zip](/images/iOS/sample-app-v200.zip) | Demo application, built with Xcode 10.2.1 (10E1001) and EENSDK-iOS v2.0.0
 
 
 
