@@ -246,7 +246,9 @@ HTTP Status Code | Description
   </p>
 </aside>
 
-This API call will ensure the video is in the cloud. If the video is not in the cloud it will do a background upload request to the bridge to acquire the video into the cloud. A webhook provided with the call will be triggered when the upload is successful or an error has occurred. The webhook will be triggered as a POST with Json-formatted data
+This API call will ensure the video is in the cloud. If the video is not in the cloud it will do a background upload request to the bridge to acquire the video into the cloud. A webhook provided with the call will be triggered when the upload is successful or an error has occurred. The webhook will be triggered as a POST with Json-formatted data.
+
+In the event the video was successfully retrieve by the cloud, the `success_hook` will be called.  If there was a failure, the optional `failure_hook` will be called.  The request will try to retrieve the video for 24 hours before giving up and calling `failure_hook`.
 
 > Request
 
