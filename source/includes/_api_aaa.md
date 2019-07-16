@@ -207,6 +207,51 @@ HTTP Status Code | Description
 460	| Account is inactive
 461	| Account is pending
 
+### Validation of the new password against Account's password rules
+
+> Response Json object with failed requirements for the new password:
+
+```json
+{
+    "status_code": 400,
+    "message": "New password does not meet all of the requirements.",
+    "data": {
+        "failed_requirements": {
+            "same_password": {
+              "description": "New password cannot be the same as the old one."
+            },
+            "length": {
+                "description": "Password length must be between 12 and 126 characters long.",
+                "required_value": {
+                    "minimum_length": 12,
+                    "maximum_length": 126
+                }
+            },
+            "reuse": {
+                "description": "Previous passwords cannot be reused."
+            },
+            "required_special_char": {
+                "description": "New password needs to contain at least one symbol."
+            },
+            "required_numeric_char": {
+                "description": "New password needs to contain at least one number."
+            },
+            "exclude_username": {
+                "description": "New password should not contain the username."
+            },
+        }
+    },
+    "reason": "InvalidPassword"
+}
+```
+
+If a new password fails against some of the Account's password requirements, HTTP response with status code 400 and JSON object will be returned.
+
+Most password management settings require feature flag, if you want to enable it ask support.
+
+More details on Password management rules can be found [here](#account-password_management_rules).
+
+
 <!--===================================================================-->
 ## Resend Registration Email
 <!--===================================================================-->

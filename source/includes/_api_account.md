@@ -144,7 +144,19 @@ The <a class="definition" onclick="openModal('DOT-Account')">Account</a> service
     "contact_last_name": "Dafoe",
     "contact_utc_offset": null,
     "camera_quantity": null,
-    "brand_subdomain": "c000"
+    "brand_subdomain": "c000",
+    "password_management_rules": {
+        "allowed_minimum_length": 10,
+        "allowed_maximum_length": 64,
+        "days_to_expire": 0,
+        "exclude_username": 0,
+        "minimum_length": 10,
+        "maximum_length": 126,
+        "required_numeric_char": 0,
+        "required_special_char": 0,
+        "reuse_number_limit": 0,
+        "reuse_time_limit": 0
+    }
 }
 ```
 
@@ -216,6 +228,7 @@ is_system_notification_images_enabled | int                  | Indicates whether
 map_lines                             | json                 | This is used by the front end to overlay lines over a map of the cameras for the account | **&check;** |
 is_two_factor_authentication_forced   | int                  | Indicates whether Two-Factor Authentication is forced for all users in the account (1) or not and users are able to choose between Simple Authentication and TFA (0)                                                                                            | **&check;** |
 contact_utc_offset                    | int                  | This field is no longer being used <small>**(DEPRECATED)**</small>                   | **&check;** |
+[password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.      | **&check;** (with feature flag)|
 
 ### Account - camera_share_perms - \<camera_id\>
 
@@ -228,6 +241,41 @@ Parameter      | Data Type     | Description
 Parameter      | Data Type     | Description
 ---------      | ---------     | -----------
 \<permission\> | array[string] | Array of strings each representing a set of predefined recipient permissions <br><br>Permissions: <br>`'edit_motion_areas'` - user can edit camera motion areas <br>`'ptz_live'` - user can control pan, tilt and zoom for a PTZ camera, recall PTZ stations <br>`'edit_ptz_stations'` - user can edit PTZ stations and control PTZ cameras <br><br>Example: <br>`[`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`'edit_motion_areas'`,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`'ptz_live'`<br>`]`
+
+### Account - password_management_rules
+
+Parameters of password_management_rules object. Some settings requires feature flag, if you want to enable it ask support.
+On password change by default users are disallow to set previous password.
+
+Length requirements:
+
+Parameter               | Data Type      | Description
+---------               | ---------      | -----------
+minimum_length          | int            | Minimum password length. This can be set if feature flag is On (Default value: 10)
+maximum_length          | int (constant) | Maximum password length.
+allowed_minimum_length  | int (constant) | Bottom range of password minimum length.
+allowed_maximum_length  | int (constant) | Upper range of password minimum length.
+
+Character requirements (requires feature flag):
+
+Parameter               | Data Type      | Description
+---------               | ---------      | -----------
+required_numeric_char   | int enum [0,1] | At password reset, the user will be required to create a password with at least one numeric character.
+required_special_char   | int enum [0,1] | At password reset, the user will be required to create a password with at least one special character.
+
+Reuse requirements (requires feature flag):
+
+Parameter               | Data Type      | Description
+---------               | ---------      | -----------
+reuse_number_limit      | int            | At password reset, the user will be required to create a password that was not previously used for the selected number of previous passwords of the given user.
+reuse_time_limit        | int            | At password reset, the user will be required to create a password that was not previously used for the selected number of days.
+
+Other requirements (requires feature flag):
+
+Parameter               | Data Type      | Description
+---------               | ---------      | -----------
+days_to_expire          | int            | The user will be required to create a new password in the given number of days.
+exclude_username        | int enum [0,1] | At password reset, the user will be required to create a password that does not contain a username of the given user.
 
 <aside class="notice">Camera-related flags can only be modified or set from within the account housing the cameras and only for valid cameras</aside>
 
@@ -304,6 +352,7 @@ active_alert_mode                     | string        | A string chosen from val
 default_camera_passwords              | string        | Comma-delimited string of default camera passwords
 is_without_initial_user               | int           | Indicates whether to create the new account without an initial user (1) or not (0) (defaults to 0) <br><br>An initial user with `'is_account_superuser=1'` will be created using the arguments `'contact_first_name/contact_last_name/contact_email'` specified upon account creation
 is_initial_user_not_admin             | int           | Indicates whether the initial user is an admin (0) or not (1)
+[password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.
 
 > Json Response
 
@@ -401,6 +450,7 @@ customer_id                           | string               | Arbitrary ID assi
 is_system_notification_images_enabled | int                  | Indicates whether email notifications about online/offlice status should contain images from those cameras (1) or not (0)
 map_lines                             | string               | This is used by the front end to overlay lines over a map of the cameras for the account
 contact_utc_offset                    | int                  | This field is no longer being used <small>**(DEPRECATED)**</small>
+[password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.
 
 <aside class="notice">Camera-related flags can only be modified or set from within the account housing the cameras and only for valid cameras</aside>
 
