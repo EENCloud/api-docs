@@ -252,9 +252,9 @@ Length requirements:
 Parameter               | Data Type      | Description
 ---------               | ---------      | -----------
 minimum_length          | int            | Minimum password length. This can be set if feature flag is On (Default value: 10)
-maximum_length          | int (constant) | Maximum password length.
-allowed_minimum_length  | int (constant) | Bottom range of password minimum length.
-allowed_maximum_length  | int (constant) | Upper range of password minimum length.
+maximum_length          | int            | Maximum password length. This is a constant value and it is equal to 126.
+allowed_minimum_length  | int            | Bottom range of password minimum length. This is a constant value and it is equal to 10.
+allowed_maximum_length  | int            | Upper range of password minimum length. This is a constant value and it is equal to 64.
 
 Character requirements (requires feature flag):
 
