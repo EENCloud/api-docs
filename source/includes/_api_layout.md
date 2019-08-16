@@ -120,10 +120,10 @@ Parameter | Data Type | Description | Is Required
 Parameter | Data Type     | Description
 --------- | ---------     | -----------
 name      | string        | Layout pane name
-type      | string        | Layout types: <br>`'preview'` - shows live preview images form cameras <br>`'carousel'` - rotates between preview images, IDs of cameras need to be included in the cameras array along with an integer in the delay array. The delay is an integer value of milliseconds as too how long the Camera will be displayed before switching to the next Camera. A `'carousel'` with only one camera is the same as preview <br>`'click'` - respond to click for other cameras in layout <br>`'motion'` - respond to motion for other cameras in layout <br>`'map'` - a static map with camera icons located on it <br>`'url'` - displays the contents of the url in the pane as a frame
+type      | string        | Layout types: <br>`'preview'` - shows live preview images form cameras <br>`'click'` - respond to click for other cameras in layout <br>`'motion'` - respond to motion for other cameras in layout <br>`'map'` - a static map with camera icons located on it <br>`'url'` - displays the contents of the url in the pane as a frame
 pane_id   | int           | ID given to pane when created by the Layout Manager
 size      | int           | Size of displayed image: <br>`1` - small <br>`2` - medium <br>`3` - large
-cameras   | array[string] | Array of camera IDs (For `'carousel'` cycle through the camera IDs with the delay setting in the corresponding `'delay'` property)
+cameras   | array[string] | Array of camera IDs contained in a pane
 
 ### Layout - configuration - settings
 
