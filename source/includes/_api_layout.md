@@ -31,7 +31,7 @@ Rendered Layouts on Web and Mobile:
     "id": "0b58ec7a-61e4-11e3-8f7d-523445989f37",
     "name": "Everything",
     "types": [
-        "mobile"
+        "desktop"
     ],
     "permissions": "SWRD",
     "current_recording_key": null,
@@ -101,7 +101,7 @@ Property              | Data Type            | Description                      
 --------              | ---------            | -----------                                                                                          |:-----------:| --------
 **id**                | string               | <a class="definition" onclick="openModal('DOT-Layout-ID')">Layout ID</a> automatically generated and assigned during creation                                                                                                                                            | **&cross;** | **<sub><form action="#get-layout"><button>GET</button></form></sub>** <br>**<sub><form action="#update-layout"><button>POST</button></form></sub>** <br>**<sub><form action="#delete-layout"><button>DELETE</button></form></sub>**
 **name**              | string               | Name of the layout                                                                                   | **&check;** | **<sub><form action="#create-layout"><button>PUT</button></form></sub>**
-**types**             | array[string]        | Specifies target(s) for layout. Multiple values are allowed                                          | **&check;** | **<sub><form action="#create-layout"><button>PUT</button></form></sub>**
+**types**             | array[string]        | Specifies target(s) for layout.                                                                      | **&check;** | **<sub><form action="#create-layout"><button>PUT</button></form></sub>**
 **[configuration](#layout-configuration)** | json             | Json object of layout configuration                                                 | **&check;** | **<sub><form action="#create-layout"><button>PUT</button></form></sub>**
 json                  | string               | Json encoded string. The same content as the `'configuration'` field <small>**(DEPRECATED)**</small> | **&cross;** |
 permissions           | string               | String of zero or more characters. Each character defines a permission that the current user has for the layout  <br><br>Permissions include: <br>`'R'` - user can view this layout <br>`'W'` - user can modify this layout <br>`'D'` - user can delete this layout <br>`'S'` - user can share this layout                                                                                                                                              | **&cross;** |
