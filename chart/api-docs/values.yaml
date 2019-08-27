@@ -7,8 +7,8 @@ nodeSelector:
  role: server
 replicaCount: 2
 image:
-  repository: docker.eencloud.com/api-docs
-  tag: 0.1.7
+  repository: harbor.eencloud.com/vms/api-docs
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: Always
  
 #annotations: {}
