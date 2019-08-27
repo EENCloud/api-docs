@@ -1,0 +1,12 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for api-docs
+name: api-docs
+version: 0.1.0
+sources:
+  - https://github.com/EENCloud/api-docs
+maintainers:
+  - name: Brandon Reynolds
+    email: breynolds@eagleeyenetworks.com
+  - name: Peter Whiteside
+    email: pwhiteside@eagleeyenetworks.com 
