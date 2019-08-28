@@ -869,7 +869,7 @@ Array Index | Attribute           | Data Type            | Description
 0           | account_id          | string               | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> of the device’s account
 1           | id                  | string               | <a class="definition" onclick="openModal('DOT-Bridge-ID')">Bridge ID</a>
 2           | name                | string               | Device name
-3           | type                | string, enum         | Device type <br><br>enum: bridge, camera
+3           | type                | string, enum         | Device type <br><br>enum: bridge, camera, mobile_camera, multiview_camera, mca_camera
 4           | cameras             | array&nbsp;[<br>&nbsp;&nbsp;array&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;string</br>&nbsp;&nbsp;]</br>] | This is an array of string arrays, each array representing a camera that is attached to the bridge. The first element of the array is the camera <a class="definition" onclick="openModal('DOT-ESN')">ESN</a>. The second element is the service status
 5           | service_status      | string, enum         | Device service status: <br>`'ATTD'` - camera is attached to a bridge <br>`'IGND'` - camera is unattached from all bridges and is available to be attached to a bridge <br>`'IDLE'` - camera will register but will not operate (unregistered bridges) <br>`'ERSE'` - one shot, all camera data will be erased <br><br>For bridges this field is always `'ATTD'` <br><br>enum: ATTD, IGND, IDLE, ERSE
 6           | permissions         | string               | String of zero or more characters each defining a permission level (of the current user)
