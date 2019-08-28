@@ -1782,7 +1782,7 @@ Array Index | Attribute           | Data Type     | Description
 0           | account_id          | string        | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> of the device’s account
 1           | id                  | string        | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a>
 2           | name                | string        | Device name
-3           | type                | string, enum  | Device type <br><br>enum: camera, bridge
+3           | type                | string, enum  | Device type <br><br>enum: bridge, camera, mobile_camera, multiview_camera, mca_camera
 4           | bridges             | array&nbsp;[<br>&nbsp;&nbsp;array&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;string</br>&nbsp;&nbsp;]</br>]  | This is an array of string arrays, each array representing a bridge that can see the camera. The first element of the array is the bridge <a class="definition" onclick="openModal('DOT-ESN')">ESN</a>. The second element is the service status
 5           | service_status      | string, enum  | Device service status: <br>`'ATTD'` - camera is attached to a bridge <br>`'IGND'` - camera is unattached from all bridges and is available to be attached to a bridge <br>`'IDLE'` - camera will register but will not operate (unregistered bridges) <br>`'ERSE'` - one shot, all camera data will be erased <br><br>enum: ATTD, IGND, IDLE, ERSE
 6           | permissions         | string        | String of one or more characters each defining a permission level <br><br>Permissions include: <br>`'R'` - user has access to view images and video for this camera <br>`'W'` - user can modify and delete this camera <br>`'S'` - user can share this camera in a group share
