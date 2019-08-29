@@ -41,6 +41,15 @@ docker-compose build
 docker-compose up
 ```
 
+Routing a URL to this container is required in order to access through browser.  Add an entry
+such as `apidocs.dev.eagleeyenetworks.com` to the localhost aliasing entry in /etc/hosts.  A
+typical entry might look like the following:
+`127.0.0.1       localhost login.dev.eagleeyenetworks.com c001.dev.eagleeyenetworks.com eenadmin.dev.eagleeyenetworks.com apidocs.dev.eagleeyenetworks.com`
+
+The API docs can now be accessed through a browser at port 4567.  For example, if a local
+host alias of `apidocs.dev.eagleeyenetworks.com` was used, then docs can be accessed at
+`http://apidocs.dev.eagleeyenetworks.com:4567/`.
+
 *NOTE: Middleman was not designed to run on virtual clients or within docker and might sometimes display irregular behavior*
 
 
