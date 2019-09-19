@@ -27,6 +27,7 @@ The <a class="definition" onclick="openModal('DOT-User')">User</a> service allow
     "is_active": 1,
     "is_pending": 0,
     "is_master": 1,
+    "user_pin": 342141,
     "is_user_admin": 1,
     "is_layout_admin": 1,
     "is_user_create_layout": 1,
@@ -142,6 +143,7 @@ country                              | string               | Two letter country
 postal_code                          | string               | Zip/postal code                                                                      | **&check;** |
 owner_account_id                     | string               | Unique identifier of the account that the user belongs to                            | **&cross;** |
 active_account_id                    | string               | Unique identifier of the user's active account. When switching to a sub-account the `'active_account_id'` of that user in their session becomes the unique identifier of the sub-account that was switched into                                                              | **&cross;** |
+user_pin                             | string               | Six digit string that signifies a support pin                                        | **&check;** |
 is_staff                             | int                  | Indicates whether the user is a staff member (1) or not (0) <small>**(INTERNAL USE ONLY)**</small>                                                                                                                                    | **&check;** |
 is_superuser                         | int                  | Indicates whether the user is a superuser (1) or not (0). Only superusers can set this <small>**(INTERNAL USE ONLY)**</small>                                                                                                                                    | **&check;** |
 is_account_superuser                 | int                  | Indicates whether the user is an account superuser (1) or not (0)                    | **&check;** |
@@ -502,6 +504,7 @@ city                        | string        | City
 state                       | string        | State/province
 country                     | string        | Two letter country code
 postal_code                 | string        | Zip/postal code
+user_pin                    | string        | Six digit string that signifies a support pin
 is_staff                    | int           | Indicates whether the user is a staff member (1) or not (0). Only superusers can set this <small>**(INTERNAL USE ONLY)**</small>
 is_superuser                | int           | Indicates whether the user is a superuser (1) or not (0). Only superusers can set this <small>**(INTERNAL USE ONLY)**</small>
 is_account_superuser        | int           | Indicates whether the user is an account superuser (1) or not (0). Only superusers and account superusers can set this
