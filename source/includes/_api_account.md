@@ -448,7 +448,7 @@ brand_support_phone                   | string               | Branded support p
 default_cluster                       | string               | Indicates the data center cluster the account is assigned to
 customer_id                           | string               | Arbitrary ID assigned to a sub-account by a master account
 is_system_notification_images_enabled | int                  | Indicates whether email notifications about online/offlice status should contain images from those cameras (1) or not (0)
-map_lines                             | string               | This is used by the front end to overlay lines over a map of the cameras for the account
+map_lines                             | json                 | This is used by the front end to overlay lines over a map of the cameras for the account
 contact_utc_offset                    | int                  | This field is no longer being used <small>**(DEPRECATED)**</small>
 [password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.
 
