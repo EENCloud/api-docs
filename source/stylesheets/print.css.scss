@@ -1,7 +1,7 @@
 @charset "utf-8";
-@import 'normalize';
-@import 'variables';
-@import 'icon-font';
+@import 'source/stylesheets/_normalize';
+@import 'source/stylesheets/_variables';
+@import 'source/stylesheets/_icon-font';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -98,7 +98,7 @@ body {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-top: 1em;
-    margin-bottom: $h1-margin-bottom;
+    margin-bottom: 21px;
     border: 2px solid $print-color-light;
     border-width: 2px 0;
     text-align: center;
@@ -160,4 +160,3 @@ body {
     text-shadow: 0 1px 0 #a0d7a6;
   }
 }
-

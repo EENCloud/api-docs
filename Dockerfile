@@ -1,11 +1,11 @@
-FROM ruby:2.3.1
+FROM ruby:2.6.5
 
 # build api-dockers
 WORKDIR /usr/src/app
 COPY Gemfile ./
 ADD . .
 RUN bundle install
-RUN bundle exec middleman build --clean
+RUN bundle exec middleman build --clean --verbose
 # fix for apt-get update failing
 # https://superuser.com/questions/1423486/issue-with-fetching-http-deb-debian-org-debian-dists-jessie-updates-inrelease
 RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
