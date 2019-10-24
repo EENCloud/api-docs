@@ -1,34 +1,12 @@
-# Default values for api-docs.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-labels:
- app: api-docs
-nodeSelector:
- role: server
 replicaCount: 2
+
 image:
   repository: harbor.eencloud.com/vms/api-docs
   tag: "{{ .Chart.AppVersion }}"
-  pullPolicy: Always
  
-#annotations: {}
-strategy:
-  type: RollingUpdate
-  maxSurge: 1
-  maxUnavailable: 1
-ports:
-  containerPort: 80
-  protocol: TCP
-  resources: {}
-terminationMessagePath: /dev/termination-log
-terminationMessagePolicy: File
-dnsPolicy: ClusterFirst
-tolerations: []
-affinity: {}
-restartPolicy: Always
-securityContext: {}
-terminationGracePeriodSeconds: 30
 service:
   type: ClusterIP
   port: 80
-  protocol: TCP 
+
+nodeSelector:
+ role: server

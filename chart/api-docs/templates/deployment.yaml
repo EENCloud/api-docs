@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: {{ template "api-docs.name" . }}
+    app: {{ include "api-docs.name" . }}
     chart: {{ template "api-docs.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -12,36 +12,28 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.labels.app }}
+      app: {{ include "api-docs.name" . }}
       release: {{ .Release.Name }}
   strategy:
     rollingUpdate:
-      maxSurge: {{ .Values.strategy.maxSurge }}
-      maxUnavailable: {{ .Values.strategy.maxUnavailable }}
-    type: {{ .Values.strategy.type }}
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       labels:
-        app: {{ .Values.labels.app }}
+        app: {{ include "api-docs.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: {{ template "api-docs.name" . }}
+      - image: {{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}
+        imagePullPolicy: Always
+        name: {{ .Chart.Name }}
         ports:
-        - containerPort: {{ .Values.ports.containerPort }}
-          protocol: {{ .Values.ports.protocol }}
-        {{- if .Values.resources }}
-        resources: {{ .Values.resources }}
-        {{- end }}
-        terminationMessagePath: {{ .Values.terminationMessagePath }}
-        terminationMessagePolicy: {{ .Values.terminationMessagePolicy}}
-      dnsPolicy: {{ .Values.dnsPolicy }}
+        - name: http
+          containerPort: 80
+          protocol: TCP
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        role: {{ .Values.nodeSelector.role }}
-      restartPolicy: {{ .Values.restartPolicy }}
-      {{- if .Values.securityContext }}
-      securityContext: {}
+        {{- toYaml . | nindent 8 }}
       {{- end }}
-      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
