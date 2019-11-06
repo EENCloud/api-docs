@@ -581,15 +581,15 @@ encoding="UTF-8"?>
                 NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
                 <saml2:AttributeValue 
                     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    <!-- Not on production, uncomment when released. -->
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <!-- Not on production, uncomment when released! -->
                     <!-- xsi:type="xs:string">{"layouts": ["SSO accessible layout"]} -->
                 </saml2:AttributeValue>
             </saml2:Attribute>
         </saml2:AttributeStatement>
     </saml2:Assertion>
 </saml2p:Response>
-``` 
+```
 
 #### HTTP Request
 `POST https://login.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate`

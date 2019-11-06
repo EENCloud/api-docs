@@ -244,10 +244,10 @@ Parameter      | Data Type     | Description
 
 ### Account - password_management_rules
 
-Parameters of password_management_rules object. Some settings requires feature flag, if you want to enable it ask support.
+Parameters of password_management_rules object.
 On password change by default users are disallow to set previous password.
 
-Length requirements:
+**Length requirements**
 
 Parameter               | Data Type      | Description
 ---------               | ---------      | -----------
@@ -256,21 +256,23 @@ maximum_length          | int            | Maximum password length. This is a co
 allowed_minimum_length  | int            | Bottom range of password minimum length. This is a constant value and it is equal to 10.
 allowed_maximum_length  | int            | Upper range of password minimum length. This is a constant value and it is equal to 64.
 
-Character requirements (requires feature flag):
+<aside class="notice">Following settings require feature flag. Conntact support to enable.</aside>
+
+**Character requirements**
 
 Parameter               | Data Type      | Description
 ---------               | ---------      | -----------
 required_numeric_char   | int enum [0,1] | At password reset, the user will be required to create a password with at least one numeric character.
 required_special_char   | int enum [0,1] | At password reset, the user will be required to create a password with at least one special character.
 
-Reuse requirements (requires feature flag):
+**Reuse requirements**
 
 Parameter               | Data Type      | Description
 ---------               | ---------      | -----------
 reuse_number_limit      | int            | At password reset, the user will be required to create a password that was not previously used for the selected number of previous passwords of the given user.
 reuse_time_limit        | int            | At password reset, the user will be required to create a password that was not previously used for the selected number of days.
 
-Other requirements (requires feature flag):
+**Other requirements**
 
 Parameter               | Data Type      | Description
 ---------               | ---------      | -----------
