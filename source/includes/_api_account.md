@@ -289,23 +289,32 @@ Account's IdP (Identity Provider) settings.
 
 <aside class="notice">Following settings require feature flag. Conntact support to enable.</aside>
 
-**Notes on IdP settings in the context of the accounts hierarchy**  
-There are three possible mutually exclusive modes of IdP configuration:
-
-1. **SSO is disabled for all accounts (master and its subs)**  
-The standard login page is going to be loaded if an unauthenticated user requests EEN site.
-2. **IdP enabled on the master account**  
-All of the accounts (master and its subs) use the master account's IdP settings to SSO, `is_subaccount_idp_allowed` is set to `false`.  
-3. **IdP allowed for the sub-accounts**  
-Sub-accounts can have an individual set of settings for IdP to SSO, `is_subaccount_idp_allowed` is set to `true`.  
-SSO to master account is disabled.
-
 JSON Property             | Data Type | Description
 ------------------------- | --------- | -----------
 is_enabled                | boolean   | Predicate, has the account enabled Authentication with Identity Provider?
 is_subaccount_idp_allowed | boolean   | Predicate, is the Authentication with Identity Provider allowed for sub-accounts? (Editable only at the level of the master account)
 issuer                    | string    | Identity Provider identifier to match SAML response with an appropriate account.
 sso_url                   | string    | Identity Provider URL to which send an Authentication request.
+
+**Notes on IdP settings in the context of the accounts hierarchy**  
+There are three possible mutually exclusive modes of IdP configuration:
+
+1. **SSO is disabled for all accounts (master and its subs)**  
+The standard login page is going to be loaded if an unauthenticated user requests EEN site.
+
+2. **SSO enabled on the master account**  
+All of the accounts (master and its subs) use the master account's IdP settings to SSO.  
+
+3. **SSO allowed for the sub-accounts**  
+Sub-accounts can have an individual set of settings for IdP to SSO. SSO to master account is disabled.
+
+**SSO Modes expressed with a master account idp_settings values**
+
+SSO Modes                        | `is_enabled` | `is_subaccount_idp_allowed`
+---------                        | ------------ | ---------------------------
+1. disabled for all              | `false`      | `false`
+2. enabled for all               | `true`       | `false`
+3. enabled only for sub-accounts | `false`      | `true`
 
 <!--===================================================================-->
 ## Get Account
