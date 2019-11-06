@@ -229,6 +229,9 @@ map_lines                             | json                 | This is used by t
 is_two_factor_authentication_forced   | int                  | Indicates whether Two-Factor Authentication is forced for all users in the account (1) or not and users are able to choose between Simple Authentication and TFA (0)                                                                                            | **&check;** |
 contact_utc_offset                    | int                  | This field is no longer being used <small>**(DEPRECATED)**</small>                   | **&check;** |
 [password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.      | **&check;** (with feature flag)|
+[idp_settings](#account-idp_settings) | json                 | JSON object representing Identity Provider settinngs.                                | **&check;** |
+
+<aside class="notice">The 'status' flag can only be set for sub-accounts from the master account</aside>
 
 ### Account - camera_share_perms - \<camera_id\>
 
@@ -241,6 +244,8 @@ Parameter      | Data Type     | Description
 Parameter      | Data Type     | Description
 ---------      | ---------     | -----------
 \<permission\> | array[string] | Array of strings each representing a set of predefined recipient permissions <br><br>Permissions: <br>`'edit_motion_areas'` - user can edit camera motion areas <br>`'ptz_live'` - user can control pan, tilt and zoom for a PTZ camera, recall PTZ stations <br>`'edit_ptz_stations'` - user can edit PTZ stations and control PTZ cameras <br><br>Example: <br>`[`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`'edit_motion_areas'`,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`'ptz_live'`<br>`]`
+
+<aside class="notice">Camera-related flags can only be modified or set from within the account housing the cameras and only for valid cameras</aside>
 
 ### Account - password_management_rules
 
@@ -279,9 +284,28 @@ Parameter               | Data Type      | Description
 days_to_expire          | int            | The user will be required to create a new password in the given number of days.
 exclude_username        | int enum [0,1] | At password reset, the user will be required to create a password that does not contain a username of the given user.
 
-<aside class="notice">Camera-related flags can only be modified or set from within the account housing the cameras and only for valid cameras</aside>
+### Account - idp_settings
+Account's IdP (Identity Provider) settings.
 
-<aside class="notice">The 'status' flag can only be set for sub-accounts from the master account</aside>
+<aside class="notice">Following settings require feature flag. Conntact support to enable.</aside>
+
+**Notes on IdP settings in the context of the accounts hierarchy**  
+There are three possible mutually exclusive modes of IdP configuration:
+
+1. **SSO is disabled for all accounts (master and its subs)**  
+The standard login page is going to be loaded if an unauthenticated user requests EEN site.
+2. **IdP enabled on the master account**  
+All of the accounts (master and its subs) use the master account's IdP settings to SSO, `is_subaccount_idp_allowed` is set to `false`.  
+3. **IdP allowed for the sub-accounts**  
+Sub-accounts can have an individual set of settings for IdP to SSO, `is_subaccount_idp_allowed` is set to `true`.  
+SSO to master account is disabled.
+
+JSON Property             | Data Type | Description
+------------------------- | --------- | -----------
+is_enabled                | boolean   | Predicate, has the account enabled Authentication with Identity Provider?
+is_subaccount_idp_allowed | boolean   | Predicate, is the Authentication with Identity Provider allowed for sub-accounts? (Editable only at the level of the master account)
+issuer                    | string    | Identity Provider identifier to match SAML response with an appropriate account.
+sso_url                   | string    | Identity Provider URL to which send an Authentication request.
 
 <!--===================================================================-->
 ## Get Account
@@ -355,7 +379,7 @@ default_camera_passwords              | string        | Comma-delimited string o
 is_without_initial_user               | int           | Indicates whether to create the new account without an initial user (1) or not (0) (defaults to 0) <br><br>An initial user with `'is_account_superuser=1'` will be created using the arguments `'contact_first_name/contact_last_name/contact_email'` specified upon account creation
 is_initial_user_not_admin             | int           | Indicates whether the initial user is an admin (0) or not (1)
 [password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.
-
+[idp_settings](#account-idp_settings) | json          | JSON object representing Identity Provider settinngs.
 > Json Response
 
 ```json
@@ -453,6 +477,7 @@ is_system_notification_images_enabled | int                  | Indicates whether
 map_lines                             | json                 | This is used by the front end to overlay lines over a map of the cameras for the account
 contact_utc_offset                    | int                  | This field is no longer being used <small>**(DEPRECATED)**</small>
 [password_management_rules](#account-password_management_rules)| json                 | JSON object representing settings for Users passwords.
+[idp_settings](#account-idp_settings) | json                 | JSON object representing Identity Provider settinngs.
 
 <aside class="notice">Camera-related flags can only be modified or set from within the account housing the cameras and only for valid cameras</aside>
 
