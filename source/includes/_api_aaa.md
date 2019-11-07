@@ -406,14 +406,13 @@ HTTP Status Code | Description
 SSO allows a reseller to maintain account management and act as an identity provider to have their system proxy the authorization requests to Eagle Eye Network servers after users have logged into the identity providers system.
 This is done through the standard SAML V2.0 (Security Assertion Markup Language)
 
-<aside class="notice">This functionality requires feature flag, if you want to enable it ask support.</aside>
+<aside class="notice">This functionality requires a feature flag, if you want to enable it ask support.</aside>
 
-### Service provider initiated SSO flow
-
-
+### Authenticate request
+Request authentication from an Identity Provider Service. (Service provider initiated SSO)
 
 #### HTTP Request
-`GET https://login.eagleeyenetworks.com/g/aaa/sso/SAML2/SSO`
+`GET https://<branded_sub_domain>.eagleeyenetworks.com/g/aaa/sso/SAML2/SSO`
 
 Parameter          | Data Type | Description                                                                                                                    | Is required
 ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------ | -----------
@@ -422,24 +421,16 @@ is_recycle_session | boolean   | If true and the user is already logged in, redi
 RelayState         | string    | URL the Service Provider should redirect to after successful sign-on                                                           | false
 account_id         | string    | Account id, which holds Identity Provider settings                                                                             | false
 
+After the successful creation of SAML AuthnRequest, redirection to the Identity Provider is going to be made.  
+If a user is authenticated in the Identity Provider Service redirection to the Service Provider ACS (Assertion Consumer Service) is going to be made.
 
+<aside class="notice">This functionality requires a feature flag, if you want to enable it ask support.</aside>
 
+### ACS (Assertion Consumer Service)
 
-
-
-
-
-
-<aside class="notice">This functionality requires feature flag, if you want to enable it ask support.</aside>
-
-### Identity provider initiated SSO flow, ACS (Assertion Consumer Service)
-
-> Decoded SAML2 example
+> Decoded SAML response example
 
 ```xml
-<?xml 
-version="1.0" 
-encoding="UTF-8"?>
 <saml2p:Response 
     Destination="https://branded_subsomain.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate" 
     ID="id8972425978818166328589959" 
@@ -447,46 +438,7 @@ encoding="UTF-8"?>
     Version="2.0" 
     xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <saml2:Issuer 
-        Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" 
-        xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">exk1huy3reR4Fs9gL357
-    </saml2:Issuer>
-    <ds:Signature 
-        xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-        <ds:SignedInfo>
-            <ds:CanonicalizationMethod 
-                Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-            <ds:SignatureMethod 
-                Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-            <ds:Reference 
-                URI="#id8972425978818166328589959">
-                <ds:Transforms>
-                    <ds:Transform 
-                        Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-                    <ds:Transform 
-                        Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-                        <ec:InclusiveNamespaces 
-                            PrefixList="xs" 
-                            xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-                    </ds:Transform>
-                </ds:Transforms>
-                <ds:DigestMethod 
-                    Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-                <ds:DigestValue>...</ds:DigestValue>
-            </ds:Reference>
-        </ds:SignedInfo>
-        <ds:SignatureValue>...</ds:SignatureValue>
-        <ds:KeyInfo>
-            <ds:X509Data>
-                <ds:X509Certificate>...</ds:X509Certificate>
-            </ds:X509Data>
-        </ds:KeyInfo>
-    </ds:Signature>
-    <saml2p:Status 
-        xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol">
-        <saml2p:StatusCode 
-            Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
-    </saml2p:Status>
+    ...
     <saml2:Assertion 
         ID="id89724259788888402047455941" 
         IssueInstant="2019-11-05T16:53:17.411Z" 
@@ -506,17 +458,7 @@ encoding="UTF-8"?>
                     Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
                 <ds:Reference 
                     URI="#id89724259788888402047455941">
-                    <ds:Transforms>
-                        <ds:Transform 
-                            Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-                        <ds:Transform 
-                            Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-                            <ec:InclusiveNamespaces 
-                                PrefixList="xs" 
-                                xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-                        </ds:Transform>
-                    </ds:Transforms>
-                    <ds:DigestMethod 
+                    <ds:Transforms>...<ds:DigestMethod 
                         Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
                     <ds:DigestValue>...</ds:DigestValue>
                 </ds:Reference>
@@ -544,9 +486,6 @@ encoding="UTF-8"?>
             NotBefore="2019-11-05T16:48:17.411Z" 
             NotOnOrAfter="2019-11-05T16:58:17.411Z" 
             xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
-            <saml2:AudienceRestriction>
-                <saml2:Audience>https://branded_subsomain.eagleeyenetworks.com/saml/metadata</saml2:Audience>
-            </saml2:AudienceRestriction>
         </saml2:Conditions>
         <saml2:AuthnStatement 
             AuthnInstant="2019-11-05T16:53:17.411Z" 
@@ -582,42 +521,48 @@ encoding="UTF-8"?>
                 <saml2:AttributeValue 
                     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                    <!-- Not on production, uncomment when released! -->
-                    <!-- xsi:type="xs:string">{"layouts": ["SSO accessible layout"]} -->
                 </saml2:AttributeValue>
             </saml2:Attribute>
         </saml2:AttributeStatement>
     </saml2:Assertion>
 </saml2p:Response>
 ```
+(Identity provider initiated SSO)
 
 #### HTTP Request
-`POST https://login.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate`
+`POST https://<branded_sub_domain>.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate`
 
 Parameter    | Data Type | Description                                                             | Is required
 ------------ | --------- | ----------------------------------------------------------------------- | -----------
-SAMLResponse | string    | Encoded (base64) SAML2 Response message ([see details](#saml-response)) | true
+SAMLResponse | string    | Encoded (base64) SAML2 Response message ([see details](#suported-saml-elements)) | true
 RelayState   | string    | URL the Service Provider should redirect to after successful sign-on    | false
 
+HTTP Status Code | Description
+---------------- | -----------
+302 | Relaying SSO authentication
+400 | Unexpected or non-identifiable arguments are supplied
+403 | SSO is disabled for this Account
+501 | SSO not active for this Account
 
-#### SAML response
+#### Suported SAML elements
+- **NameID**: The element which holds user email.  
+- **Issuer**: Identity Provider identifier to match SAML response with an appropriate account.  
+- **Conditions**:  Additional conditions on the use of the assertion can be provided inside this element. Currently supported: `NotBefore` and `NotOnOrAfter`.
 
+#### Attribute Statement
 
+Supported Attributes Names | Data Type | Description
+-------------------------- | --------- | -----------
+firstName                  | string    | User's first name
+lastName                   | string    | USer's last name
 
-Components         | Element/Attribute | Data Type | Description
------------------- | ----------------- | --------- | -----------
-Main               | Destination       |
-Issuer             | Issuer
-Signature          | 
-Subject            | 
-Conditions         | 
-AuthnStatement     | 
-AttributeStatement | 
-
+SAML Signature               | Requirements      | Description
+---------------------------- | ------------      | -----------
+Signature Algorithm          | RSA-SHA1          | The signing algorithm used to digitally sign the SAML assertion and response
+Digest Algorithm             | SHA1              | The digest algorithm used to digitally sign the SAML assertion and response
+Authentication context class | X.509 Certificate | Authentication restriction
 
 ### Single Log Out
-
-
 
 #### HTTP Request
 `GET https://login.eagleeyenetworks.com/g/aaa/sso/SAML2/LogOut`
@@ -626,10 +571,7 @@ Parameter         | Data Type | Description                                     
 ----------------- | --------- | ---------------------------------------------------------------------------------------- | -----------
 identity_provider | string    | Name of the account's branded subdomain, which is linked with Identity Provider settings | true
 
-
-
-
-<aside class="warning">This functionality doesn't require special feature flag. It is still in use, but please use the above instead.</aside>
+<aside class="warning">Deprecated, please use the above instead.</aside>
 
 This is done through the standard SAML2 (Security Assertion Markup Language) and as such the identity provider will setup their account with a **brand_saml_publickey_ret** and **brand_saml_namedid_path**
 
@@ -650,8 +592,6 @@ curl -X POST https://login.eagleeyenetworks.com/g/sso -H "Authentication: [API_K
 ### HTTP Request
 
 `POST https://login.eagleeyenetworks.com/g/sso`
-
-### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
