@@ -54,11 +54,6 @@ set :file_watcher_ignore, [
         /(^|\/)\.?#/
     ]
 
-
-# Sprockets
-activate :sprockets
-
-
 # Autoprefixer
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']

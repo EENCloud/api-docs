@@ -14,4 +14,3 @@
                             bundle exec middleman server;
                             echo;
                             echo ==================== A B O R T ===================="
-
