@@ -401,11 +401,179 @@ HTTP Status Code | Description
 ## Single Sign On
 <!--===================================================================-->
 
-<aside class="success">This service is currently under development and not yet functional</aside>
+<aside class="warning">Available only for branded accounts.</aside>
 
-SSO allows a reseller to maintain account management and act as an identity provider to have their system proxy the authorization requests to Eagle Eye Network servers after users have logged into the identity providers system
+SSO allows a reseller to maintain account management and act as an identity provider to have their system proxy the authorization requests to Eagle Eye Network servers after users have logged into the identity providers system.
+This is done through the standard SAML V2.0 (Security Assertion Markup Language)
 
-This is done through the standard SAML (Security Assertion Markup Language) and as such the identity provider will setup their account with a **brand_saml_publickey_ret** and **brand_saml_namedid_path**
+<aside class="notice">This functionality requires a feature flag, if you want to enable it ask support.</aside>
+
+### Authenticate request
+Request authentication from an Identity Provider Service. (Service provider initiated SSO)
+
+#### HTTP Request
+`GET https://<branded_sub_domain>.eagleeyenetworks.com/g/aaa/sso/SAML2/SSO`
+
+Parameter          | Data Type | Description                                                                                                                    | Is required
+------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------ | -----------
+identity_provider  | string    | Name of the account's branded subdomain, which is linked with Identity Provider settings                                       | true
+is_recycle_session | boolean   | If true and the user is already logged in, redirect the user to its account, without authenticating with the Identity Provider | false
+RelayState         | string    | URL the Service Provider should redirect to after successful sign-on                                                           | false
+account_id         | string    | Account id, which holds Identity Provider settings                                                                             | false
+
+After the successful creation of SAML AuthnRequest, redirection to the Identity Provider is going to be made.  
+If a user is authenticated in the Identity Provider Service, redirection to the Service Provider ACS (Assertion Consumer Service) is going to be made.
+
+<aside class="notice">This functionality requires a feature flag, if you want to enable it ask support.</aside>
+
+### ACS (Assertion Consumer Service)
+
+> Decoded SAML response example
+
+```xml
+<saml2p:Response 
+    Destination="https://branded_subsomain.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate" 
+    ID="id8972425978818166328589959" 
+    IssueInstant="2019-11-05T16:53:17.411Z" 
+    Version="2.0" 
+    xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    ...
+    <saml2:Assertion 
+        ID="id89724259788888402047455941" 
+        IssueInstant="2019-11-05T16:53:17.411Z" 
+        Version="2.0" 
+        xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <saml2:Issuer 
+            Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" 
+            xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">exk1huy3reR4Fs9gL357
+        </saml2:Issuer>
+        <ds:Signature 
+            xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+            <ds:SignedInfo>
+                <ds:CanonicalizationMethod 
+                    Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                <ds:SignatureMethod 
+                    Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                <ds:Reference 
+                    URI="#id89724259788888402047455941">
+                    <ds:Transforms>...<ds:DigestMethod 
+                        Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    <ds:DigestValue>...</ds:DigestValue>
+                </ds:Reference>
+            </ds:SignedInfo>
+            <ds:SignatureValue>...</ds:SignatureValue>
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>...</ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </ds:Signature>
+        <saml2:Subject 
+            xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+            <saml2:NameID 
+                Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">orion@belt.com
+            </saml2:NameID>
+            <saml2:SubjectConfirmation 
+                Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                <saml2:SubjectConfirmationData 
+                    NotOnOrAfter="2019-11-05T16:58:17.411Z" 
+                    Recipient="https://branded_subsomain.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate"/>
+            </saml2:SubjectConfirmation>
+        </saml2:Subject>
+        <saml2:Conditions 
+            NotBefore="2019-11-05T16:48:17.411Z" 
+            NotOnOrAfter="2019-11-05T16:58:17.411Z" 
+            xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+        </saml2:Conditions>
+        <saml2:AuthnStatement 
+            AuthnInstant="2019-11-05T16:53:17.411Z" 
+            SessionIndex="id1572972797411.929762837" 
+            xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+            <saml2:AuthnContext>
+                <saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:X509</saml2:AuthnContextClassRef>
+            </saml2:AuthnContext>
+        </saml2:AuthnStatement>
+        <saml2:AttributeStatement 
+            xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+            <saml2:Attribute 
+                Name="firstName" 
+                NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
+                <saml2:AttributeValue 
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xsi:type="xs:string">Orion
+                </saml2:AttributeValue>
+            </saml2:Attribute>
+            <saml2:Attribute 
+                Name="lastName" 
+                NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
+                <saml2:AttributeValue 
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xsi:type="xs:string">Belt
+                </saml2:AttributeValue>
+            </saml2:Attribute>
+            <saml2:Attribute 
+                Name="access" 
+                NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
+                <saml2:AttributeValue 
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                </saml2:AttributeValue>
+            </saml2:Attribute>
+        </saml2:AttributeStatement>
+    </saml2:Assertion>
+</saml2p:Response>
+```
+(Identity provider initiated SSO)
+
+#### HTTP Request
+`POST https://<branded_sub_domain>.eagleeyenetworks.com/g/aaa/sso/SAML2/Authenticate`
+
+Parameter    | Data Type | Description                                                             | Is required
+------------ | --------- | ----------------------------------------------------------------------- | -----------
+SAMLResponse | string    | Encoded (base64) SAML2 Response message ([see details](#suported-saml-elements)) | true
+RelayState   | string    | URL the Service Provider should redirect to after successful sign-on    | false
+
+HTTP Status Code | Description
+---------------- | -----------
+302 | Relaying SSO authentication
+400 | Unexpected or non-identifiable arguments are supplied
+403 | SSO is disabled for this Account
+501 | SSO not active for this Account
+
+#### Suported SAML elements
+- **NameID**: The element which holds user email.  
+- **Issuer**: Identity Provider identifier to match SAML response with an appropriate account.  
+- **Conditions**:  Additional conditions on the use of the assertion can be provided inside this element. Currently supported: `NotBefore` and `NotOnOrAfter`.
+
+#### Attribute Statement
+
+Supported Attributes Names | Data Type | Description
+-------------------------- | --------- | -----------
+firstName                  | string    | User's first name
+lastName                   | string    | USer's last name
+
+SAML Signature               | Requirements      | Description
+---------------------------- | ------------      | -----------
+Signature Algorithm          | RSA-SHA1          | The signing algorithm used to digitally sign the SAML assertion and response
+Digest Algorithm             | SHA1              | The digest algorithm used to digitally sign the SAML assertion and response
+Authentication context class | X.509 Certificate | Authentication restriction
+
+### Single Log Out
+
+#### HTTP Request
+`GET https://login.eagleeyenetworks.com/g/aaa/sso/SAML2/LogOut`
+
+Parameter         | Data Type | Description                                                                              | Is required
+----------------- | --------- | ---------------------------------------------------------------------------------------- | -----------
+identity_provider | string    | Name of the account's branded subdomain, which is linked with Identity Provider settings | true
+
+<aside class="warning">Deprecated, please use the above instead.</aside>
+
+This is done through the standard SAML2 (Security Assertion Markup Language) and as such the identity provider will setup their account with a **brand_saml_publickey_ret** and **brand_saml_namedid_path**
 
   - The **brand_saml_publickey_cert** is a x509 certificate that contains a public key with which Eagle Eye Networks can validate that an SSO message is valid and verify that it has not been altered.  The format of this certificate is PEM (ascii encoded base 64 surrounded by lines containing **'-----BEGIN CERTIFICATE——‘** and **'——END CERTIFICATE——'**
 
@@ -424,8 +592,6 @@ curl -X POST https://login.eagleeyenetworks.com/g/sso -H "Authentication: [API_K
 ### HTTP Request
 
 `POST https://login.eagleeyenetworks.com/g/sso`
-
-### HTTP Status Codes
 
 HTTP Status Code | Description
 ---------------- | -----------
