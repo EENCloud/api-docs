@@ -417,12 +417,12 @@ Request authentication from an Identity Provider Service. (Service provider init
 Parameter          | Data Type | Description                                                                                                                    | Is required
 ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------ | -----------
 identity_provider  | string    | Name of the account's branded subdomain, which is linked with Identity Provider settings                                       | true
-is_recycle_session | boolean   | If true and the user is already logged in, redirect the user to its account. Without authenticating with the Identity Provider | false
+is_recycle_session | boolean   | If true and the user is already logged in, redirect the user to its account, without authenticating with the Identity Provider | false
 RelayState         | string    | URL the Service Provider should redirect to after successful sign-on                                                           | false
 account_id         | string    | Account id, which holds Identity Provider settings                                                                             | false
 
 After the successful creation of SAML AuthnRequest, redirection to the Identity Provider is going to be made.  
-If a user is authenticated in the Identity Provider Service redirection to the Service Provider ACS (Assertion Consumer Service) is going to be made.
+If a user is authenticated in the Identity Provider Service, redirection to the Service Provider ACS (Assertion Consumer Service) is going to be made.
 
 <aside class="notice">This functionality requires a feature flag, if you want to enable it ask support.</aside>
 
