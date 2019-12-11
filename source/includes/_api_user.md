@@ -676,7 +676,7 @@ Array Index | Attribute          | Data Type     | Description
 3           | email              | string        | Email address of the user
 4           | permissions        | array[string] | Array of strings representing user permissions
 5           | last_login         | string        | EEN timestamp of the last login by the user. Format: YYYYMMDDHHMMSS.NNN
-6           | weekly_newsletter  | json          | Json object of weekly newsletter defined in the following way: <br><br>1 - subscribed to the weekly newsletter<br>0 - not subscribed to the weekly newsletter
+6           | weekly_newsletter  | string        | Json-formatted string representing the weekly newsletter subscription defined in the following way: <br><br>1 - subscribed to the weekly newsletter<br>0 - not subscribed to the weekly newsletter
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 

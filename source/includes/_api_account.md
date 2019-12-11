@@ -585,7 +585,9 @@ curl -X GET https://login.eagleeyenetworks.com/g/account/list -H "Authentication
         "20180228234555.722",
         0,
         "Greater ID",
-        0
+        0,
+        {"is_sso_enabled":0, "timezone":"US/Central", "feature_flags":[]},
+        "A@GFIMLNQSUTYZcedgfhmqpsutvz"
     ],
     [...],
     [...],
@@ -616,8 +618,24 @@ Array Index | Attribute              | Data Type | Description
 16          | average_retention_days | int       | The average number of retention days for the account
 17          | customer_id            | string    | The customer ID assigned to this account
 18          | unknown_camera_count   | int       | The camera count where the status was 'invalid' (i.e. *unknown*) from all <a class="definition" onclick="openModal('DOT-EE-Archiver')">Archivers</a> <br><br>When requesting details about an <a class="definition" onclick="openModal('DOT-ESN')">ESN</a> from an Archiver they sometimes return 'invalid'. The middleware handles asking each of the Archivers for an ESN and sends back the first result that is valid
+19          | [json](#account-json)  | json      | Miscellaneous settings of the account as a Json structure
+20          | permissions            | string    | String of characters each defining a permission level of the current user
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
+
+### Account - json
+
+Parameter             | Data Type | Description
+---------             | --------- | -----------
+[json](#account-json) | string    | Miscellaneous settings of the account as a Json-formatted string
+
+### Account - json
+
+Parameter               | Data Type         | Description
+---------               | ---------         | -----------
+is_sso_enabled          | boolean           | Indicates whether single sign-on is enabled (1) or not (0)
+timezone                | string            | Timezone of the account
+feature_flags           | array[string]     | Array of strings representing the additional activated features	
 
 ### HTTP Status Codes
 
