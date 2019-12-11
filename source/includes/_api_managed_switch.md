@@ -293,6 +293,7 @@ is_detailed | boolean   | Whether to include detailed data in the response (true
 ```json
 [
     {
+    	"name": null,
         "bridges": [
             "10107f40"
         ],
@@ -366,7 +367,7 @@ is_detailed | boolean   | Whether to include detailed data in the response (true
 
 ### HTTP Response
 
-The response body will be in EEN JSON-RPC format. The payload body will return a list of switch objects containing the `'guid'`, `'state'`, `'bridges'` and `'ports'` keys. If `'is_detailed=true'`, the response will contain all of the below information:
+The response body will be in EEN JSON-RPC format. The payload body will return a list of switch objects containing the `'guid'`, `'state'`, `'bridges'`, `'name'`, `'available_bridges'` and `'ports'` keys. If `'is_detailed=true'`, the response will contain all of the below information:
 
 Parameter         | Data Type     | Description                                                                                                              | Basic Model |
 ---------         | ---------     | -----------                                                                                                              |:-----------:|
@@ -374,12 +375,12 @@ guid              | string        | Globally Unique Identifier of the switch    
 state             | string        | State of the managed switch: <br>`'REDY'` - idle and ready to control <br>`'PROB'` - probing for the data behind ports like mac/voltage/enabled etc. <br>`'CTRL'` - busy actively changing settings                                                                                      | **&check;** |
 bridges           | array[string] | List of bridge <a class="definition" onclick="openModal('DOT-ESN')">ESNs</a> this managed switch was found on            | **&check;** |
 ports             | integer       | Number of controllable PoE ports available on the switch                                                                 | **&check;** |
-name              | string        | Name of the switch                                                                                                       | **&cross;** |
+name              | string        | Name of the switch                                                                                                       | **&check;** |
+available_bridges | array[string] | List of available bridge <a class="definition" onclick="openModal('DOT-ESN')">ESNs</a>, i.e. bridges that this switch can be attached to                                                                                                                                                           | **&check;** |
 ip                | string        | IP address of managed switch                                                                                             | **&cross;** |
 version           | string        | Version information                                                                                                      | **&cross;** |
 comment           | string        | Comment stored on switch                                                                                                 | **&cross;** |
 [port_details](#managed-switch-port_details) | array[obj]    | List of *port details* objects                                                                | **&cross;** |
-available_bridges | array[string] | List of available bridge <a class="definition" onclick="openModal('DOT-ESN')">ESNs</a>, i.e. bridges that this switch can be attached to                                                                                                                                                           | **&cross;** |
 
 ### HTTP Status Codes
 
