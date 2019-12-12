@@ -639,7 +639,10 @@ email     | string    | Email address of the user. The returned array will conta
             "user_admin",
             "active"
         ],
-        "20180929154619.000"
+        "20180929154619.000",
+        { 
+            "weekly_newsletter": 0
+        }
     ],
     [
         "ca00783b",
@@ -652,7 +655,10 @@ email     | string    | Email address of the user. The returned array will conta
             "live_video",
             "active"
         ],
-        "20180716205645.000"
+        "20180716205645.000",
+        { 
+            "weekly_newsletter": 1
+        }
     ],
     [...],
     [...],
@@ -662,14 +668,15 @@ email     | string    | Email address of the user. The returned array will conta
 
 ### HTTP Response (Array Attributes)
 
-Array Index | Attribute   | Data Type     | Description
----------   | ----------- | ---------     | -----------
-0           | id          | string        | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a>
-1           | first_name  | string        | First name of the user
-2           | last_name   | string        | Last name of the user
-3           | email       | string        | Email address of the user
-4           | permissions | array[string] | Array of strings representing user permissions
-5           | last_login  | string        | EEN timestamp of the last login by the user. Format: YYYYMMDDHHMMSS.NNN
+Array Index | Attribute          | Data Type     | Description
+---------   | ------------------ | ---------     | -----------
+0           | id                 | string        | <a class="definition" onclick="openModal('DOT-User-ID')">User ID</a>
+1           | first_name         | string        | First name of the user
+2           | last_name          | string        | Last name of the user
+3           | email              | string        | Email address of the user
+4           | permissions        | array[string] | Array of strings representing user permissions
+5           | last_login         | string        | EEN timestamp of the last login by the user. Format: YYYYMMDDHHMMSS.NNN
+6           | weekly_newsletter  | string        | Json-formatted string representing the weekly newsletter subscription defined in the following way: <br><br>1 - subscribed to the weekly newsletter<br>0 - not subscribed to the weekly newsletter
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
