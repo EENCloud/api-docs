@@ -64,12 +64,12 @@ HTTP Status Code | Description
 ## Recording On
 <!--===================================================================-->
 
-Used to turn on recording for all cameras, cameras in a specific layout, or a single camera. The result of this to the affected cameras will be that all `'operating_hours'` schedules are removed, `'camera_on'` is set to 1 (on) and `'video_capture_mode'` is set to `'always'`. Has no effect on body worn cameras.
+Used to turn on recording for cameras in a specific layout. The result of this to the affected cameras will be that all `'operating_hours'` schedules are removed, `'camera_on'` is set to 1 (on) and `'video_capture_mode'` is set to `'always'`. The layout object will have it's recording_key set to the value specified in the request. Has no effect on unmanaged cameras (bodycam, mobile cam, analog, etc.).
 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/action/recordnow -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/action/recordnow -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"recording_key":"[RECORDING_KEY]", "layout_id":"[LAYOUT_ID]"}'
 ```
 
 ### HTTP Request
@@ -78,8 +78,7 @@ curl -X POST https://login.eagleeyenetworks.com/g/action/recordnow -H "Authentic
 
 Parameter     | Data Type | Description
 ---------     | --------- | -----------
-device_id     | string    | ID of the camera to record. If this parameter and the `'layout_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
-layout_id     | string    | ID of the layout for which cameras will be set to record. All cameras in the layout will be affected. If this parameter and the `'device_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
+layout_id     | string    | ID of the layout for which cameras will be set to record. All cameras in the layout will be affected.
 recording_key | string    | A key used to tag this recording. Can be used to retrieve this recording info later using the GET `'recording'` service
 
 ### HTTP Status Codes
@@ -96,12 +95,12 @@ HTTP Status Code | Description
 ## Recording Off
 <!--===================================================================-->
 
-Used to turn off recording for all cameras, cameras in a specific layout, or a single camera. The result of this to the affected cameras will be that all `'operating_hours'` schedules are removed, `'camera_on'` is set to 0 (off) and `'video_capture_mode'` is set back to `'event'` (default)
+Used to turn off recording for cameras in a specific layout. The result of this to the affected cameras will be that all `'operating_hours'` schedules are removed, `'camera_on'` is set to 0 (off) and `'video_capture_mode'` is set back to `'event'` (default). The layout will have it's recording_key nulled out.
 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/action/recordoff -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://login.eagleeyenetworks.com/g/action/recordoff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"layout_id":"[LAYOUT_ID]"}'
 ```
 
 ### HTTP Request
@@ -110,8 +109,7 @@ curl -X POST https://login.eagleeyenetworks.com/g/action/recordoff -H "Authentic
 
 Parameter | Data Type | Description
 --------- | --------- | -----------
-device_id | string    | ID of the camera to turn off recording for. If this parameter and the `'layout_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
-layout_id | string    | ID of the layout for which cameras will have recording turned off. All cameras in the layout will be affected. If this parameter and the `'device_id'` parameter are omitted, all cameras with write access available to the requesting user will be used
+layout_id | string    | ID of the layout for which cameras will have recording turned off. All cameras in the layout will be affected.
 
 ### HTTP Status Codes
 
