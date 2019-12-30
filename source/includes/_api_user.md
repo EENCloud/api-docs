@@ -402,10 +402,10 @@ id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')"
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400 | Unexpected or non-identifiable arguments are supplied
-401 | Unauthorized due to invalid session cookie
-403 | Forbidden due to the user missing the necessary privileges
-404 | No user matching the unique identifier was found
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
+404	| No user matching the unique identifier was found
 
 
 <!--===================================================================-->
@@ -468,10 +468,10 @@ id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')"
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400 | Unexpected or non-identifiable arguments are supplied
-401 | Unauthorized due to invalid session cookie
-403 | Forbidden due to the user missing the necessary privileges
-409 | The email address is currently already in use
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
+409	| The email address is currently already in use
 
 
 <!--===================================================================-->
@@ -563,10 +563,10 @@ id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')"
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400 | Unexpected or non-identifiable arguments are supplied
-401 | Unauthorized due to invalid session cookie
-403 | Forbidden due to the user missing the necessary privileges
-404 | No user matching the unique identifier was found
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
+404	| No user matching the unique identifier was found
 
 
 <!--===================================================================-->
@@ -594,10 +594,10 @@ Parameter | Data Type | Description | Is Required
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400 | Unexpected or non-identifiable arguments are supplied
-401 | Unauthorized due to invalid session cookie
-403 | Forbidden due to the user missing the necessary privileges
-404 | No user matching the unique identifier was found
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
+404	| No user matching the unique identifier was found
 
 
 <!--===================================================================-->
@@ -685,5 +685,6 @@ Array Index | Attribute          | Data Type     | Description
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-401 | Unauthorized due to invalid session cookie
-403 | Forbidden due to the user missing the necessary privileges
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
+
