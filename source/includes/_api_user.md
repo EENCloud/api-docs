@@ -402,10 +402,10 @@ id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')"
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400	| Unexpected or non-identifiable arguments are supplied
-401	| Unauthorized due to invalid session cookie
-403	| Forbidden due to the user missing the necessary privileges
-404	| No user matching the unique identifier was found
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | No user matching the unique identifier was found
 
 
 <!--===================================================================-->
@@ -468,10 +468,10 @@ id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')"
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400	| Unexpected or non-identifiable arguments are supplied
-401	| Unauthorized due to invalid session cookie
-403	| Forbidden due to the user missing the necessary privileges
-409	| The email address is currently already in use
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+409 | The email address is currently already in use
 
 
 <!--===================================================================-->
@@ -536,11 +536,13 @@ alternate_email             | string        | Alternate email address
 sms_phone                   | string        | Phone number to be used for Two Factor authentication code delivery when SMS method is selected
 is_sms_include_picture      | int           | DEPRECATED
 [json](#user-json)          | string        | Miscellaneous settings of the user as a Json-formatted string
-camera_access               | array&nbsp;[<br>&nbsp;&nbsp;array&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;string</br>&nbsp;&nbsp;]</br>] | This is for backwards compatibility <small>**(DEPRECATED)**</small>
+camera_access               | array&nbsp;[<br>&nbsp;&nbsp;array&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;string</br>&nbsp;&nbsp;]</br>] | Array of arrays, defined on a per device basis (Only superusers or account superusers can edit this field). The first field is the command `'M'` - modify or `'D'` - delete (clears all permissions, no arguments follow the camera ID in the request), the second field is the device unique identifier and the third field is a string of 1 or more characters indicating permissions of the user <br><br>Example: <br>[`'M'`,`'1005f2ed'`,`'RWS'`] = user can view, change and delete this device <br>[`'D'`,`'1005f2ed'`] = clears user permissions for the device <br><br>Permissions include: <br>`'R'` - user has access to view images and video for this camera <br>`'W'` - user can modify and delete this camera <br>`'S'` - user can share this camera in a group share
 is_notify_enable            | int           | Indicates whether notifications are enabled for the user (1) or not (0)
 notify_period               | array[string] | Time periods during which the user will receive alert notifications. Each element of the array contains three fields separated by dashes. The first field is the day of the week where Monday is 0. The second element is the start time. The third element is the end time. If empty, user will not receive any alert notifications <br><br>All times are expressed in local time and use a 24 hour clock formatted as HHMM
 notify_rule                 | array[string] | Alert notification rules. Each rule contains three fields separated by dashes in the form of: `'<alert_label>-<notification_method>-<delay>'` <br><br>`'<alert_label>'` - name defined by the user <br>`'<notification_method>'` - either `'email'`, or `'gui'` <br>`'<delay>'` - amount of time in minutes between notifications
 access_period               | array[string] | Contains the time periods during which the user has access to the account. Each element of the array contains three field separated by dashes. The first field is the day of the week where Monday is 0. The second element is the start time. The third element is the end time. If empty, user has no time restrictions for access to the account. All times are expressed in local time and use a 24 hour clock formatted as HHMM
+
+<aside class="warning">If previously set, 'camera_access' can only be modified via command 'M' after clearing the permissions using command 'D'</aside>
 
 > Json Response
 
@@ -561,10 +563,10 @@ id        | string    | <a class="definition" onclick="openModal('DOT-User-ID')"
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400	| Unexpected or non-identifiable arguments are supplied
-401	| Unauthorized due to invalid session cookie
-403	| Forbidden due to the user missing the necessary privileges
-404	| No user matching the unique identifier was found
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | No user matching the unique identifier was found
 
 
 <!--===================================================================-->
@@ -592,10 +594,10 @@ Parameter | Data Type | Description | Is Required
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-400	| Unexpected or non-identifiable arguments are supplied
-401	| Unauthorized due to invalid session cookie
-403	| Forbidden due to the user missing the necessary privileges
-404	| No user matching the unique identifier was found
+400 | Unexpected or non-identifiable arguments are supplied
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
+404 | No user matching the unique identifier was found
 
 
 <!--===================================================================-->
@@ -683,6 +685,5 @@ Array Index | Attribute          | Data Type     | Description
 HTTP Status Code | Description
 ---------------- | -----------
 200 | Request succeeded
-401	| Unauthorized due to invalid session cookie
-403	| Forbidden due to the user missing the necessary privileges
-
+401 | Unauthorized due to invalid session cookie
+403 | Forbidden due to the user missing the necessary privileges
