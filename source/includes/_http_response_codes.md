@@ -32,6 +32,7 @@ HTTP Status Code | Description
 410	| Communication cannot be made to attach the camera to the bridge
 412	| User is disabled
 415	| Device associated with the given GUID is unsupported
+423 | The resource that is being accessed is locked
 429 | Too many requests.  Client has exceeded the maximum requests per second, please slow down.
 460	| Account is inactive
 461	| Account is pending
