@@ -659,6 +659,7 @@ HTTP Status Code | Description
 409	| Connect ID or GUID is currently already in use by an account
 410	| Communication cannot be made to attach the camera to the bridge
 415	| Device associated with the given GUID is unsupported
+423 | The resource that is being accessed is locked
 
 
 <!--===================================================================-->
