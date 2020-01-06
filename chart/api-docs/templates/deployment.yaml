@@ -12,7 +12,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "apidocs.name" . }}
+      app: {{ include "api-docs.name" . }}
       release: {{ .Release.Name }}
   strategy:
     rollingUpdate:
