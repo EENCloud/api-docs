@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: harbor.eencloud.com/vms/apidocs
+  repository: harbor.eencloud.com/vms/api-docs
   tag: "{{ .Chart.AppVersion }}"
   imagePullPolicy: Always
  
