@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: {{ include "apidocs.name" . }}
-    chart: {{ template "apidocs.chart" . }}
+    chart: {{ include "apidocs.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
   name: {{ include "apidocs.fullname" . }}

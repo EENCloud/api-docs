@@ -1,0 +1,32 @@
+apiVersion: skaffold/v1
+build:
+  artifacts:
+  - context: .
+    image: apidocs
+  #  sync:
+  #    manual:
+  #    - dest: /usr/src/app
+  #      src: webapp/**/*.py
+  #      strip: webapp/
+  #- context: /home/mrauer/een/een_web/
+  #  image: een_web
+  #  sync:
+  #    infer:
+  #    - '**/*'
+deploy:
+  helm:
+    releases:
+    - chartPath: ./chart/api-docs
+      imageStrategy:
+        helm: {}
+      name: apidocs
+      setValues:
+        replicaCount: 1
+        imagePullPolicy: IfNotPresent
+        ingress.enabled: "true"
+        nodeSelector: ""
+      values:
+        image: apidocs
+      valuesFiles:
+      - ./chart/api-docs/values.yaml
+kind: Config
