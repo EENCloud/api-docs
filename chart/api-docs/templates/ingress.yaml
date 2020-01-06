@@ -1,13 +1,13 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "apidocs.fullname" . -}}
+{{- $fullName := include "api-docs.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "apidocs.name" . }}
-    helm.sh/chart: {{ include "apidocs.chart" . }}
+    app.kubernetes.io/name: {{ include "api-docs.name" . }}
+    helm.sh/chart: {{ include "api-docs.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}

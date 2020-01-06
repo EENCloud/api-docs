@@ -1,7 +1,7 @@
 apiVersion: v1
 appVersion: latest
 description: A Helm chart for api-docs
-name: apidocs
+name: api-docs
 version: 0.1.0
 sources:
   - https://github.com/EENCloud/api-docs

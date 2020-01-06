@@ -2,11 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: {{ include "apidocs.name" . }}
-    chart: {{ include "apidocs.chart" . }}
+    app: {{ include "api-docs.name" . }}
+    chart: {{ include "api-docs.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-  name: {{ include "apidocs.fullname" . }}
+  name: {{ include "api-docs.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -22,7 +22,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ include "apidocs.name" . }}
+        app: {{ include "api-docs.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
