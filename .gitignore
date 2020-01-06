@@ -33,3 +33,6 @@ build*/
 
 # Gemfile.lock
 Gemfile.lock
+
+# Skaffold
+skaffold.yaml

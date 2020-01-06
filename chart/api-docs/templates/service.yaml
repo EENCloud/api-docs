@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "api-docs.fullname" . }}
+  name: {{ include "api-docs.fullname" . }}
   labels:
     app: {{ include "api-docs.name" . }}
 spec:

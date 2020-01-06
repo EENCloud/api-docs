@@ -3,6 +3,7 @@ replicaCount: 2
 image:
   repository: harbor.eencloud.com/vms/api-docs
   tag: "{{ .Chart.AppVersion }}"
+  imagePullPolicy: Always
  
 service:
   type: ClusterIP
@@ -10,3 +11,15 @@ service:
 
 nodeSelector:
  role: server
+
+ingress:
+  enabled: false
+  path: /
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - apidocs.dev.eagleeyenetworks.com
+  tls:
+    secretName:
+    hosts:
+      - apidocs.dev.eagleeyenetworks.com
