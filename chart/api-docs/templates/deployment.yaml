@@ -2,17 +2,17 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: {{ include "api-docs.name" . }}
-    chart: {{ template "api-docs.chart" . }}
+    app: {{ include "apidocs.name" . }}
+    chart: {{ template "apidocs.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-  name: {{ template "api-docs.fullname" . }}
+  name: {{ include "apidocs.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "api-docs.name" . }}
+      app: {{ include "apidocs.name" . }}
       release: {{ .Release.Name }}
   strategy:
     rollingUpdate:
@@ -22,12 +22,12 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ include "api-docs.name" . }}
+        app: {{ include "apidocs.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
       - image: {{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}
-        imagePullPolicy: Always
+        imagePullPolicy:  {{ .Values.image.pullPolicy }}
         name: {{ .Chart.Name }}
         ports:
         - name: http

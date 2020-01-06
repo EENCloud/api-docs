@@ -1,10 +1,10 @@
 apiVersion: v1
 appVersion: latest
-description: A Helm chart for api-docs
-name: api-docs
+description: A Helm chart for apidocs
+name: apidocs
 version: 0.1.0
 sources:
-  - https://github.com/EENCloud/api-docs
+  - https://github.com/EENCloud/apidocs
 maintainers:
   - name: Brandon Reynolds
     email: breynolds@eagleeyenetworks.com

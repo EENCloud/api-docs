@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "api-docs.fullname" . }}
+  name: {{ include "apidocs.fullname" . }}
   labels:
-    app: {{ include "api-docs.name" . }}
+    app: {{ include "apidocs.name" . }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ include "api-docs.name" . }}
+    app: {{ include "apidocs.name" . }}
