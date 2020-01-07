@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -29,6 +29,9 @@ spec:
       - image: {{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}
         imagePullPolicy:  {{ .Values.image.pullPolicy }}
         name: {{ .Chart.Name }}
+        env:
+          - name: EEN_ENVIRONMENT
+            value: {{ .Values.environment }}
         ports:
         - name: http
           containerPort: 80

@@ -12,6 +12,8 @@ service:
 nodeSelector:
  role: server
 
+environment: prod
+
 ingress:
   enabled: false
   path: /
