@@ -20,5 +20,4 @@ ADD nginx.conf /etc/nginx/nginx.conf
 # log files to standard out and error
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 
-RUN chmod +x ./run.sh
 CMD ["/bin/sh", "-c", "./run.sh"]
