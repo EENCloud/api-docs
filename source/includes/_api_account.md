@@ -101,14 +101,6 @@ The <a class="definition" onclick="openModal('DOT-Account')">Account</a> service
     "contact_street": [],
     "is_system_notification_images_enabled": 1,
     "is_custom_brand_allowed": 0,
-    "holiday": [
-        "20180101",
-        "20180527",
-        "20180704",
-        "20180902",
-        "20181128",
-        "20181225"
-    ],
     "is_rtsp_cameras_enabled": 0,
     "brand_saml_nameid_path": null,
     "is_contract_recording": 0,
@@ -183,7 +175,7 @@ utc_offset                            | int                  | Signed integer of
 access_restriction                    | array[string]        | Array of strings containing access restrictions <br><br>Possible values: <br>`'enable_mobile'` - has access to mobile clients <br>`'enable_ip_restrictions'` - if present and if `'allowable_ip_address_range'` has been specified, limits logins to the address ranges specified                                                                                                                                           | **&cross;** |
 allowable_ip_address_range            | array[string]        | Each entry in the array specifies one address range. Entries use the `'/'` format. For example, to limit access to `'192.168.123.0-192.168.123.255'`, the entry would be `'192.168.123.0/24'`. If no entries are present, `'0.0.0.0/0'` is implied           | **&cross;** |
 session_duration                      | int                  | Session duration in minutes. Session duration of 0 means *stay logged in forever*    | **&check;** |
-holiday                               | array[string]        | Array of strings containing dates during which holidays are observed. Format for dates is YYYYMMDD                                                                                                                                            | **&check;** |
+holiday                               | array[string]        | This field is no longer being used <small>**(DEPRECATED)**</small>                   | **&check;** |
 work_days                             | string               | String of length 7. Each position in the string corresponds to a day of the week. Monday is position 0, Tuesday is position 1, etc. Each character in the string can have a value of 1 or 0. 1 means that this day is a work day                            | **&check;** |
 work_hours                            | array[string]        | Two entries. Each entry containing a time expressed in local time. The first entry in the array is the work day start time. The second entry in the array is the stop time. Times are represented using a 24 hour clock and are formatted as HHMM <br><br>Example: 8AM would be 0800 and 5PM would be 1700                                                                                                                               | **&check;** |
 alert_mode                            | array[string]        | Array of strings containing possible alert modes as defined for this account. Accepts an array of any number of strings of varying length. This controls what values are able to be chosen for the `'active_alert_mode'` field                                   | **&check;** |
@@ -379,7 +371,7 @@ status                                | array[string] | Account status. This can
 access_restriction                    | array[string] | Array of strings containing access restrictions <br><br>Possible values: <br>`'enable_mobile'` - has access to mobile clients <br>`'enable_ip_restrictions'` - if present and if `'allowable_ip_address_range'` has been specified, limits logins to the address ranges specified
 allowable_ip_address_range            | array[string] | Each entry in the array specifies one address range. Entries use the `'/'` format. For example, to limit access to `'192.168.123.0-192.168.123.255'`, the entry would be `'192.168.123.0/24'`. If no entries are present, `'0.0.0.0/0'` is implied
 session_duration                      | int           | Session duration in minutes. Session duration of 0 means *stay logged in forever*
-holiday                               | array[string] | Array of strings containing dates during which holidays are observed. Format for dates is YYYYMMDD
+holiday                               | array[string] | This field is no longer being used <small>**(DEPRECATED)**</small>
 work_days                             | array[string] | String of length 7. Each position in the string corresponds to a day of the week. Monday is position 0, Tuesday is position 1, etc. Each character in the string can have a value of 1 or 0. 1 means that this day is a work day
 work_hours                            | array[string] | Two entries. Each entry containing a time expressed in local time. The first entry in the array is the work day start time. The second entry in the array is the stop time. Times are represented using a 24 hour clock and are formatted as HHMM <br><br>Example: 8AM would be 0800 and 5PM would be 1700
 alert_mode                            | array[string] | Array of strings containing possible alert modes as defined for this account. Accepts an array of any number of strings of varying length. This controls what values are able to be chosen for the `'active_alert_mode field'`
@@ -449,7 +441,7 @@ status                                | array[string]        | Account status. T
 access_restriction                    | array[string]        | Array of strings containing access restrictions <br><br>Possible values: <br>`'enable_mobile'` - has access to mobile clients <br>`'enable_ip_restrictions'` - if present and if `'allowable_ip_address_range'` has been specified, limits logins to the address ranges specified
 allowable_ip_address_range            | array[string]        | Each entry in the array specifies one address range. Entries use the `'/'` format. For example, to limit access to `'192.168.123.0-192.168.123.255'`, the entry would be `'192.168.123.0/24'`. If no entries are present, `'0.0.0.0/0'` is implied
 session_duration                      | int                  | Session duration in minutes. Session duration of 0 means *stay logged in forever*
-holiday                               | array[string]        | Array of strings containing dates during which holidays are observed. Format for dates is YYYYMMDD
+holiday                               | array[string]        | This field is no longer being used <small>**(DEPRECATED)**</small>
 work_days                             | array[string]        | String of length 7. Each position in the string corresponds to a day of the week. Monday is position 0, Tuesday is position 1, etc. Each character in the string can have a value of 1 or 0. 1 means that this day is a work day
 work_hours                            | array[string]        | Two entries. Each entry containing a time expressed in local time. The first entry in the array is the work day start time. The second entry in the array is the stop time. Times are represented using a 24 hour clock and are formatted as HHMM <br><br>Example: 8AM would be 0800 and 5PM would be 1700
 alert_mode                            | array[string]        | Array of strings containing possible alert modes as defined for this account. Accepts an array of any number of strings of varying length. This controls what values are able to be chosen for the `'active_alert_mode field'`
