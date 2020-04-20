@@ -114,6 +114,7 @@ HTTP Status Code | Description
 461	| Account is pending
 412\*	| User is disabled
 462	| User is pending (This will be thrown before 401 if the username is valid and account is active)
+465 | IP Address Invalid
 
 
 \*Code 412 is also returned if TFA is used and the user's account has been locked due to more than 3 failed attempts to authorize with a TFA code
