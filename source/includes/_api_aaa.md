@@ -126,6 +126,7 @@ HTTP Status Code | Description
 460	| Account is inactive
 461	| Account is pending
 462	| User is pending
+465 | IP Address Invalid
 
 <!--===================================================================-->
 ## 2. Check Password Reset Token
@@ -158,6 +159,7 @@ HTTP Status Code | Description
 412	| User is disabled
 460	| Account is inactive
 461	| Account is pending
+465 | IP Address Invalid
 
 <!--===================================================================-->
 ## 3. Reset Password
@@ -206,6 +208,7 @@ HTTP Status Code | Description
 412	| User is disabled
 460	| Account is inactive
 461	| Account is pending
+465 | IP Address Invalid
 
 ### Validation of the new password against Account's password rules
 
