@@ -14,6 +14,9 @@ The Poll service provides a mechanism for an application to receive <a class="de
   - thumb - Timestamp for a thumbnail image. The timestamp can later be used to retrieve the actual thumbnail image
   - video - Start and end timestamp of a video event
   - [status](#status-bitmask) - Bitmask defining the state of a bridge or a camera
+  - [status64](#status-bitmask) - Bitmask extended status bitmask
+  - [status_hex](#status-bitmask) - Hex version of bitmask for easier reading (websocket only)
+  - [status_hex64](#status-bitmask) - Hex version of extended status (websocket only)
   - [event](#event-objects) - Full event information
 
 Poll is a stateful request for updates any time a matching event occurs within the service. The initial Poll request is a POST (Default GET with [WebSocket](#websocket-polling)) with a Json-formatted body indicating the resources to track. Resources that are video, pre and thumbnail automatically register the API caller to their respective events. However, resource type `'event'` requires the API caller to tell the API what events to listen for
@@ -293,6 +296,17 @@ HEX Value | Status
 0x000008  | <small>Camera recording <br>**(DEPRECATED)**</small>
 0x000002  | <small>Stream attached (camera communicating with bridge) <br>**(DEPRECATED)**</small>
 
+The extended status bits are filtered and processed to provide more stable and faster event updates than legacy status bits.  As a result, they may reflect different status in some transition cases and extended bits should be considered authoritative.  Lower order 32 bits are per legacy status definition above.
+
+### Extended status bits (upper 32 bits of status64 et. al.)
+HEX Value   | Status
+----------- | ------
+0x00000001  | Camera Valid
+0x00000002  | Camera on (user setting)
+0x00000004  | Camera registered (internet online)
+0x00000008  | Camera pending/error (configuration issue prevents streaming)
+0x00000010  | Camera sending previews
+
 ### Overall status
 
 IF 0 THEN "No Change"
@@ -369,6 +383,9 @@ pre                       | prets            | Timestamp of latest preview image
 thumb                     | thumbts          | Timestamp of latest thumbnail image
 video                     | [startts, endts] | List of start and end timestamps for a video segment. Updates at start and per key frame received until end
 [status](#status-bitmask) | bitmask          | A numerical bitmask defining the status. Bit position defines status
+[status64](#status-bitmask) | bitmask          | A numerical bitmask defining the status. Bit position defines status
+[status_hex](#status-bitmask) | string          | A string hexadecimal version of status (ws only)
+[status_hex64](#status-bitmask) | string          | A string hexadecimal version of status (ws only)
 [event](#event-objects)   | object           | Events are a key value pair, where the key is the Four CC of the event and event structure is the actual meta data for that specific event
 
 <aside class="notice">The cameras parameter is an entity, which can contain any object structure keyed by ID (camera, bridge or account <a class="definition" onclick="openModal('DOT-ESN')">ESN</a>)</aside>
