@@ -1400,7 +1400,8 @@ bridge              | string    | GUID of the bridge the device is attached to
 service             | string    | Device service status: <br>`'ATTD'` - camera is attached to a bridge <br>`'IGND'` - camera is unattached from all bridges and is available to be attached to a bridge <br>`'IDLE'` - camera will register but will not operate (unregistered bridges) <br>`'ERSE'` - one shot, all camera data will be erased <br><br>enum: ATTD, IGND, IDLE, ERSE
 connect             | string    | Device connect status: <br>`'STRM'` - camera is connected and streaming
 [status](#overall-status) | string    | Decimal status of the device
-[status_hex](#status-bitmask) | string    | Status bitmask
+[status_hex](#status-bitmask) | string    | Status bitmask as head string
+[status_hex64](#status-bitmask) | string    | Extended status bitmask as hex string
 intf                | string    | Interface of the device (not present for analog): <br>`'Camera LAN'` - camera is connected via LAN
 mac                 | string    | MAC address of the device
 ipaddr              | string    | IP addresses assigned to the device (comma-delimited) with the one in use prefixed by an asterisk (\*)
