@@ -12,22 +12,24 @@ Given the macro nature and the number of devices and operations that may occur, 
 ## Turn Cameras On
 <!--===================================================================-->
 
-Used to turn on cameras with given ids' OR given bridge id in the user’s account. User must be an account superuser. Has no effect on body worn cameras.
+Used to turn on cameras with given ids' **OR** given bridge id  in the user’s account. User must be an account superuser. Has no effect on body worn cameras.
 
 > Request
 
 ```shell
 curl -X POST https://login.eagleeyenetworks.com/g/action/allon -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"camera_ids":[IDS_OF_CAMERAS]}'
+
+curl -X POST https://login.eagleeyenetworks.com/g/action/allon -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"bridge_id":"ID_OF_BRIDGE"}'
 ```
 
 ### HTTP Request
 
 `POST https://login.eagleeyenetworks.com/g/action/allon`
 
-Parameter     | Data Type    | Description
----------     | ---------    | -----------
-camera_ids    | array[string]| IDs of the cameras you want to turn on
-bridge_id     | string       | ID of bridge with all the cameras you want to turn on
+Parameter     | Data Type    | Description | Is Required
+---------     | ---------    | ----------- | -----------
+camera_ids    | array[string]| IDs of the cameras you want to turn on | false
+bridge_id     | string       | ID of bridge with all the cameras you want to turn on | false
 
 ### HTTP Status Codes
 
@@ -43,22 +45,24 @@ HTTP Status Code | Description
 ## Turn Cameras Off
 <!--===================================================================-->
 
-Used to turn off cameras with given ids' OR given bridge id in the user’s account. User must be an account superuser. Has no effect on body worn cameras.
+Used to turn off cameras with given ids' **OR** given bridge id  in the user’s account. User must be an account superuser. Has no effect on body worn cameras.
 
 > Request
 
 ```shell
 curl -X POST https://login.eagleeyenetworks.com/g/action/alloff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"camera_ids":[IDS_OF_CAMERAS]}'
+
+curl -X POST https://login.eagleeyenetworks.com/g/action/alloff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"bridge_id":"ID_OF_BRIDGE"}'
 ```
 
 ### HTTP Request
 
 `POST https://login.eagleeyenetworks.com/g/action/alloff`
 
-Parameter     | Data Type    | Description
----------     | ---------    | -----------
-camera_ids    | array[string]| IDs of the cameras you want to turn off
-bridge_id     | string       | ID of bridge with all the cameras you want to turn off
+Parameter     | Data Type    | Description | Is Required
+---------     | ---------    | ----------- | -----------
+camera_ids    | array[string]| IDs of the cameras you want to turn off | false
+bridge_id     | string       | ID of bridge with all the cameras you want to turn off | false
 
 ### HTTP Status Codes
 
