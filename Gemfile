@@ -11,7 +11,7 @@ gem 'redcarpet', '~> 3.4.0'
 
 # Java and active support
 gem 'execjs', '~> 2.7.0'
-gem 'mini_racer', '~> 0.2.6'
+gem 'mini_racer', '~> 0.3.1'
 gem 'activesupport', '= 5.0.5'
 
 # Middleman-Livereload
