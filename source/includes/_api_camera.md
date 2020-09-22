@@ -1806,6 +1806,9 @@ Array Index | Attribute           | Data Type     | Description
 23          | is_hidden           | int           | GUI control to not show device
 24          | ignored_inputs      | array[string] | Array of analog port numbers which should be ignored by the bridge
 25          | responder_camera    | int           | Indicates whether the camera is a first responder camera (1) or not (0)
+26          | super_tags          | json          | Semantically classified device metadata
+27          | discovered_state    | json          | Information regarding the connection state of discovered devices that have not been registered.  `created_at` is the last time the device was detected, `connect` (usually None) indicates the registration state of the device PENDING, IGNORED, etc.
+28          | flags               | json          | Collection of boolean properties used internally for VMS GUI
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
