@@ -64,6 +64,8 @@ Camera and device events include: on, off, online, offline, currently recording,
 ```
 
 <aside class="notice">Each event type is returned with the EEN formatted timestamp: YYYYMMDDhhmmss.xxx</aside>
+<aside class="notice">id fields are encoded as uint32 values.  As JSON does not support unsigned, these may appear as negative numbers to remoain in a 32 bit range.  Fields this apply to include videoid, eventid, roiid, alertroid, alertid, and alert motionid</aside>
+
 
 **Note:** <a class="definition" onclick="openModal('DOT-Event')">Event</a> object descriptions marked with '&#9702;' can be expanded for additional information on the event
 
