@@ -74,7 +74,7 @@ b         | Bounding box     | array[array[float]] | Array contained two arrays.
 d         | Display          | string              | Display parameter to choose if annotation should be displayed on the history browser timeline. Possible values are "tick", "span", or "none". Default value = "span" | False
 l         | Label            | string              | Label to be displayed above bounding box | False
 lt        | Line thickness   | string              | Preferred, not guaranteed, line thickness of bounding box. Possible values are "thin", "normal" or "thick". Default value = "thin" | False
-rgb       | Box Stroke Color | string              | Preferred, not guaranteed, color as a web-safe hexadecimal value. #FFFFFF = white | False
+sc        | Box Stroke Color | string              | Preferred, not guaranteed, color as a web-safe hexadecimal value. #FFFFFF = white | False
 t         | Text             | string              | Text to be displayed as provided including newlines, line breaks, etc | False
 tt        | Tool Tip         | string              | Tooltip is to be displayed when the mouse hovers over pngSpan on timeline | False
 tw        | Text line width  | string              | Number of characters to display per line of text | True, if text is not null
