@@ -77,7 +77,7 @@ lt        | Line thickness   | string              | Preferred, not guaranteed, 
 sc        | Box Stroke Color | string              | Preferred, not guaranteed, color as a web-safe hexadecimal value. #FFFFFF = white | False
 t         | Text             | string              | Text to be displayed as provided including newlines, line breaks, etc | False
 tt        | Tool Tip         | string              | Tooltip is to be displayed when the mouse hovers over pngSpan on timeline | False
-tw        | Text line width  | string              | Number of characters to display per line of text | True, if text is not null
+tw        | Text line width  | int                 | Number of characters to display per line of text | True, if text is not null
 u         | URL              | string              | If supplied, the label will be rendered with the ability to link to the supplied URL | False
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
