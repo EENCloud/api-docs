@@ -56,7 +56,29 @@ Array Index | Attribute    | Data Type | Description                            
 **0**       | **uuid**     | string    | Unique identifier for the annotation assigned to it during creation                                       | **&cross;** | **<sub><form action="#get-annotation"><button>GET</button></form></sub>**
   1         | timestamp    | string    | Time of the annotation creation in EEN Timestamp format: YYYYMMDDHHMMSS.NNN                               | **&cross;** |
 **2**       | **ns**       | int       | Namespace *grouping* assigned to the annotation (in the EEN structure namespaces can describe a specific category of annotations) <br><br>**Note:** Can only be defined during Create Annotation                                                                                                                | **&check;** | **<sub><form action="#create-annotation"><button>PUT</button></form></sub>** <br>**<sub><form action="#update-annotation"><button>POST</button></form></sub>**
-**3**       | **\<data\>** | json      | Content of the annotation                                                                                 | **&check;** | **<sub><form action="#create-annotation"><button>PUT</button></form></sub>** <br>**<sub><form action="#update-annotation"><button>POST</button></form></sub>**
+**3**       | **[\<data\>](#data-attributes)** | json      | Content of the annotation                                                                                 | **&check;** | **<sub><form action="#create-annotation"><button>PUT</button></form></sub>** <br>**<sub><form action="#update-annotation"><button>POST</button></form></sub>**
+
+
+### Data attributes
+
+Parameter                | Descriptive Name | Data Type | Description                              | Required
+------------------------ | ---------------- | --------- | ---------------------------------------- | --------
+[_s](#screen-attributes) | Screen           | json      | Creates object to be displayed on screen | False
+
+
+### Screen attributes
+
+Parameter | Descriptive Name | Data Type           | Description | Required
+--------- | ---------------- | ------------------- | ----------- | --------
+b         | Bounding box     | array[array[float]] | Array contained two arrays. The first array is the coordinates of the top left corner of the bounding box [x1, y1]. The second one holds coordinates of the right bottom corner [x2, y2]. Therefore x1 must be less or equal to x2 and y1 must be less or equal to y2. Values are in range between 0 and 1 and represent % value of the image | False
+d         | Display          | string              | Display parameter to choose if annotation should be displayed on the history browser timeline. Possible values are "tick", "span", or "none". Default value = "span" | False
+l         | Label            | string              | Label to be displayed above bounding box | False
+lt        | Line thickness   | string              | Preferred, not guaranteed, line thickness of bounding box. Possible values are "thin", "normal" or "thick". Default value = "thin" | False
+rgb       | Box Stroke Color | string              | Preferred, not guaranteed, color as a web-safe hexadecimal value. #FFFFFF = white | False
+t         | Text             | string              | Text to be displayed as provided including newlines, line breaks, etc | False
+tt        | Tool Tip         | string              | Tooltip is to be displayed when the mouse hovers over pngSpan on timeline | False
+tw        | Text line width  | string              | Number of characters to display per line of text | True, if text is not null
+u         | URL              | string              | If supplied, the label will be rendered with the ability to link to the supplied URL | False
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
 
@@ -109,12 +131,12 @@ curl -X PUT "https://login.eagleeyenetworks.com/annt/set?c=[DEVICE_ID]&ts=[TIMES
 
 `PUT https://login.eagleeyenetworks.com/annt/set`
 
-Parameter     | Data Type | Description                                                                                                                      | Required    |
----------     | --------- | -----------                                                                                                                      |:-----------:|
-**c**         | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> the annotation should be associated with                | **&check;** |
-**\<data\>**  | json      | Json object representing the data to be used as the annotation content (can include HTML elements)                               | **&check;** |
-ts            | string    | Timestamp associated with the annotation (If left out the system will automatically provide a timestamp)                         | **&cross;** |
-ns            | int       | The numerical namespace value assigned by Eagle Eye Networks                                                                     | **&cross;** |
+Parameter                        | Data Type | Description                                                                                                                      | Required    |
+-------------------------------- | --------- | -----------                                                                                                                      |:-----------:|
+**c**                            | string    | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> the annotation should be associated with                | **&check;** |
+**[\<data\>](#data-attributes)** | json      | Json object representing the data to be used as the annotation content (can include HTML elements)                               | **&check;** |
+ts                               | string    | Timestamp associated with the annotation (If left out the system will automatically provide a timestamp)                         | **&cross;** |
+ns                               | int       | The numerical namespace value assigned by Eagle Eye Networks                                                                     | **&cross;** |
 
 > Json Response
 
@@ -164,14 +186,14 @@ curl -X POST "https://login.eagleeyenetworks.com/annt/set?u=[UUID]&c=[DEVICE_ID]
 
 `POST https://login.eagleeyenetworks.com/annt/set`
 
-Parameter     | Data Type    | Description                                                                                                                   | Required    |
----------     | ---------    | -----------                                                                                                                   |:-----------:|
-**u**         | string       | Unique identifier (UUID) of the annotation being updated returned during Create Annotation                                    | **&check;** |
-**c**         | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> associated with the annotation being updated         | **&check;** |
-**ts**        | string       | Timestamp associated with the annotation when originally created in EEN format: YYYYMMDDHHMMSS.NNN                            | **&check;** |
-**ns**        | int          | The numerical namespace value assigned by Eagle Eye Networks (can be omitted for heartbeat events `'type=hb'`)                | **&check;** |
-**\<data\>**  | json         | Json object representing the data to be used as the annotation content (can include HTML elements)                            | **&check;** |
-type          | string, enum | The type of annotation update to make (defaults to `'mod'`): <br><br>`'mod'` - simple modification of the annotation <br>`'hb'` - indicates a heartbeat event, adding information on parameters that have changed and extending duration <br>`'end'` - indicates the end of the event and updates the annotation if changes have been specified, no `'hb'` with a later timestamp will be accepted <br><br>enum: mod, hb, end                                                                                 | **&cross;** |
+Parameter                        | Data Type    | Description                                                                                                                   | Required    |
+-------------------------------- | ---------    | -----------                                                                                                                   |:-----------:|
+**u**                            | string       | Unique identifier (UUID) of the annotation being updated returned during Create Annotation                                    | **&check;** |
+**c**                            | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> associated with the annotation being updated         | **&check;** |
+**ts**                           | string       | Timestamp associated with the annotation when originally created in EEN format: YYYYMMDDHHMMSS.NNN                            | **&check;** |
+**ns**                           | int          | The numerical namespace value assigned by Eagle Eye Networks (can be omitted for heartbeat events `'type=hb'`)                | **&check;** |
+**[\<data\>](#data-attributes)** | json         | Json object representing the data to be used as the annotation content (can include HTML elements)                            | **&check;** |
+type                             | string, enum | The type of annotation update to make (defaults to `'mod'`): <br><br>`'mod'` - simple modification of the annotation <br>`'hb'` - indicates a heartbeat event, adding information on parameters that have changed and extending duration <br>`'end'` - indicates the end of the event and updates the annotation if changes have been specified, no `'hb'` with a later timestamp will be accepted <br><br>enum: mod, hb, end                                                                                 | **&cross;** |
 
 > Json Response
 
