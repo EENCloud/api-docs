@@ -276,11 +276,11 @@ This status Bitmask is used to determine what the high-level/overall device stat
 
 HEX Value | Status
 --------- | ------
-0x100000  | Camera online
+0x100000  | Camera registered (internet online)
 0x020000  | Camera on (user setting)
-0x080000  | Camera recording
+0x080000  | Camera recording (video stream is being recorded)
 0x000010  | Camera sending previews
-0x040000  | Camera streaming video
+0x040000  | Camera streaming (camera is talking to bridge)
 0x000020  | Camera located (bridge has found the camera)
 0x000080  | Camera configuration in process (bridge configuring camera)
 0x000100  | Camera needs ONVIF password
@@ -300,6 +300,9 @@ HEX Value | Status
 
 The extended status bits are filtered and processed to provide more stable and faster event updates than legacy status bits.  As a result, they may reflect different status in some transition cases and extended bits should be considered authoritative.  Lower order 32 bits are per legacy status definition above.
 
+NOTE: in the legacy status, if "camera off" (camera on false), the registered bit was suppressed.  In the extended bits, the registered bit always reflects the current bridge to cloud connection status.
+NOTE: the extended status bits have a much shorter status filter, so will change to not registered/not streaming significantly faster than legacy status bits
+
 ### Extended status bits (upper 32 bits of status64 et. al.)
 HEX Value   | Status
 ----------- | ------
@@ -307,7 +310,7 @@ HEX Value   | Status
 0x00000002  | Camera on (user setting)
 0x00000004  | Camera registered (internet online)
 0x00000008  | Camera pending/error (configuration issue prevents streaming)
-0x00000010  | Camera sending previews
+0x00000010  | Camera streaming (camera is talking to bridge)
 
 ### Overall status
 
