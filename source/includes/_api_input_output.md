@@ -12,25 +12,25 @@ Eagle Eye Networks is supporting up to 4 (0 - 3) input ports, and 4 (0 - 3) outp
 ## Input port
 <!--===================================================================-->
 
-Input port can be used to detect for example a high temperature of a person, or an motion. Input device sends a signal and information to the camera, and camera is sending that signal to our system.
+An input port can be used to detect for example a high temperature of a person, or a motion. An input device sends a signal and information to the camera, and the camera is sending that signal to our system.
 
 <!--===================================================================-->
 ## Output port
 <!--===================================================================-->
 
-Output port can be used to send an signal from a specific output port to the connected device, such as doors, to open it.
+An output port can be used to send a signal from a specific output port to the connected device, such as doors, to open it.
 
-Output port can be manually activated by the user.
+The output port can be manually activated by the user.
 
 <!--===================================================================-->
 ## Check if camera is I/O capable
 <!--===================================================================-->
 
-To check if camera is I/O capable, first get camera object from `/g/device` API:
+To check if the camera is I/O capable get the camera object from `/g/device` API:
 
 `GET https://login.eagleeyenetworks.com/g/device?id=<camera id>`
 
-Look for `camera_parameters.active_settings.camera_io.d` key to determine if camera is I/O capable, and how much I/O ports it has. The object is read-only.
+Look for `camera_parameters.active_settings.camera_io.d` key to determine if the camera is I/O capable, and how many I/O ports it has. The object is read-only.
 
 > Example camera with I/O support (showing data related to I/O only):
 
@@ -101,11 +101,11 @@ Look for `camera_parameters.active_settings.camera_io.d` key to determine if cam
 
 `camera_parameters.active_settings.camera_io.d.inputs` describes input ports and `camera_parameters.active_settings.camera_io.d.outputs` describes its output ports. Each entry is an array of objects.
 
-Most important field here is `name` , which is read-only, and will be used in all operations when using `/g/device` API call. Consider it as string ID of the input or output port.
+The most important field here is the `name`, which is read-only, and will be used in all operations when using `/g/device` API call. Consider it as string ID of the input or output port.
 
 Order in the `camera_parameters.active_settings.camera_io.d.inputs` or `camera_parameters.active_settings.camera_io.d.outputs` matters, so you need to provide the same order of objects when editing input or output settings.
 
-`camera_io_input_config`, `camera_io_output_config` and `camera_io_output_state` will be described below.
+`camera_io_input_config`, `camera_io_output_config` and `camera_io_output_state` are described below.
 
 <!--===================================================================-->
 ## Setting input port configuration
@@ -137,7 +137,7 @@ Order in the `camera_parameters.active_settings.camera_io.d.inputs` or `camera_p
 
 Initial structure for each input configuration should be read from `camera_parameters.active_settings.camera_io.d.inputs.<input name>`. Rest of the fields should be filled if not exists in the initial structure.
 
-Each time when setting input port, you must send all inputs in `camera_io_input_config`, not only the one you are editing.
+Each time when setting the input port, you must send all inputs in `camera_io_input_config`, not only the one you are editing.
 
 You can provide your own fields in each input port configuration, good practice is to add `x_` prefix before its name.
 
@@ -147,9 +147,9 @@ Field name          | Data Type | Description
 ---------           | --------- | -----------
 enable              | boolean   | Set to `true` to enable input port
 username            | string    | Optional string user supplied name of this input (for UI) 
-record              | boolean   | Set to `true` to record videos when state of input port will be changed (eg. from `idle` to `active`)
-alert               | boolean   | Set to `true` to enable input control on Live view, Layouts, Preview and History Browser (UI)
-polarity            | string    | `active_high`, `active_low` indicates what is considered “active” for the ETag (usually set to active_high); if polarity is set to active_low, then the Active and Hold ETags will be sent when the input is false, as that is the users defined “active” state.
+record              | boolean   | Set to `true` to record videos when the state of input port will be changed (eg. from `idle` to `active`)
+alert               | boolean   | Set to `true` to enable input control on Live view, Layouts, Preview, and History Browser (UI)
+polarity            | string    | `active_high`, `active_low` indicates what is considered "active" for the ETag (usually set to `active_high`); if the polarity is set to `active_low`, then the Active and Hold ETags will be sent when the input is false, as that is the users defined "active" state.
 x_alert_icon        | string    | Set icon for such input port to be visible in the UI; supported icons are `siren`, `light`, `dot`, `door`, `bell`
 
 After setting input port configuration you will see it in `camera_parameters.active_settings.camera_io_input_config.v.<input name>` key.
@@ -186,7 +186,7 @@ After setting input port configuration you will see it in `camera_parameters.act
 
 Field name          | Data Type | Description
 ---------           | --------- | -----------
-polarity            | string    | `normally_open`, `normally_closed` (usually `normally_open`); if `polarity` is set to `normally_closed`, then the Active and Hold ETags will be sent when the output is `idle`, as that is the users defined "active" state.
+polarity            | string    | `normally_open`, `normally_closed` (usually `normally_open`); if the `polarity` is set to `normally_closed`, then the Active and Hold ETags will be sent when the output is `idle`, as that is the users defined "active" state.
 
 After setting output port configuration you will see it in `camera_parameters.active_settings.camera_io_output_config.v.<output name>` key.
 
@@ -218,7 +218,7 @@ Only output port state can be changed (not input).
 
 After setting output port state you will see it in `camera_parameters.active_settings.camera_io_output_state.v.<output name>` key.
 
-When output port state was changed to `active` Archiver should drop `IOAx` or `IOHx` Etags.
+When output port state was changed to `active` system should drop `IOAx` or `IOHx` Etags.
 
 <!--===================================================================-->
 ## ETag codes
@@ -256,7 +256,7 @@ Example:
 ## Reading I/O events in real-time
 <!--===================================================================-->
 
-Archiver will drop `active` / `hold` / `idle` events when state of the specific I/O port will be changed.
+System will drop `active` / `hold` / `idle` events when state of the specific I/O port will be changed.
 
 To read it connect to websockets at `wss://login.eagleeyenetworks.com/api/v2/Device/<account ID>/Events` and register for such events by sending:
 
