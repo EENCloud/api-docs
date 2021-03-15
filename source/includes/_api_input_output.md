@@ -260,24 +260,65 @@ System will drop `active` / `hold` / `idle` events when state of the specific I/
 
 To read it connect to websockets at `wss://login.eagleeyenetworks.com/api/v2/Device/<account ID>/Events` and register for such events by sending:
 
-> Request data:
+> Example request data:
 
 ```json
 {
     "cameras":{
-        "<camera id>":{
+        "12345678":{
             "resource":[
                 "event"
             ],
             "event":[
-                "event id"
+                "IIA0",
+                "IIH0",
+                "III0",
+                "IOA0",
+                "IOH0",
+                "IOI0"
             ]
         }
     }
 }
 ```
 
-Then listen on that websockets connection to get I/O states.
+Above example will request all events for first input and first output port from the camera `12345678`. Listen on open
+websocket connection to get I/O states.
+
+> Example response data:
+
+```json
+{
+  "status_code": 200,
+  "message": "OK",
+  "data": {
+    "12345678": {
+      "event": {
+        "IIA0": {
+          "timestamp": "20210311140022.258",
+          "cameraid": "12345678",
+          "eventid": 1615436987
+        },
+        "III0": {
+          "timestamp": "20210315104827.428",
+          "cameraid": "12345678",
+          "eventid": 1615743879
+        },
+        "IOA0": {
+          "timestamp": "20210314174444.902",
+          "cameraid": "12345678",
+          "eventid": 1615743884
+        },
+        "IOI0": {
+          "timestamp": "20210311124723.715",
+          "cameraid": "12345678",
+          "eventid": 1615466809
+        }
+      }
+    }
+  }
+}
+```
 
 <!--===================================================================-->
 ## Setting alerts
