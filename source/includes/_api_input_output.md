@@ -149,7 +149,7 @@ enable              | boolean   | Set to `true` to enable input port
 username            | string    | Optional string user supplied name of this input (for UI) 
 record              | boolean   | Set to `true` to record videos when the state of input port will be changed (eg. from `idle` to `active`)
 alert               | boolean   | Set to `true` to enable input control on Live view, Layouts, Preview, and History Browser (UI)
-polarity            | string    | `active_high`, `active_low` indicates what is considered "active" for the ETag (usually set to `active_high`); if the polarity is set to `active_low`, then the Active and Hold ETags will be sent when the input is false, as that is the users defined "active" state.
+polarity            | string    | `active_high`, `active_low` indicates what is considered "active" (usually set to `active_high`); if the polarity is set to `active_low`, then the Active and Hold event will be sent when the input is false, as that is the users defined "active" state.
 x_alert_icon        | string    | Set icon for such input port to be visible in the UI; supported icons are `siren`, `light`, `dot`, `door`, `bell`
 
 After setting input port configuration you will see it in `camera_parameters.active_settings.camera_io_input_config.v.<input name>` key.
@@ -186,7 +186,7 @@ After setting input port configuration you will see it in `camera_parameters.act
 
 Field name          | Data Type | Description
 ---------           | --------- | -----------
-polarity            | string    | `normally_open`, `normally_closed` (usually `normally_open`); if the `polarity` is set to `normally_closed`, then the Active and Hold ETags will be sent when the output is `idle`, as that is the users defined "active" state.
+polarity            | string    | `normally_open`, `normally_closed` (usually `normally_open`); if the `polarity` is set to `normally_closed`, then the Active and Hold event will be sent when the output is `idle`, as that is the users defined "active" state.
 
 After setting output port configuration you will see it in `camera_parameters.active_settings.camera_io_output_config.v.<output name>` key.
 
@@ -218,22 +218,22 @@ Only output port state can be changed (not input).
 
 After setting output port state you will see it in `camera_parameters.active_settings.camera_io_output_state.v.<output name>` key.
 
-When output port state was changed to `active` system should drop `IOAx` or `IOHx` Etags.
+When output port state was changed to `active` system should drop `IOAx` or `IOHx` event.
 
 <!--===================================================================-->
-## ETag codes
+## Event codes
 <!--===================================================================-->
 
 `I<I/O><A/H/I><index>` where:
 
 Field name          | Data Type | Description
 ---------           | --------- | -----------
-I                   | string    | Const describing that ETag is I/O
+I                   | string    | Const describing that event is I/O
 `I` or `O`          | string    | `I` for input, `O` for output
 `A` or `H` or `I`   | string    | `A` for `active`, `H` for `hold`, `I` for `idle`
 index               | string    | number provided as string; index for the I/O port, counting from 0 to 3
 
-For example `IOA0` ETag means “active output port on index 0”.
+For example `IOA0` event code means “active output port on index 0”.
 
 <!--===================================================================-->
 ## Reading historical I/O data
@@ -246,7 +246,7 @@ Parameter name      | Data Type | Description
 camera id           | string   | ID of the camera to get historical I/O data for
 `start_timestamp`   | string   | EEN Timestamp, start timestamp
 `result_count`      | string   | number provided as string; how much entries you want to get, use `-1` for all
-`events`            | string   | ETag codes separated by comma
+`events`            | string   | Event codes separated by comma
 `end_timestamp`     | string   | EEN Timestamp, end timestamp
 
 Example:
