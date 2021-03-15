@@ -146,7 +146,7 @@ You can provide your own fields in each input port configuration, good practice 
 Field name          | Data Type | Description
 ---------           | --------- | -----------
 enable              | boolean   | Set to `true` to enable input port
-username            | string    | Optional string user supplied name of this input (for UI) 
+username            | string    | Optional string user supplied name of this input (for UI). Leave empty or provide your own name of such I/O control that will be used on the UI.
 record              | boolean   | Set to `true` to record videos when the state of input port will be changed (eg. from `idle` to `active`)
 alert               | boolean   | Set to `true` to enable input control on Live view, Layouts, Preview, and History Browser (UI)
 polarity            | string    | `active_high`, `active_low` indicates what is considered "active" (usually set to `active_high`); if the polarity is set to `active_low`, then the Active and Hold event will be sent when the input is false, as that is the users defined "active" state.
