@@ -74,6 +74,8 @@ The video system is based on H264 video and AAC audio. These streams are encapsu
 
   - **FLV:** Native format for the system. Playable in any Flash player, VLC as well as other players
   - **MP4:** MPEG4 files have a very broad playback compatibility (in line with all the major video players), however *MP4 is NOT a streamable format*, so it is only used for download functionality and will return an error if the video is live
+  - **RTSP:** The Real Time Streaming Protocol (RTSP) is a network control protocol designed for use in entertainment and communications systems to control 
+    streaming media servers. The protocol is used for establishing and controlling media sessions between endpoints. Clients of media servers issue commands such as play, record and pause, to facilitate real-time control of the media streaming from the server to a client (Video On Demand) or from a client to the server (Voice Recording).
 
 <!-- Placed before "### Video Quality" after the last file format description
     <aside class="warning">While streaming any video format on the web other than FLV (system native format), you may initially get a 502 response</aside>
@@ -170,6 +172,7 @@ curl -X GET https://login.eagleeyenetworks.com/asset/play/video.mp4 -d "id=[CAME
 
 > <small>Provide the '<b>-o "/\<file_path/\<filename\>\.\<extension\>"</b>' option to specify output filename, path and extension (timestamps must coincide with existing video)</small>
 
+
 ### HTTP Request
 
 `GET https://login.eagleeyenetworks.com/asset/play/video.flv`
@@ -229,6 +232,54 @@ HTTP Status Code | Description
 503 | Internal Camera Tag Maps Error.  Please contact our support department.
 504 | Gateway Timeout.  We were unable to return the requested data inside our time limit.  Please try again.
 
+
+<!--===================================================================-->
+## Get Live Stream (RTSP)
+<!--===================================================================-->
+
+This API will return live stream in RTSP format. Get a live stream video in RTSP format first needs to retrieve streams URL. To do that follow steps as below:
+
+### HTTP Request
+- `GET https://[active_brand_subdomain].eagleeyenetworks.com/api/v2/media/cameras/{esn}/streams?A={token}`
+<br>Get stream URLs
+
+Parameter           | Data Type    | Description    | Is Required
+---------           | ---------    | -----------    | -----------
+**esn**              | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
+**token** | string       | User token from login.eagleeyenetworks.com | true
+
+
+- `GET rtsp://[active_brand_subdomain].eagleeyenetworks.com:554/api/v2/media/streams/{Session_ID}/rtsp`
+<br> Get video in RTSP format
+
+> Response ( Stream URLs)
+
+```json
+{
+	"status_code": 200,
+	"message": "OK",
+	"data": {
+		"rtsp_over_http": "http://[active_brand_subdomain].eagleeyenetworks.com:31180/api/v2/media/streams/{Session_ID}/rtsp",
+		"rtsp": "rtsp://[active_brand_subdomain].eagleeyenetworks.com:554/api/v2/media/streams/{Session_ID}/rtsp",
+		"rtsps": "rtsps://[active_brand_subdomain].eagleeyenetworks.com:322/api/v2/media/streams/{Session_ID}/rtsp"
+	}
+}
+```
+
+### HTTP Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+200 | Request succeeded
+400 | Request is not valid
+401	| Unauthorized due to invalid session cookie
+404	| Session not found
+500 | Server internal error
+
+### Play streams
+These streams are valid for 15 minutes. You can use them to get a live stream on camera in RTSP format. Now you can use a player that support RTSP like `ffplay` to start live-streaming. For example: `ffplay [stream url]`
+if you are going to use `rtsp_over_http` stream url, first you need do some setting in `VLC`. Please go to `Tools > Preferences > Input/Codecs > Demuxers > RTP/RTSP` in `VLC` and select option `Tunnel RTSP and RTP over HTTP` and set `HTTP tunnel port` as `31180`.
+Now use `RTSP` stream url one to start live-streaming in `VLC`. In this case `VLC` will create an HTTP tunnel to send RTSP commands.
 
 
 <!--===================================================================-->
