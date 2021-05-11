@@ -145,6 +145,7 @@ CCCF	| <details><summary>Curl fail event&nbsp;&#9702;</summary><p><br>Failed com
 ANNT	| Annotation event                                                       | cameraid, ns, flags, uuid, seq, op, mpack
 NVPT	| Name value table event                                                 | cameraid, ns, key_offset, op, mpack
 ITFU	| Interface update event                                                 | cameraid, ip, flags, valid, mpack
+Ixxx    | Input / Output event; example events: `IIA0`, `IOA0`                   | cameraid, timestamp, eventid
 SCRN	| Screen connect event                                                   | cameraid, ns, uuid, mpack
 AELD	| Live display event                                                     | cameraid, status, source_userid, deviceid
 CCLC	| <details><summary>Cloud connect event&nbsp;&#9702;</summary><p><br>Bridge connected to the cloud over indicated connection</br></p></details> | cameraid, src_ip, dest_ip, src_port, dest_port, ctype

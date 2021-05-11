@@ -18,6 +18,7 @@ includes:
   - api_bridge
   - api_managed_switch
   - api_camera
+  - api_input_output
   - api_action
   - api_asset
   - api_metric
