@@ -510,6 +510,9 @@ the timestamp either equal to, or the closest point before, the requested timest
 timestamp is a function of the configured GOP for the camera and the frame rate. The resolution of the image
 returned is the full resolution of camera.
 
+Snapshots are only available where there is video recorded from the camera. `Get List of Videoe`
+can be used to identify when video has be recorded.
+
 > Request (jpeg)
 
 ```shell
@@ -520,6 +523,8 @@ curl -X GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot
 ### HTTP Request
 
 `GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}`
+<br> Get the image at, or closest image before, the specified timestamp. Used with `'timestamp=now'`, will use the current GMT time
+for the timestamp.
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
@@ -555,9 +560,8 @@ HTTP Status Code | Description
 400	| Unexpected or non-identifiable arguments are supplied
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
-404	| Camera not provisioned
 404	| Image not found
-404	| Invalid method
+405	| Camera not provisioned
 410	| Video is out of retention
 502 | Bad Gateway.  We were unable to return the requested data.  Please try again.
 503 | Internal Camera Tag Maps Error.  Please contact our support department.
