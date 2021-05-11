@@ -515,13 +515,11 @@ returned is the full resolution of camera.
 ```shell
 curl -X GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}
  --cookie "auth_key=[AUTH_KEY]"
-
 ```
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}
-<br> Get full resolution image in the `.jpeg` format
+`GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}'
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
@@ -542,9 +540,9 @@ The returned response can be binary data in JPEG format with status code 200, or
 
 ```json
 {
-	"status_code": <int>,
-	"message": <sting>,
-    "reason": <string>,
+	"status_code": "<int>",
+	"message": "<string>",
+    "reason": "<string>",
 	"data": null,
 }
 ```
