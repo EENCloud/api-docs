@@ -209,7 +209,7 @@ MP4<file_content>
 
 ### HTTP Response
 
-The returned response can be binary video data in FLV or MP4 format(depending on request) with status code 200. 
+The returned response can be binary video data in FLV or MP4 format(depending on request) with status code 200.
 
 Alternatively, if you request a MP4 and it is not able to be transcoded immediately it will return a video id as JSON data with a status code of 201.  You can safely request the same video again.  if video is not immediately available, video id as JSON data with status code 202. This will continue until the video has been transcoded.  The next request for that video will result in a status code of 200 and the HTTP response will include the MP4 as binary data.
 
@@ -240,7 +240,7 @@ This API will return live stream in RTSP format. Get a live stream video in RTSP
 
 ### HTTP Request
 - `GET https://[active_brand_subdomain].eagleeyenetworks.com/api/v2/media/cameras/{camera_id}/streams?A={auth_key}`
-<br>Get stream URLs. The streams have a new session id that is valid for 15 minutes. 
+<br>Get stream URLs. The streams have a new session id that is valid for 15 minutes.
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
@@ -328,10 +328,10 @@ Parameter           | Data Type | Description   | Is Required
       "uuid": "<UUID>",
       "ui_message": "Notifying webhooks.",
       "arguments": {
-        "end_timestamp": "<EETIMESTAMP>", 
-        "failure_hook": "<URL>", 
-        "id": "<ID>", 
-        "start_timestamp": "<EETIMESTAMP>", 
+        "end_timestamp": "<EETIMESTAMP>",
+        "failure_hook": "<URL>",
+        "id": "<ID>",
+        "start_timestamp": "<EETIMESTAMP>",
         "success_hook": "<URL>"
       }
     }
@@ -501,3 +501,68 @@ HTTP Status Code | Description
 401	| Unauthorized due to invalid session cookie
 403	| Forbidden due to the user missing the necessary privileges
 
+<!--===================================================================-->
+## Get Snapshot
+<!--===================================================================-->
+
+Get a full resolution jpeg image at the specified timestamp. Returns binary image data at
+the timestamp either equal to, or the closest point before, the requested timestamp. The closest
+timestamp is a function of the configured GOP for the camera and the frame rate. The resolution of the image
+returned is the full resolution of camera.
+
+Snapshots are only available where there is video recorded from the camera. `Get List of Videos`
+can be used to identify when video has be recorded.
+
+> Request (jpeg)
+
+```shell
+curl -X GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}
+ --cookie "auth_key=[AUTH_KEY]"
+```
+
+### HTTP Request
+
+`GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}`
+<br> Get the image at, or closest image before, the specified timestamp. Used with `'timestamp=now'`, will use the current GMT time
+for the timestamp.
+
+Parameter           | Data Type    | Description    | Is Required
+---------           | ---------    | -----------    | -----------
+**camera_id**       | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
+**timestamp**       | string       | Image timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
+
+> Response (jpeg)
+
+```shell
+JPEG<file_content>
+```
+
+### HTTP Response
+
+The returned response can be binary data in JPEG format with status code 200, or a json error message.
+
+> Json Error Response
+
+```json
+{
+    "status_code": "<int>",
+    "message": "<string>",
+    "reason": "<string>",
+    "data": null,
+}
+```
+
+### HTTP Status Codes
+
+HTTP Status Code | Description
+---------------- | -----------
+200 | Request succeeded
+400	| Unexpected or non-identifiable arguments are supplied
+401	| Unauthorized due to invalid session cookie
+403	| Forbidden due to the user missing the necessary privileges
+404	| Image not found
+405	| Camera not provisioned
+410	| Video is out of retention
+502 | Bad Gateway.  We were unable to return the requested data.  Please try again.
+503 | Internal Camera Tag Maps Error.  Please contact our support department.
+504 | Gateway Timeout.  We were unable to return the requested data inside our time limit.  Please try again.
