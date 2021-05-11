@@ -519,7 +519,7 @@ curl -X GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}'
+`GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}`
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
