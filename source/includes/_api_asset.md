@@ -510,7 +510,7 @@ the timestamp either equal to, or the closest point before, the requested timest
 timestamp is a function of the configured GOP for the camera and the frame rate. The resolution of the image
 returned is the full resolution of camera.
 
-Snapshots are only available where there is video recorded from the camera. `Get List of Videoe`
+Snapshots are only available where there is video recorded from the camera. `Get List of Videos`
 can be used to identify when video has be recorded.
 
 > Request (jpeg)
@@ -545,10 +545,10 @@ The returned response can be binary data in JPEG format with status code 200, or
 
 ```json
 {
-	"status_code": "<int>",
-	"message": "<string>",
+    "status_code": "<int>",
+    "message": "<string>",
     "reason": "<string>",
-	"data": null,
+    "data": null,
 }
 ```
 
