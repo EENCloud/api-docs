@@ -177,6 +177,8 @@ curl -X GET https://login.eagleeyenetworks.com/asset/play/video.mp4 -d "id=[CAME
 `GET https://login.eagleeyenetworks.com/asset/play/video.flv`
 <br> Get video in the `.flv` format
 
+The FLV interface supports http range requests allowing partial and resumed downloads for non-streaming assets.
+
 `GET https://login.eagleeyenetworks.com/asset/play/video.mp4`
 <br> Get video in the `.mp4` format
 
@@ -185,6 +187,8 @@ Parameter           | Data Type    | Description    | Is Required
 **id**              | string       | <a class="definition" onclick="openModal('DOT-Camera-ID')">Camera ID</a> | true
 **start_timestamp** | string       | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **end_timestamp**   | string       | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
+**force_stream**   | boolean       | Boolean if true forces camera to record video at start of request (flv only) | false
+**indexed**   | boolean       | Boolean if true includes key frame index in possible (flv only) | false
 
 > Response (flv)
 
@@ -228,7 +232,7 @@ HTTP Status Code | Description
 404	| Camera get error
 410	| Video is out of retention
 502 | Bad Gateway.  We were unable to return the requested data.  Please try again.
-503 | Internal Camera Tag Maps Error.  Please contact our support department.
+503 | Internal Archive Error. 
 504 | Gateway Timeout.  We were unable to return the requested data inside our time limit.  Please try again.
 
 
