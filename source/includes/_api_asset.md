@@ -188,7 +188,7 @@ Parameter           | Data Type    | Description    | Is Required
 **start_timestamp** | string       | Start timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **end_timestamp**   | string       | End timestamp in EEN format: YYYYMMDDHHMMSS.NNN | true
 **force_stream**   | boolean       | Boolean if true forces camera to record video at start of request (flv only) | false
-**indexed**   | boolean       | Boolean if true includes key frame index in possible (flv only) | false
+**index**   | boolean       | Boolean if true includes key frame index in possible (flv only) | false
 
 > Response (flv)
 
