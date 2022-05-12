@@ -102,12 +102,14 @@ Returns a Managed Switch object by GUID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/managed_switch`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch`
 
 Parameter | Data Type | Description                                                                                                                          | Required    |
 --------- | --------- | -----------                                                                                                                          |:-----------:|
@@ -134,12 +136,14 @@ Update Managed Switch information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -d "name=[SWITCH_NAME]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch -d "switch_guid=[SWITCH_GUID]" -d "name=[SWITCH_NAME]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/managed_switch`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch`
 
 Parameter        | Data Type | Description                                                                                                                          | Required    |
 ---------------- | --------- | -----------                                                                                                                          |:-----------:|
@@ -166,12 +170,14 @@ This API call enables control of the Managed Switch (i.e. for turning ports on o
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/managed_switch/control -d '{"switch_guid": "[SWITCH_GUID]", "ports": ["port_1", "port_2"], "command": "reboot"}'  -H "Content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch/control -d '{"switch_guid": "[SWITCH_GUID]", "ports": ["port_1", "port_2"], "command": "reboot"}'  -H "Content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/managed_switch/control`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch/control`
 
 Parameter       | Data Type     | Description                                                                                                                | Required    |
 ---------       | ---------     | -----------                                                                                                                |:-----------:|
@@ -217,12 +223,14 @@ This API call enables control of camera power using the camera identifier rather
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/camera/power_cycle -d '{"identifier": "[ESN]"}' -H "Content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/camera/power_cycle -d '{"identifier": "[ESN]"}' -H "Content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/camera/power_cycle`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/camera/power_cycle`
 
 Parameter      | Data Type | Description                                                                                                                     | Required    |
 ---------      | --------- | -----------                                                                                                                     |:-----------:|
@@ -269,20 +277,24 @@ Returns an array of switch objects with each entry representing a Managed Switch
 > Request (basic)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 > Request (detailed)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/managed_switch/list -d "is_detailed=true" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch/list -d "is_detailed=true" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 
 ```
 
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
+
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/managed_switch/list`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/managed_switch/list`
 
 Parameter   | Data Type | Description                                                                                                                        | Required    |
 ---------   | --------- | -----------                                                                                                                        |:-----------:|

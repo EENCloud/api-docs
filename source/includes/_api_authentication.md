@@ -170,9 +170,10 @@ Authorize is the final step of the login process performed by utilizing the toke
 
 API calls can initially be done against `'https://login.eagleeyenetworks.com'` (The host url), but after the authorization response is returned, API calls should then use the **branded subdomain**. At this stage the branded host url will become `'https://[active_brand_subdomain].eagleeyenetworks.com'`, where the `'active_brand_subdomain'` field is returned in the authorization response
 
-Following the authorization in the example on the right, the host url should be changed to for example: `'https://c001.eagleyenetworks.com'`
+Following the authorization in the example on the right, the host url should be changed to: `'https://c001.eagleyenetworks.com'`
 
-Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against `'the active_brand_subdomain'` after authorization. Using the *branded subdomain* is important for speed and robustness
+<a id="active-brand-subdomain-explanation"></a>
+Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against the `'active_brand_subdomain'` after authorization. Using the *branded subdomain* is important for speed and robustness
 
 > Request (Simple Authentication)
 
@@ -376,7 +377,7 @@ This step initiates the TFA data update process
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/two_factor_authenticate/update`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/two_factor_authenticate/update`
 
 Parameter                          | Data Type | Description                                                                                                   | Is Required
 ---------                          | --------- | -----------                                                                                                   | -----------
@@ -400,7 +401,7 @@ HTTP Status Code | Description
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/two_factor_authenticate/verify`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/two_factor_authenticate/verify`
 
 Parameter                          | Data Type | Description                                                                                                   | Is Required
 ---------                          | --------- | -----------                                                                                                   | -----------

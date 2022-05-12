@@ -317,12 +317,14 @@ Returns an Account object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -347,12 +349,14 @@ Create a new Account
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/account -d '{"name": "[NAME]", "contact_first_name": "[CONTACT_FIRST_NAME]", "contact_last_name": "[CONTACT_LAST_NAME]", "contact_email": "[CONTACT_EMAIL]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/account -d '{"name": "[NAME]", "contact_first_name": "[CONTACT_FIRST_NAME]", "contact_last_name": "[CONTACT_LAST_NAME]", "contact_email": "[CONTACT_EMAIL]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`PUT https://login.eagleeyenetworks.com/g/account`
+`PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/account`
 
 Parameter                             | Data Type     | Description                                                                                            | Is Required
 ---------                             | ---------     | -----------                                                                                            | -----------
@@ -415,12 +419,14 @@ Update Account information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/account -d '{"id": "[ACCOUNT_ID]", "contact_first_name": "[CONTACT_FIRST_NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/account -d '{"id": "[ACCOUNT_ID]", "contact_first_name": "[CONTACT_FIRST_NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/account`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/account`
 
 Parameter                             | Data Type            | Description                                                                                     | Is Required
 ---------                             | ---------            | -----------                                                                                     | -----------
@@ -517,12 +523,14 @@ Delete an Account
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/account -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`DELETE https://login.eagleeyenetworks.com/g/account`
+`DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/account`
 
 Parameter | Data Type | Description
 --------- | --------- | -----------
@@ -547,12 +555,14 @@ Returns an array of arrays with each sub-array representing an Account available
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/list`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/list`
 
 > Json Response
 
@@ -664,12 +674,14 @@ Used to get the number of all sub-accounts for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/sub_accounts -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/sub_accounts -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/sub_accounts`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/sub_accounts`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
@@ -708,12 +720,14 @@ Used to get the number of all users for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/users`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/users`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
@@ -752,12 +766,14 @@ Used to get the number of all bridges for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/bridges -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/bridges -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/bridges`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/bridges`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
@@ -779,12 +795,14 @@ Used to get the number of all cameras for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/cameras`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/cameras`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
@@ -840,12 +858,14 @@ Used to get the number of all online users for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/online_users -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/online_users`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/online_users`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
@@ -884,12 +904,14 @@ Used to get the number of all online cameras for the specific account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/online_cameras -d "account_id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/statistics/online_cameras`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/statistics/online_cameras`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------

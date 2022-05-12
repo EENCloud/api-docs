@@ -144,12 +144,14 @@ Returns a Layout object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/layout`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/layout`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -175,12 +177,14 @@ Create a new Layout
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/layout -d '{"name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/layout -d '{"name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`PUT https://login.eagleeyenetworks.com/g/layout`
+`PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/layout`
 
 Parameter         | Data Type     | Description | Is Required
 ---------         | ---------     | ----------- | -----------
@@ -222,12 +226,14 @@ Update Layout information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/layout -d '{"id": "[LAYOUT_ID]", "name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/layout -d '{"id": "[LAYOUT_ID]", "name": "[LAYOUT_NAME]", "types": [""], "configuration": {"panes": [{}] }}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login/eagleeyenetworks.com/g/layout`
+`POST https://[active_brand_subdomain]/eagleeyenetworks.com/g/layout`
 
 Parameter     | Data Type     | Description                                                                                                                    | Is Required
 ---------     | ---------     | -----------                                                                                                                    | -----------
@@ -271,12 +277,14 @@ Delete a Layout
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`DELETE https://login.eagleeyenetworks.com/g/layout`
+`DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/layout`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -302,12 +310,14 @@ Returns an array of arrays with each sub-array representing a Layout available t
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/layout/list`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/layout/list`
 
 > Json Response
 

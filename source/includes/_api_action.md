@@ -17,14 +17,16 @@ Used to turn on cameras with given ids' **OR** given bridge id  in the user’s 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/action/allon -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"camera_ids":[IDS_OF_CAMERAS]}'
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/allon -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"camera_ids":[IDS_OF_CAMERAS]}'
 
-curl -X POST https://login.eagleeyenetworks.com/g/action/allon -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"bridge_id":"ID_OF_BRIDGE"}'
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/allon -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"bridge_id":"ID_OF_BRIDGE"}'
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/action/allon`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/allon`
 
 Parameter     | Data Type    | Description | Is Required
 ---------     | ---------    | ----------- | -----------
@@ -50,14 +52,16 @@ Used to turn off cameras with given ids' **OR** given bridge id  in the user’s
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/action/alloff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"camera_ids":[IDS_OF_CAMERAS]}'
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/alloff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"camera_ids":[IDS_OF_CAMERAS]}'
 
-curl -X POST https://login.eagleeyenetworks.com/g/action/alloff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"bridge_id":"ID_OF_BRIDGE"}'
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/alloff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"bridge_id":"ID_OF_BRIDGE"}'
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/action/alloff`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/alloff`
 
 Parameter     | Data Type    | Description | Is Required
 ---------     | ---------    | ----------- | -----------
@@ -83,12 +87,14 @@ Used to turn on recording for cameras in a specific layout. The result of this t
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/action/recordnow -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"recording_key":"[RECORDING_KEY]", "layout_id":"[LAYOUT_ID]"}'
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/recordnow -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"recording_key":"[RECORDING_KEY]", "layout_id":"[LAYOUT_ID]"}'
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/action/recordnow`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/recordnow`
 
 Parameter     | Data Type | Description
 ---------     | --------- | -----------
@@ -114,12 +120,14 @@ Used to turn off recording for cameras in a specific layout. The result of this 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/action/recordoff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"layout_id":"[LAYOUT_ID]"}'
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/recordoff -H "Authentication: [API_KEY]" -H "Content-Type: application/json" --cookie "auth_key=[AUTH_KEY]" -d '{"layout_id":"[LAYOUT_ID]"}'
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/action/recordoff`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/action/recordoff`
 
 Parameter | Data Type | Description
 --------- | --------- | -----------

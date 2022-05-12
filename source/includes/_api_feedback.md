@@ -15,12 +15,14 @@ Send feedback to support
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/feedback -d "subject=[SUBJECT]" -d "message=[MESSAGE]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/feedback -d "subject=[SUBJECT]" -d "message=[MESSAGE]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/feedback`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/feedback`
 
 Parameter   | Data Type | Description | Is Required
 ---------   | --------- | ----------- | -----------

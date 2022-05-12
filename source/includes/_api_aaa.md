@@ -52,8 +52,10 @@ Verify the email address supplied when the account is created. When successful, 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/validate_account -d "id=[ID]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/validate_account -d "id=[ID]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
@@ -103,12 +105,15 @@ Password recovery is a multi-step process:
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/forgot_password -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/forgot_password -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
+
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/forgot_password`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/forgot_password`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -137,12 +142,15 @@ This is step two of the password recover/reset process. It verifies that the sup
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token -d "token=[TOKEN]" -H "Authentication: [API_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/check_pw_reset_token -d "token=[TOKEN]" -H "Authentication: [API_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
+
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/check_pw_reset_token`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/check_pw_reset_token`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -170,12 +178,15 @@ This is step three of the password recover/reset process. It both verifies that 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/reset_password -d "password=[PASSWORD]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/reset_password -d "password=[PASSWORD]" -d "token=[TOKEN]" -H "Authentication: [API_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
+
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/reset_password`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/reset_password`
 
 Parameter                      | Data Type | Description | Is Required
 ---------                      | --------- | ----------- | -----------
@@ -264,12 +275,15 @@ For users who have registered for an account, but never confirmed the registrati
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/resend_registration_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/resend_registration_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
+
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/resend_registration_email`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/resend_registration_email`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -297,12 +311,14 @@ For users who have had a user account created, but never confirmed their user ac
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/resend_user_verification_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/resend_user_verification_email -d "email=[EMAIL]" -H "Authentication: [API_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/resend_user_verification_email`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/resend_user_verification_email`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -334,12 +350,14 @@ This allows a user to change their password directly while authenticated and als
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/change_password -d "password=[PASSWORD]" -d "current_password=[CURRENT_PASSWORD]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/change_password -d "password=[PASSWORD]" -d "current_password=[CURRENT_PASSWORD]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/change_password`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/change_password`
 
 Parameter        | Data Type | Description | Is Required
 ---------        | --------- | ----------- | -----------
@@ -380,12 +398,14 @@ Allows a user to 'log in' to another account which the they have access to (see 
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/switch_account -d "account_id=[ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/switch_account -d "account_id=[ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/switch_account`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/switch_account`
 
 Parameter  | Data Type | Description
 ---------  | --------- | -----------
@@ -568,7 +588,7 @@ Authentication context class | X.509 Certificate | Authentication restriction
 ### Single Log Out
 
 #### HTTP Request
-`GET https://login.eagleeyenetworks.com/g/aaa/sso/SAML2/LogOut`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/sso/SAML2/LogOut`
 
 Parameter         | Data Type | Description                                                                              | Is required
 ----------------- | --------- | ---------------------------------------------------------------------------------------- | -----------
@@ -613,12 +633,14 @@ This call allows you to check if the current authentication is still valid.  Thi
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/isauth -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/aaa/isauth`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/isauth`
 
 ### HTTP Status Codes
 
@@ -637,12 +659,14 @@ Log out user and invalidate HTTP session cookie
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/aaa/logout -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/logout -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/aaa/logout`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/logout`
 
 ### HTTP Status Codes
 

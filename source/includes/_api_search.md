@@ -35,8 +35,10 @@ Returns an array of recording objects that match a search value
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/search/recordings -d "value=[SEARCH_VALUE]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/search/recordings -d "value=[SEARCH_VALUE]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
@@ -94,7 +96,7 @@ Returns array of annotation objects that match a search value
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/search/recordings`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/search/recordings`
 
 Parameter           | Data Type | Description | Is Required
 ---------           | --------- | ----------- | -----------
