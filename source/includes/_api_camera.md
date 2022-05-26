@@ -1446,12 +1446,14 @@ Returns a Camera object by ID
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/device`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -1476,12 +1478,14 @@ Returns the full RTSP URLs for a Camera object by ID.
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/device/rtsp -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device/rtsp -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/device/rtsp`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device/rtsp`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -1517,12 +1521,14 @@ Adds an unattached Camera to the bridge
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/device -d '{"name":"[NAME]","timezone":[TIMEZONE],"settings":{"bridge":"[BRIDGE_ID]","guid":"[CAMERA_GUID]","username":"","password":""}}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/device -d '{"name":"[NAME]","timezone":[TIMEZONE],"settings":{"bridge":"[BRIDGE_ID]","guid":"[CAMERA_GUID]","username":"","password":""}}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`PUT https://login.eagleeyenetworks.com/g/device`
+`PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/device`
 
 Parameter | Data Type     | Description | Is Required
 --------- | ---------     | ----------- | -----------
@@ -1584,12 +1590,14 @@ Update Camera information
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/device -d '{"id": "[CAMERA_ID], "name": "[NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]"  --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/device -d '{"id": "[CAMERA_ID], "name": "[NAME]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]"  --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/device`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/device`
 
 Parameter                | Data Type     | Description | Is Required
 ---------                | ---------     | ----------- | -----------
@@ -1636,12 +1644,14 @@ Delete a Camera from the bridge (effectively unassigning it, the camera can then
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/device -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`DELETE https://login.eagleeyenetworks.com/g/device`
+`DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/device`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -1668,12 +1678,14 @@ Returns an array of arrays with each sub-array representing a Camera available t
 > Request
 
 ```shell
-curl --request GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl --request GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/device/list`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device/list`
 
 Parameter | Data Type | Description
 --------- | --------- | -----------

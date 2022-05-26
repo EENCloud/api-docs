@@ -30,12 +30,14 @@ If the user agrees to the terms, a PUT call should be placed containing an array
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/user/terms -d "id=[USER_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/user/terms -d "id=[USER_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/user/terms`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/user/terms`
 
 Parameter | Data Type | Description
 --------- | --------- | -----------
@@ -92,12 +94,14 @@ This service is used to record Acceptance of the Terms of Service
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/user/terms -d '{"urls": ["/een-terms-of-service/[USER_ID]/Test_Terms_of_Service~1~20180523100004.txt", "/een-terms-of-service/[USER_ID]/EEN_Terms_of_Service~1.2~20180626191610.txt"]}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/user/terms -d '{"urls": ["/een-terms-of-service/[USER_ID]/Test_Terms_of_Service~1~20180523100004.txt", "/een-terms-of-service/[USER_ID]/EEN_Terms_of_Service~1.2~20180626191610.txt"]}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`PUT https://login.eagleeyenetworks.com/g/user/terms`
+`PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/user/terms`
 
 Parameter | Data Type     | Description | Is Required
 --------- | ---------     | ----------- | -----------
@@ -140,12 +144,14 @@ Returns the Terms of Service for an account
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/account/terms -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/account/terms`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------
@@ -251,12 +257,14 @@ Resellers are limited to 5 Terms of Service titles and each title will only have
 > Request
 
 ```shell
-curl -X PUT https://login.eagleeyenetworks.com/g/account/terms -d '{"is_admin_required": 1, "is_user_required": 1, "title": "[TERMS_TITLE]", "text": "[TERMS_TEXT]", "version": "[TERMS_VERSION]", "id": "[ACCOUNT_ID]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms -d '{"is_admin_required": 1, "is_user_required": 1, "title": "[TERMS_TITLE]", "text": "[TERMS_TEXT]", "version": "[TERMS_VERSION]", "id": "[ACCOUNT_ID]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`PUT https://login.eagleeyenetworks.com/g/account/terms`
+`PUT https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms`
 
 Parameter         | Data Type | Description                                          | Required    | Default                  | Limitation
 ---------         | --------- | -----------                                          |:-----------:| -------                  | ----------
@@ -322,12 +330,14 @@ Users are not required to accept terms of the same version again, to force users
 > Request
 
 ```shell
-curl -X POST https://login.eagleeyenetworks.com/g/account/terms -d '{"is_admin_required": 0, "is_user_required": 1, "title": "[TERMS_TITLE]", "text": "[TERMS_TEXT]", "version": "[TERMS_VERSION]", "id": "[ACCOUNT_ID]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms -d '{"is_admin_required": 0, "is_user_required": 1, "title": "[TERMS_TITLE]", "text": "[TERMS_TEXT]", "version": "[TERMS_VERSION]", "id": "[ACCOUNT_ID]"}' -H "content-type: application/json" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`POST https://login.eagleeyenetworks.com/g/account/terms`
+`POST https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms`
 
 Parameter         | Data Type | Description                                          | Required    | Default                  | Limitation
 ---------         | --------- | -----------                                          |:-----------:| -------                  | ----------
@@ -396,12 +406,14 @@ Delete an account’s Terms of Service
 > Request
 
 ```shell
-curl -X DELETE https://login.eagleeyenetworks.com/g/account/terms -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms -d "id=[ACCOUNT_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`DELETE https://login.eagleeyenetworks.com/g/account/terms`
+`DELETE https://[active_brand_subdomain].eagleeyenetworks.com/g/account/terms`
 
 Parameter | Data Type | Description | Is Required
 --------- | --------- | ----------- | -----------

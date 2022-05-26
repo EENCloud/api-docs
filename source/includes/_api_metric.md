@@ -16,12 +16,14 @@ Used to query the <a class="definition" onclick="openModal('DOT-Bridge')">Bridge
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/metric/bridgebandwidth -d "id=[BRIDGE_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/metric/bridgebandwidth -d "id=[BRIDGE_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/metric/bridgebandwidth`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/metric/bridgebandwidth`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------
@@ -157,12 +159,14 @@ Used to query the <a class="definition" onclick="openModal('DOT-Camera')">Camera
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/metric/camerabandwidth -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/metric/camerabandwidth -d "id=[CAMERA_ID]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/g/metric/camerabandwidth`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/g/metric/camerabandwidth`
 
 Parameter       | Data Type    | Description | Is Required
 ---------       | ---------    | ----------- | -----------

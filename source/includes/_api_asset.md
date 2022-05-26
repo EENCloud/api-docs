@@ -42,13 +42,13 @@ The image request model provides an efficient mechanism for accessing image sequ
 There are numerous different ways to get a list of images:
 
 Get all preview images between April 1st and April 2nd<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&end_timestamp=20180402000000.000&asset_class=all`
+`https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&end_timestamp=20180402000000.000&asset_class=all`
 
 Get 500 images before April 1st<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&count=-500&asset_class=all`
+`https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&count=-500&asset_class=all`
 
 Get the next 500 images after April 1st<br>
-`https://login.eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&count=500&asset_class=all`
+`https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/image.jpeg?id=100676b2&start_timestamp=20180401000000.000&count=500&asset_class=all`
 
 ### Retrieve Video
 
@@ -66,7 +66,7 @@ The start timestamp must match the starting timestamp of a video if the video al
 
 API calls can initially be done against `'https://login.eagleeyenetworks.com'` (The host url), but after the authorization response is returned, API calls should then use the **branded subdomain**. At this stage the branded host url will become `'https://[active_brand_subdomain].eagleeyenetworks.com'`, where the `'active_brand_subdomain'` field is returned in the authorization response
 
-Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against `'the active_brand_subdomain'` after authorization. Using the *branded subdomain* is important for speed and robustness
+Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against the `'active_brand_subdomain'` after authorization. Using the *branded subdomain* is important for speed and robustness
 
 ### Video Formats
 
@@ -100,8 +100,10 @@ location          | `'/asset/asset/image.jpeg?timestamp=20180917213405.700&id=xx
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 > <small>Provide the '<b>-O</b>' option at the end of the request for file output to the current directory</small>
 
@@ -109,16 +111,16 @@ curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAM
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/asset/asset/image.jpeg`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/asset/image.jpeg`
 <br> Get the image at the specified timestamp
 
-`GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg`
 <br> Get the first image before the specified timestamp
 
-`GET https://login.eagleeyenetworks.com/asset/next/image.jpeg`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/next/image.jpeg`
 <br> Get the first image after the specified timestamp. Used with `'timestamp=now'` will wait until the new image comes into existence and return it
 
-`GET https://login.eagleeyenetworks.com/asset/after/image.jpeg`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/after/image.jpeg`
 <br> Get the first image after the specified timestamp. Used with `'timestamp=now'` will return 404 - Image not found
 
 Parameter         | Data Type    | Description   | Is Required
@@ -158,14 +160,18 @@ Get a video stream in FLV format based on the specified timestamps. Returns bina
 > Request (flv)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/play/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/play/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 > Request (mp4)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/play/video.mp4 -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/play/video.mp4 -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G -v
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 > <small>Provide the '<b>-O</b>' option at the end of the request for file output to the current directory (timestamps must coincide with existing video)</small>
 
@@ -174,10 +180,10 @@ curl -X GET https://login.eagleeyenetworks.com/asset/play/video.mp4 -d "id=[CAME
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/asset/play/video.flv`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/play/video.flv`
 <br> Get video in the `.flv` format
 
-`GET https://login.eagleeyenetworks.com/asset/play/video.mp4`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/play/video.mp4`
 <br> Get video in the `.mp4` format
 
 Parameter           | Data Type    | Description    | Is Required
@@ -292,7 +298,7 @@ Now use `RTSP` stream url one to start live-streaming in `VLC`. In this case `VL
     This API calls must use the **branded subdomain**. The branded host url will become `'https://[active_brand_subdomain].eagleeyenetworks.com'`, where the `'active_brand_subdomain'` field is returned in the authorization response
   </p>
   <p>
-    Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against `'the active_brand_subdomain'` after authorization. Using the *branded subdomain* is required for this endpoint.
+    Each account will consistently have the same *branded subdomain* and as such will not change throughout the life of the session. Caching the subdomain is safe as long as the client software validates against the `'active_brand_subdomain'` after authorization. Using the *branded subdomain* is required for this endpoint.
   </p>
 </aside>
 
@@ -303,12 +309,14 @@ In the event the video was successfully retrieve by the cloud, the `success_hook
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/cloud/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "success_hook=[WEBHOOK_URL]" -d "failure_hook=[WEBHOOK_URL]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/cloud/video.flv -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "success_hook=[WEBHOOK_URL]" -d "failure_hook=[WEBHOOK_URL]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/asset/cloud/video.flv`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/cloud/video.flv`
 
 Parameter           | Data Type | Description   | Is Required
 ---------           | --------- | -----------   | -----------
@@ -361,12 +369,14 @@ Get a list of objects, where each object contains the type of event delivering t
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/list/image -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/image -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/asset/list/image`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/image`
 
 Parameter           | Data Type    | Description   | Is Required
 ---------           | ---------    | -----------   | -----------
@@ -435,12 +445,14 @@ If the option `'options=coalesce'` has been added, the videos with overlapping s
 > Request
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/list/video -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "options=coalesce" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/video -d "id=[CAMERA_ID]" -d "start_timestamp=[START_TIMESTAMP]" -d "end_timestamp=[END_TIMESTAMP]" -d "options=coalesce" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/asset/list/video`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/list/video`
 
 Parameter           | Data Type    | Description   | Is Required
 ---------           | ---------    | -----------   | -----------
@@ -516,13 +528,15 @@ can be used to identify when video has be recorded.
 > Request (jpeg)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}
  --cookie "auth_key=[AUTH_KEY]"
 ```
 
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
+
 ### HTTP Request
 
-`GET https://login.eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}`
+`GET https://[active_brand_subdomain].eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}`
 <br> Get the image at, or closest image before, the specified timestamp. Used with `'timestamp=now'`, will use the current GMT time
 for the timestamp.
 

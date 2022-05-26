@@ -33,19 +33,23 @@ With cURL installed the next step is to log in and have a valid session (visit t
 > A certain degree of variation is possible within cURL for formulating HTTP requests:
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 > Alternatively, the above request could be formulated as:
 
 ```shell
-curl --request GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]"
+curl --request GET "https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 **It is important to disassociate the types of request *data* from one another:**
 <br><small>(certain request types require data to be sent via *parameters*, other types require the data to be delivered via *data* - as HTTP body)</small>
 
-  - **Parameters** by providing the parameters following the request url with a `?` and injecting them into it (i.e. `id=[CAMERA_ID]&timestamp=[TIMESTAMP]` in `https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]`)
+  - **Parameters** by providing the parameters following the request url with a `?` and injecting them into it (i.e. `id=[CAMERA_ID]&timestamp=[TIMESTAMP]` in `https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]`)
   - **HTTP request body** via `--data` or `-d` (i.e. `-d "id=[CAMERA_ID]&timestamp=[TIMESTAMP]"`)
     - Example: data in a standard PUT/POST request including **Json-formatted data**, which can be explicitly specified by adding the appropriate header `-H 'Content-type: application/json'` in the following way during a Create User call:
       - `-d '{"first_name": "[FIRST_NAME]", "last_name": "[LAST_NAME]", "email": "[EMAIL]"}' -H "content-type: application/json"` <br>Alternatively the same data could be provided without specifying the data type in the following ways:
@@ -57,18 +61,18 @@ The same request can frequently be mimicked using all 3 methods like with the *a
 
 **Parameter (A=[AUTH_KEY])**
 
-`curl -X GET "https://login.eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]"`
+`curl -X GET "https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg?id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]"`
 
 **Request body (-d "A=[AUTH_KEY]")**
 <br><small>(sneaky way of forcing GET to accept parameters via the data field, in this case data is still pushed as parameters and not in the request body)</small>
 
-`curl -G https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -d "A=[AUTH_KEY]" -H "Authentication: [API_KEY]"`
+`curl -G https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -d "A=[AUTH_KEY]" -H "Authentication: [API_KEY]"`
 <br><small>or</small></br>
-`curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]" -G`
+`curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]&timestamp=[TIMESTAMP]&asset_class=[ASSET_CLASS]&A=[AUTH_KEY]" -H "Authentication: [API_KEY]" -G`
 
 **Cookie (--cookie "auth_key=[AUTH_KEY]")**
 
-`curl -X GET https://login.eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G`
+`curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/asset/prev/image.jpeg -d "id=[CAMERA_ID]" -d "timestamp=[TIMESTAMP]" -d "asset_class=[ASSET_CLASS]" -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]" -G`
 
 ---
 
@@ -112,8 +116,10 @@ Argument | Description
 > Get List of Devices Request (Authorized)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/device/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 Note that `'-'` after the `-D` indicates that the output *file* is stdout. One of the header elements will be `'Set-Cookie: auth_key=[AUTH_KEY]'`. Copy `'auth_key=[AUTH_KEY]'` into the clipboard as this cookie will need to be set for all other API requests. The cURL request for getting a list of devices will look like in the example to the right
 
@@ -126,7 +132,7 @@ Note that `'-'` after the `-D` indicates that the output *file* is stdout. One o
 > Get List of Layouts (Request)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/layout/list -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
 
 > Get List of Layouts (Json Response)
@@ -175,8 +181,10 @@ We take the layout ID attribute for each layout of interest and pass it to the G
 > Get Layout (Request)
 
 ```shell
-curl -X GET https://login.eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -G -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
+curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/g/layout -d "id=[LAYOUT_ID]" -G -H "Authentication: [API_KEY]" --cookie "auth_key=[AUTH_KEY]"
 ```
+
+> _For information on **active_brand_subdomain** click [here](#active-brand-subdomain-explanation)._
 
 > Get Layout (Json Response)
 
@@ -257,7 +265,7 @@ Below is the Javascript code that creates the URL for playing live video footage
 The caller of the API need to supply 2 parameters. which are [DEVICE_ID] and [AUTH_KEY]. The [DEVICE_ID] represents the ID of the camera of interest. The [AUTH_KEY] is used for authentication and can be found in the response header of the `'/aaa/authorization'` API
 
 `
-eagleEyeLiveVideoApiUrl = "https://login.eagleeyenetworks.com/asset/play/video.flv" +
+eagleEyeLiveVideoApiUrl = "https://[active_brand_subdomain].eagleeyenetworks.com/asset/play/video.flv" +
     "?id=[DEVICE_ID]" +
     "&start_timestamp=stream_"+(new Date().getTime()) +
     "&end_timestamp=+300000" +
