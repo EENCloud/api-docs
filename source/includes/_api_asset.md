@@ -514,10 +514,10 @@ HTTP Status Code | Description
 403	| Forbidden due to the user missing the necessary privileges
 
 <!--===================================================================-->
-## Get Snapshot
+## Get Snapshot of recording
 <!--===================================================================-->
 
-Get a full resolution jpeg image at the specified timestamp. Returns binary image data at
+Get a full resolution jpeg image at the specified timestamp, from a recording. Returns binary image data at
 the timestamp either equal to, or the closest point before, the requested timestamp. The closest
 timestamp is a function of the configured GOP for the camera and the frame rate. The resolution of the image
 returned is the full resolution of camera.
@@ -537,8 +537,7 @@ curl -X GET https://[active_brand_subdomain].eagleeyenetworks.com/api/v2/media/{
 ### HTTP Request
 
 `GET https://[active_brand_subdomain].eagleeyenetworks.com/api/v2/media/{camera_id}/Snapshot?timestamp={timestamp}`
-<br> Get the image at, or closest image before, the specified timestamp. Used with `'timestamp=now'`, will use the current GMT time
-for the timestamp.
+<br> Get the image at, or closest image before, the specified timestamp.
 
 Parameter           | Data Type    | Description    | Is Required
 ---------           | ---------    | -----------    | -----------
