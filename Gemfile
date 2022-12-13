@@ -1,18 +1,17 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Middleman
-gem 'middleman', '~> 4.2.0'
-gem 'middleman-syntax', '~> 3.0.0'
-gem 'middleman-autoprefixer', '~> 2.10.1'
-gem "middleman-sprockets", "~> 4.1.0"
+gem 'middleman', '~> 4.4.3'
+gem 'middleman-syntax', '~> 3.3.0'
+gem 'middleman-autoprefixer', '~> 3.0.0'
+gem 'middleman-sprockets', '~> 4.1.1'
 
-gem 'rouge', '~> 2.0.5'
-gem 'redcarpet', '~> 3.4.0'
+gem 'rouge', '~> 3.2'
+gem 'redcarpet', '~> 3.5.1'
 
 # Java and active support
-gem 'execjs', '~> 2.7.0'
-gem 'mini_racer', '~> 0.3.1'
-gem 'activesupport', '= 5.0.5'
+gem 'execjs', '~> 2.8.1'
+gem 'mini_racer', '~> 0.6.3'
+gem 'activesupport', '~> 7.0.4'
 
 # Middleman-Livereload
-gem 'middleman-livereload', '~> 3.4.6'
+gem 'middleman-livereload', '~> 3.4.7'

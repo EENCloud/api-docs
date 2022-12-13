@@ -1,18 +1,16 @@
-FROM ruby:2.6.5
+FROM ruby:3.1.3
+
+RUN apt update && apt install -y nginx=1.18.0-6.1+deb11u3 \
+   inotify-tools=3.14-8.1
+
+CMD ["sh", "-c", "tail -f /dev/null"]
 
 # build api-dockers
 WORKDIR /usr/src/app
-COPY Gemfile ./
+COPY Gemfile Gemfile.lock ./
 ADD . .
 
 RUN bundle install && bundle exec middleman build --clean --verbose
-
-# fix for apt-get update failing
-# https://superuser.com/questions/1423486/issue-with-fetching-http-deb-debian-org-debian-dists-jessie-updates-inrelease
-RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
-# add nginx and setup to serve static pages
-RUN apt-get update && apt-get -y install nginx \
-  inotify-tools
 
 ADD default /etc/nginx/sites-available/default
 ADD nginx.conf /etc/nginx/nginx.conf
