@@ -3,8 +3,6 @@ FROM ruby:3.1.3
 RUN apt update && apt install -y nginx=1.18.0-6.1+deb11u3 \
    inotify-tools=3.14-8.1
 
-CMD ["sh", "-c", "tail -f /dev/null"]
-
 # build api-dockers
 WORKDIR /usr/src/app
 COPY Gemfile Gemfile.lock ./
