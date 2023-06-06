@@ -1819,7 +1819,7 @@ Array Index | Attribute           | Data Type     | Description
 24          | ignored_inputs      | array[string] | Array of analog port numbers which should be ignored by the bridge
 25          | responder_camera    | int           | Indicates whether the camera is a first responder camera (1) or not (0)
 26          | super_tags          | json          | Semantically classified device metadata
-27          | discovered_state    | json          | Information regarding the connection state of discovered devices that have not been registered.  `created_at` is the last time the device was detected, `connect` (usually None) indicates the registration state of the device PENDING, IGNORED, etc.
+27          | discovered_state    | json          | Information regarding the connection state of discovered devices that have not been registered.  `created_at` is the last time the device was detected, `connect` indicates the registration state of the device. Connect state: <br>`'NONE'` - camera no longer available. <br>`'IGND'` - camera is unattached from all bridges and is available to be attached to a bridge <br>`'PEND'` - camera driver found and camera is ready for add. <br>`'CERR'` camera network error.
 28          | flags               | json          | Collection of boolean properties used internally for VMS GUI
 
 <aside class="success">Please note that the model definition has property keys, but that's only for reference purposes since it's just a standard array</aside>
