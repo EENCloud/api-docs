@@ -407,9 +407,9 @@ curl -X POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/switch_
 
 `POST https://[active_brand_subdomain].eagleeyenetworks.com/g/aaa/switch_account`
 
-Parameter  | Data Type | Description
----------  | --------- | -----------
-account_id | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> of the account to login to. Defaults to the account which the user belongs to
+Parameter  | Data Type | Description | Is required
+---------  | --------- | ----------- | -----------
+account_id | string    | <a class="definition" onclick="openModal('DOT-Account-ID')">Account ID</a> of the account to login to. Defaults to the account which the user belongs to if no `'account_id'` supplied in the request.| false
 
 ### HTTP Status Codes
 
